@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			window.onload = function(){
+				var oBtn = document.getElementById("btn1");
+
+				oBtn.onclick = function(){
+					//1、声明一个ajax对象
+					var xhr = new XMLHttpRequest();
+
+					/*
+						http://localhost/code3/01%E5%9B%9E%E9%A1%BEajax.html
+						http://localhost/code3/1.txt
+
+						说明：
+							上述两者处于【同源】
+							<1>同协议
+							<2>同主机名/IP/域名
+							<3>同端口号
+						
+						浏览器的端口号:8080
+						http协议的端口号：80
+						https协议的端口号：443
+
+					*/
+
+					xhr.open("get", "1.txt", true);
+
+					xhr.send();
+
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4){
+							alert(xhr.responseText);
+						}
+					}
+
+
+				}
+			}
+
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>下载</button>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				概念
+					this 每一个函数内部的内置变量  相当于现实语境中的"我"的概念。
+					this 永远指向当前函数的主人。
+
+
+					target 事件对象属性
+					触发对象，最开始触发的节点是谁，target就是谁。
+			*/
+			window.onload = function(){
+				var oUl = document.getElementById("ul1");
+				oUl.onclick = function(ev){
+					var e = ev || window.event;
+					var target = e.target || window.event.srcElement;
+
+					alert(this);
+					alert(target);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul id = 'ul1'>
+			<li>1111</li>
+			<li>1111</li>
+			<li>1111</li>
+			<li>1111</li>
+		</ul>
+	</body>
+</html>

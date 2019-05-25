@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{
+				width: 200px;
+				height: 200px;
+				border: 1px solid black;
+				padding: 50px;
+				margin: 100px auto;
+			}
+			#div1 input{
+				width: 200px;
+				height: 30px;
+				font-size: 18px;
+			}
+			#div1 span{
+				font-size: 15px;
+				color: red;
+			}
+		</style>
+		<script>
+			window.onload = function(){
+				var oUsername = document.getElementById("username");
+				var oUserSpan = document.getElementById("username_span");
+
+
+				//失去焦点
+				oUsername.onblur = function(){
+					//<1>清除空格
+					var oValue = this.value.replace(/\s/g, "");
+					this.value = oValue;
+					//<2>判断用户名不能为空
+					if(!oValue){
+						oUserSpan.innerHTML = "用户名不能为空";
+					}else if(oValue.length > 18 || oValue.length < 6){
+						oUserSpan.innerHTML = "用户名长度必须是6~18位";
+					}else if(!/[a-zA-Z]/.test(oValue[0])){
+						oUserSpan.innerHTML = "用户名首字母必须为字母";
+					}else if(/\W/.test(oValue)){
+						oUserSpan.innerHTML = "用户名必须由数字字母下划线组成";
+					}else{
+						oUserSpan.innerHTML = "✅"
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = "div1">
+			<input id = "username" type="text" placeholder="请输入用户名" /><br />
+			<span id = "username_span"></span>
+		</div>
+	</body>
+</html>
+
+
+
+
+
+

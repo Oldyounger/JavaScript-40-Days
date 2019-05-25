@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			// add() slice()
+
+			$(function(){
+				// $("li").slice(1, 4).css("backgroundColor", 'red');
+
+				/*$("div").css("backgroundColor", 'red');
+				$("em").css("backgroundColor", 'red');
+				$("li").css("backgroundColor", 'red');*/
+
+				// $("div").add("em").add("li").css("backgroundColor", 'red');
+
+				$("div,em,li").css("backgroundColor", 'red')
+			})
+		</script>
+	</head>
+	<body>
+		<div>div</div>
+		<span>span</span>
+		<em>em</em>
+		<ul>
+			<li>111</li>
+			<li>111</li>
+			<li>111</li>
+			<li>111</li>
+			<li>111</li>
+		</ul>
+	</body>
+</html>

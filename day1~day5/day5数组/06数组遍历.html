@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				遍历
+
+				for循环
+
+
+				for...in 快速遍历/快速枚举法  直接从头到尾直接遍历每一个元素。
+					【注】在快速遍历的时候，不要对原数组中的元素个数进行修改。
+			*/
+			var arr = [10, 20, 30, 40, 50];
+			/*for(var i = 0; i < arr.length; i++){
+				document.write(arr[i] + "<br/>");
+			}*/
+
+
+			for(var i in arr){
+				document.write(arr[i] + "<br/>");
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

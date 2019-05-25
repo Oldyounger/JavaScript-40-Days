@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			div{width: 100px; height: 100px}
+			#div1{background-color: red}
+			#div2{background-color: blue}
+		</style>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				stop()  停止动画
+				delay() 延迟  延迟执行  参数传入毫秒数
+				animate()
+				第一个参数   变化样式属性
+				第二个参数   动画持续的事件 不传入 默认400毫秒
+				第三个参数   回调函数
+
+				【注】慢快慢
+				提供了两种运动形式：swig 慢快慢(默认)  linear(匀速)
+			*/
+			$(function(){
+				/*$("#div1").click(function(){
+					$(this).animate({
+						width: 300,
+						height: 300,
+						opacity: 0.5
+					}, 5000, function(){
+						// alert("回调函数")
+					})
+
+					$("#div2").animate({
+						width: 300,
+						height: 300,
+						opacity: 0.5
+					}, 5000, "linear", function(){
+						// alert("回调函数")
+					})
+				})*/
+
+				/*$("#div1").hover(function(){
+					$(this).stop().animate({width: 300, height: 300}, 2000)
+				}, function(){
+					$(this).stop().animate({width: 100, height: 100}, 2000)
+				})*/
+
+
+				//将动画停止
+
+				$("#div1").click(function(){
+					/*$(this).animate({
+						width: 300,
+						height: 300
+					}, 2000)*/
+
+
+					//链式运动
+					$(this).animate({width: 300}, 2000).delay(4000).animate({height: 300}, 2000)
+				})
+
+				$("#div2").click(function(){
+					// $("#div1").stop(); //关闭正在运动的动画，后续动画正常执行
+					// $("#div1").stop(true);//关闭所有动画
+
+					// $("#div1").stop(true, true); //关闭所有的动画，当前正在运动的动画直接到目的值
+
+					$("#div1").finish() //关闭所有的动画，将所有动画都到达目的值。
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+		<div id = 'div2'></div>
+	</body>
+</html>

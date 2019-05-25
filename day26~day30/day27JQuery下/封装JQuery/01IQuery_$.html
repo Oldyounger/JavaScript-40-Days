@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'IQuery.js'></script>
+		<script>
+			$(function(){
+				/*$("#li1");
+
+				$(".box");
+
+				$("[name=hello]");*/
+
+				$("li").click(function(){
+					this.style.backgroundColor = 'red';
+				})
+				$("li").mouseover(function(){
+					this.style.backgroundColor = 'blue';
+				})
+				$("li").mouseout(function(){
+					this.style.backgroundColor = 'yellow';
+				})
+
+				$(document)
+			})
+
+			$(function(){
+				alert(456)
+			})
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li id = 'li1'></li>
+			<li class = 'box' name = 'hello'></li>
+			<li></li>
+			<li name = 'hello'></li>
+			<li class = 'box'></li>
+			<li name = 'hello'></li>
+		</ul>
+	</body>
+</html>

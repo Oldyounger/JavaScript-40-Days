@@ -1,0 +1,28 @@
+/* 
+	@import 引入公共样式
+
+	声明公共样式 _base.scss
+	引入的时候，省略_ 声明后缀
+ */
+@charset "uf-8";
+html,body,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,fieldset,legend,form,img,input{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+ul,ol,li{
+	list-style:none;
+}
+img{
+	display: block;
+	border: 0;
+}
+i,em,b,strong{
+	font-style: normal;
+	font-weight: normal;
+}
+.clear:after{
+	content: "";display: block;clear: both;height: 0;overflow: hidden;visibility: hidden;
+}

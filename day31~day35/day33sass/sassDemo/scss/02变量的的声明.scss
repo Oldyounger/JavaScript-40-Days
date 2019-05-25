@@ -1,0 +1,50 @@
+/* 
+	声明普通变量
+ */
+ $color: red;
+
+ $width: 500px;
+
+/* 
+	默认变量
+ */
+ $width: 400px !default;
+
+ .box{
+ 	background-color: $color;
+ 	width: $width;
+ }
+
+ /* 
+	全局变量 !global
+  */
+$xxx: orange;
+body{
+	background-color: $xxx;
+	.box{
+		$xxx: red;
+		background-color: $xxx;
+	}
+	a{
+		background-color: $xxx;
+	}
+}
+
+body{
+	background-color: $xxx;
+	.box{
+		$xxx: red !global;
+		background-color: $xxx;
+	}
+	a{
+		background-color: $xxx;
+	}
+}
+
+/* 
+	特殊变量
+ */
+$yyy: top;
+#div2{
+	border-#{$yyy}: 1px solid black;
+}

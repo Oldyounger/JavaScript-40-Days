@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- 如果你要用bs.js  先引入jquery.js 在引入bs.js -->
+		<style>
+			div[class*="col-"]{border: 1px solid black; height: 50px; color: white; background-color: gray}
+		</style>
+	</head>
+	<body>
+		<!-- 
+			如果我们想适配各种屏幕的话
+			我们要进行布局
+
+			bs所有的样式和控件，都应该放在"容器"里
+
+			固定容器   container        左右留白
+
+			流体容器   container-fluid  宽100%平铺
+
+
+			要去完成屏幕适配，要栅格系统。
+
+
+			栅格系统   将整个页面分成 row  col
+			并且将每一行 等分成12列
+
+			col-*-*
+				第一个星： 
+					lg md sm xs
+				第二个星:
+					1-12的数字  列数
+
+			嵌套 如果发生嵌套，被嵌套的行 还会分成12等分
+
+
+			列偏移
+				col-*-offset-*   向右偏移
+
+			列排序
+				col-*-push-*    向右排序
+				col-*-pull-*    向左排序
+
+		 -->
+
+		<div class = 'container'>
+			<div class = 'row'>
+				<div class = "col-lg-4 visible-lg-block">aaa</div>
+				<div class = "col-lg-4 hidden-xs">bbb</div>
+			</div>
+		</div>
+	</body>
+</html>

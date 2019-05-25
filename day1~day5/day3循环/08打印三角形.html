@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			for(var i = 0; i < 5; i++){
+				//输出对应的圆圈个数
+				for(var j = 0; j <= i; j++){
+					document.write("○");
+				}
+
+				document.write("<br/>");
+			}
+
+			/*
+				【注】凡是数数还是下标，都要从0开始。
+			*/
+
+			/*
+				每一行的空格数 = 5 - 圆圈数
+			*/
+			/*
+				i  index下标
+				i j k 
+			*/
+
+
+			for(var i = 0; i < 5; i++){
+				//输出对应的空格数
+				for(var k = 0; k < 5 - i - 1; k++){
+					document.write("X");
+				}
+
+				//输出对应的圆圈个数
+				for(var j = 0; j <= i; j++){
+					document.write("Y");
+				}
+
+				document.write("<br/>");
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

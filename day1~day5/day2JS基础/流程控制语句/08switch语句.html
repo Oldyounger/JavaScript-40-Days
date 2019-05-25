@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				switch语法结构
+
+				switch(表达式){
+					case 常量1:
+						执行语句1;
+						break;
+					case 常量2:
+						执行语句2;
+						break;
+					...
+					default:
+						如果上述所有都匹配失败，执行这里。
+						break;
+				}
+
+				注意细节：
+					1、break不能省略   break是用来终止当前的选择语句的。
+					2、default必须有 用来报错
+			*/
+
+			var grade = "A";
+			switch(grade){
+				case "A":
+					alert("80~100");
+					break;
+				case "B":
+					alert("70~79");
+					break;
+				case "C":
+					alert("60~69");
+					break;
+				case "D":
+					alert("<60");
+					break;
+				default:
+					alert("error");
+					break;
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

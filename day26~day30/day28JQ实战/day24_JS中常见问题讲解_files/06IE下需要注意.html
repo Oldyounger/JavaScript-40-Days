@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset = "utf-8" />
+		<script type="text/javascript">
+		//【注】面试的时候，要注意
+
+
+		/*window.onload = function(){
+
+			//在IE下引发内存泄漏
+			var oDiv = document.getElementById("div1");
+
+			oDiv.onclick = function(){
+				//在IE下oDiv这个变量由于通过闭包调用了，不会释放，造成内存泄漏。
+				alert(oDiv.id);
+			}
+
+			window.onunload = function(){
+				//在页面结构的时候，我们直接将这个内存销毁掉
+				oDiv.onclick = null;
+			}
+		}*/
+
+		window.onload = function(){
+			var oDiv = document.getElementById("div1");
+			var id = oDiv.id;
+			oDiv.onclick = function(){
+				alert(id);
+			}
+			//oDiv 所占的内存就被释放掉了
+			oDiv = null;
+
+		}
+		</script>
+	</head>
+	<body>
+		<div id = "div1">div</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

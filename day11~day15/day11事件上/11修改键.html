@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+			事件对象的属性：事件对象.xxx
+				shiftKey  如果按下shift，值为true，否则为false
+				ctrlKey
+				altKey
+				metaKey   按下windows键  mac电脑common键
+
+				组合
+			*/
+
+			window.onload = function(){
+				document.onclick = function(ev){
+					var e = ev || window.event;
+					var arr = [];
+					if(e.shiftKey){
+						arr.push("shift");
+					}
+					if(e.ctrlKey){
+						arr.push("ctrl");
+					}
+					if(e.altKey){
+						arr.push("Alt");
+					}
+					if(e.metaKey){
+						arr.push("windows")
+					}
+					alert(arr);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

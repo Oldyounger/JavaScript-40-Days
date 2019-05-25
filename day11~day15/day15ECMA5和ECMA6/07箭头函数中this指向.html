@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*var person = {
+				name: "钢铁侠",
+				age: 18,
+				showName: function(){
+					alert(this)
+					alert(this.name);
+				}
+			}*/
+
+
+			/*
+				【注】箭头函数中的this，不指向当前函数的主人，指向上一级函数的主人。
+			*/
+			var person = {
+				name: "钢铁侠",
+				age: 18,
+				showName: () => {
+					alert(this)
+				}
+			}
+
+			person.showName();
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

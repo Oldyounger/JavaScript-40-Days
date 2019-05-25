@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				在火影的世界中存在忍术，忍术是把强大的能量集中在一起以各种各样不同的形式发射出来。怎样使用各种各样的忍术那？通过结印。
+
+				好，我们提取一些火影忍者中的关键信息。
+   				 1.  火影忍者的故事背景有忍术存在，忍术什么样是由忍术先祖发明出来的。
+   				 2.  忍术是同过结印触发的。结印几次就触发几次；（查克拉足够的情况下）
+
+   				 忍术 => JS的函数(程序员写的)
+				 结印发动忍术 => 调用函数(函数才会执行)
+			*/
+
+
+			/*//输出10个hello world
+			for(var i = 0; i < 10; i++){
+				document.write("hello world<br/>");
+			}
+			//【注】需要100个地方输出上述代码
+
+			for(var i = 0; i < 10; i++){
+				document.write("hello world<br/>");
+			}
+
+			for(var i = 0; i < 10; i++){
+				document.write("hello world<br/>");
+			}*/
+
+			/*
+				封装函数/声明函数：
+					格式：
+						function 函数名(){
+							函数体
+						}
+					调用函数：函数名();
+			*/
+
+			//声明函数 == 创建忍术
+			function print(){
+				for(var i = 0; i < 10; i++){
+					document.write("hi world<br/>");
+				}
+			}
+
+			//调用函数 ==  结印
+			print();
+
+			print();
+
+			print();
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

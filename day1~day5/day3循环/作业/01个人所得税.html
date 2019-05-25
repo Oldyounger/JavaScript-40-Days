@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				个人所得税
+				应缴个人所得税=（工资收入- 5000）*税率 – 速算扣除数。
+			*/
+			var money = 8000;
+			money -= 5000;
+			var tax = 0;
+			if(money < 1500){
+				tax = money * 0.03;
+			}else if(money >= 1500 && money < 4500){
+				tax = money * 0.1 - 105;
+			}else if(money >= 4500 && money < 9000){
+				tax = money * 0.2 - 555;
+			}else if(money >= 9000 && money < 35000){
+				tax = money * 0.25 - 1005;
+			}else if(money >= 35000 && money < 55000){
+				tax = money * 0.3 - 2755;
+			}else if(money >= 55000 && money < 80000){
+				tax = money * 0.35 - 5505;
+			}else{
+				tax = money * 0.45 - 13505;
+			}
+			// alert(tax);
+
+
+			/*
+				开发一款软件，根据公式（身高-108）*2=体重，可以有10斤左 右的浮动。来观察测试者体重是否合适
+			*/
+			var height = 180;
+			var weight = 140;
+			var standard = (height - 108) * 2;
+			if(weight < standard - 10){
+				alert("过轻");
+			}else if(weight > standard + 10){
+				alert("过重");
+			}else{
+				alert("标准");
+			}
+
+
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

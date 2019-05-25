@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				Promise
+
+				异步 非阻塞，前面的程序是否执行完毕，后面程序不受影响。
+				同步 阻塞，必须等前面这个程序执行完成以后，后面的程序才能执行。
+
+				ajax传输数据，是异步执行。
+
+
+				下载钢铁侠系列的电影，播放电影
+
+
+				new Promise(ajax1).then(ajax2).catch(报错);
+				
+				new Promise(ajax1).then(function(){
+					return new Promise(ajax2)
+				}).then(ajax3).catch()
+			*/
+
+			new Promise(function(resolve, reject){
+				$.ajax({
+					url: "钢铁侠1",
+					success: function(){
+						resolve("播放钢铁侠1");
+					},
+					error: function(){
+						reject("请求错误");
+					}
+				})
+			}).then(function(value){
+				$.ajax({
+					url: "钢铁侠2",
+					success: function(){
+						resolve("播放钢铁侠2");
+					},
+					error: function(){
+						reject("请求错误");
+					}
+				})
+			}).catch(function(){
+
+			})
+
+			/*
+				1、ajax嵌套太多层
+				2、没有办法保证异步程序是按顺序执行
+			*/
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

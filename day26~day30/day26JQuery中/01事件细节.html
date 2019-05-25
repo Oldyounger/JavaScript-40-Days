@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			/*div{width: 100px; height: 100px; background-color: red; margin: 30px; padding: 50px}*/
+			div{padding: 50px}
+			#div1{background-color: blue}
+			#div2{background-color: yellow}
+			#div3{background-color: orange}
+		</style>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+			【注】JQ不需要大家去兼容的，下述所有的属性都是兼容后的。
+				•  ev pageX 
+
+					which  
+					1、如果你添加的是鼠标事件，返回点击鼠标对应的码
+						1  左键 2 滚轮 3 右键
+					2、keydown 事件 代表的是键码  keyCode
+					3、keypress事件 代表的是字符码charCode
+
+				•  
+				preventDefault   阻止默认行为
+				stopPropagation  阻止事件冒泡
+
+				clientX   clientY  原点位置是可视窗口的左上角
+				pageX     pageY    带滚动距离
+				screenX   screenY
+			*/
+			$(function(){
+				/*$("div").click(function(ev){
+					// alert(ev)
+				})*/
+
+				$(document).click(function(ev){
+					/*alert(ev.clientX + ", " + ev.clientY);
+					// alert(ev.pageX + ", " + ev.pageY);
+					alert(ev.screenX + ", " + ev.screenY);*/
+
+					// alert(ev.which);
+				})
+
+				/*$(window).keydown(function(ev){
+					alert(ev.which)
+				})*/
+
+				/*$(window).keypress(function(ev){
+					alert(ev.which)
+				})*/
+
+
+				$("div").click(function(ev){
+					alert(this.id);
+
+					ev.stopPropagation();
+				})
+				$("a").click(function(ev){
+					// ev.preventDefault();
+					// ev.stopPropagation();
+
+					return false; //代表既阻止默认行为，又阻止事件冒泡
+				})
+			})
+		</script>
+	</head>
+	<body style = 'height: 3000px'>
+		<div>div1</div>
+		<div>div2</div>
+		<div>div3</div>
+		<div id = 'div1'>
+			<div id = 'div2'>
+				<div id = 'div3'>
+					<a href="http://www.baidu.com">百度</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

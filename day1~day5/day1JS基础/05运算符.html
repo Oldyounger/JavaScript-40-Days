@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				js运算符
+
+				算数运算符
+					+ - * / %(取余符号)
+
+				关系运算符
+					> < >= <= == != === !==
+
+				赋值运算符
+					= 
+					+= -= *= /= %=(复合赋值运算符)
+
+				逻辑运算符
+					&&(与)
+					||(或)
+					! (非)
+
+				自增自减运算符（一元运算符）
+				a++ ++a
+				a-- --a
+			*/
+
+
+			/*var num = 5;
+
+			// alert(num / 3);
+			alert(num % 3);*/
+
+			/*
+				不同数据类型之间的算数运算：
+				【注】如果不同数据类型之间进行计算，计算机会自动将不同数据类型转成同一数据类型，然后再去进行计算。
+				这叫做【自动数据类型转换】。
+
+				表达式：任何运算符和操作数组成的式子叫做表达式。
+				1、表达式的值
+				2、表达式的功能
+
+
+			*/
+
+			/*
+				1、普通的数字之间进行算数运算。
+			*/
+			/*var num = -10 / 0;
+			alert(num); //Infinity 无穷大
+			            //-Infinity无穷小*/
+
+			/*var num = 0.8 - 0.1;
+			alert(num); //0.7000000000000001*/
+
+			/*
+				2、其中一个操作数是字符串，另外一个操作数是任意数据类型，运算符是+号。
+				结果都是字符串拼接。
+			*/
+			var num = 10 + 'hello';
+			// alert(typeof num);
+			// alert(num); //10hello
+
+			/*num = "20" + true;
+			num = "20" + undefined; //20undefined
+			alert(num);*/
+
+
+			/*
+				3、运算符是除加法外，别的数据类型再和字符串进行运算的时候。NaN和任何数据类型进行运算都是NaN
+				"20" 纯数字字符的字符串 => 数字20
+				"20a"不是纯数字字符的字符串 => NaN(not a number)
+			*/
+			// var num = "20" - 10;
+			/*var num = "20a" - 10;
+			alert(num);*/
+
+			/*
+				4、其他数据类型(除字符串以外)，在进行算数运算的时候，遵从以下规律。
+					其他数据类型需要先转成数字再进行运算。
+				true => 1
+				false => 0
+				undefined => NaN
+				null => 0
+			*/
+
+			/*var num = 1 + true;
+			num = 1 - false;
+			num = 1 - undefined;
+			num = 1 - null;
+			alert(num);*/
+
+			alert(0 / 0); //NaN
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

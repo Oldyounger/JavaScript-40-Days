@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 100px; height: 100px; background-color: red; position: absolute; left: 0px}
+			span{width: 1px; height: 200px; background-color: black;  position: absolute; left: 500px;}
+		</style>
+		<script>
+			/*
+				缓冲运动就是减速运动
+				分析：距离和当前速度成正相关。
+
+					var speed = (iTarget - offsetLeft) / 缩放系数
+				【注】经过长期的实验，缓冲运动最好看的时候是，缩放系数为8的时候。
+
+
+				计算机能够识别的最小的像素是1像素。
+					没有办法往前走。
+
+			*/
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+
+				oDiv1.onclick = function(){
+					startMove(500)
+				}
+
+			}
+
+			var timer = null;
+			function startMove(iTarget){
+				var oDiv1 = document.getElementById("div1");
+				clearInterval(timer);
+				timer = setInterval(function(){
+					var speed = (iTarget - oDiv1.offsetLeft) / 8;
+
+					//当速度不足一像素的时候
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+					if(oDiv1.offsetLeft == iTarget){
+						clearInterval(timer);
+					}else{
+						oDiv1.style.left = oDiv1.offsetLeft + speed + 'px';
+					}
+					document.getElementById("txt1").value += oDiv1.offsetLeft + ", " + speed + "\n";
+				}, 30);
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+		<span></span>
+		<textarea name="" id="txt1" cols="30" rows="10"></textarea>
+	</body>
+</html>

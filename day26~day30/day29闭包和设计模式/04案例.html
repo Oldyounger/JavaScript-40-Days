@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				1、洗菜做饭。
+
+				2、坐下来吃饭。
+
+				3、收拾桌子洗碗。
+
+
+				实现：
+				1、绿灯亮  亮2秒
+				2、黄灯亮  亮3秒
+				3、红灯亮  亮5秒
+			*/
+
+			var status = 0;  //1代表所有步骤运行正常  0代表有步骤失败了
+
+			new Promise(function(resolve, reject){
+				console.log("1、洗菜做饭。")
+				if(status >= 1){
+					resolve("1、洗菜做饭成功。")
+				}else{
+					reject("1、洗菜做饭失败。")
+				}
+			}).then(function(value){
+				console.log(value);
+				return new Promise(function(resolve, reject){
+					console.log("2、坐下来吃饭。");
+					if(status >= 2){
+						resolve("2、坐下来吃饭成功。");
+					}else{
+						reject("2、坐下来吃饭失败。");
+					}
+				})
+			}).then(function(value){
+				console.log(value);
+				return new Promise(function(resolve, reject){
+					console.log("3、收拾桌子洗碗。")
+					if(status >= 3){
+						resolve("3、收拾桌子洗碗成功。")
+					}else{
+						reject("3、收拾桌子洗碗失败。")
+					}
+				})
+			}).then(function(value){
+				console.log(value);
+			}).catch(function(value){
+				console.log(value + ".catch");
+			})
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

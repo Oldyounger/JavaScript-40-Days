@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 400px; height: 300px; background-color: orange; border: 1px solid block; margin: 150px auto; text-align: center; line-height: 300px; font-size: 40px}
+		</style>
+		<script>
+			/*
+				广告窗的自动关闭
+			*/
+
+			var i = 5;
+			var timer = setInterval(function(){
+				var oDiv = document.getElementById("div1");
+				oDiv.innerHTML = "倒计时" + i + "秒";
+				
+				if(i == 0){
+					//隐藏，并且关闭定时器
+					oDiv.style.display = 'none';
+					clearInterval(timer);
+				}
+				
+				i--;
+			}, 1000);
+
+
+
+
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>我是广告</div>
+	</body>
+</html>

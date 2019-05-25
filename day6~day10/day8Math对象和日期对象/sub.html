@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			body{background-color: orange}
+		</style>
+		<script>
+			function btnClick(){
+				/*
+					只有火狐支持，了解一下
+				*/
+				//打开当前窗口的父窗口的window对象
+				opener.document.write("hello world");
+			}
+		</script>
+	</head>
+	<body>
+		<h1>我是子窗口</h1>
+		<button onclick = 'btnClick();'>按钮</button>
+	</body>
+</html>

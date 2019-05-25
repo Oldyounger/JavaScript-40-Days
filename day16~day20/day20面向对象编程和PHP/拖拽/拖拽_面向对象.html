@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 200px; height: 200px; background-color: red; position: absolute; left: 200px; top: 100px}
+		</style>
+		<script>
+			/*
+				面向过程 => 面向对象
+				原则：
+					1、不能有函数嵌套
+					2、也有全局变量
+			*/
+
+			var offsetX = 0;
+			var offsetY = 0;
+			var oDiv = null;
+			window.onload = function(){
+				oDiv = document.getElementById("div1");
+				
+				oDiv.onmousedown = funcDown;
+
+				document.onmouseup = funcUp;
+			}
+			function funcUp(){
+				document.onmousemove = null;
+			}
+			function funcDown(ev){
+				var e = ev || window.event;
+				//1、记录相对位置
+				offsetX = e.clientX - oDiv.offsetLeft;
+				offsetY = e.clientY - oDiv.offsetTop;
+
+				//2、添加鼠标移动
+				document.onmousemove = funcMove;
+			}
+			function funcMove(ev){
+				var e = ev || window.event;
+				oDiv.style.left = e.clientX - offsetX + 'px';
+				oDiv.style.top = e.clientY - offsetY + 'px';
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				indexOf()
+				格式：arr.indexOf(item, start)
+				功能：在arr中查找item这个元素第一次出现的下标。
+				参数：start 从哪一个下标开始往后去查。start不传入，默认从0开始查找
+				返回值：
+					-1 没有找到这个元素
+					>=0 找到
+			*/
+
+			/*var arr = [10, 20, 30, 40, 50, 40, 30, 20, 10];
+			var index = arr.indexOf(100);
+			alert(index);*/
+
+
+
+			/*
+				forEach 循环
+			*/
+			var arr = [10, 20, 30, 40];
+			arr.forEach(function(item, index, arr){
+				/*
+					item 是当前遍历的元素
+					index当前遍历元素的下标
+					arr  数组本身
+				*/
+				alert(item + ", " + index);
+			})
+
+
+			/*
+				伤害了我们对程序的理解
+			*/
+			for(var i = 0; i < arr.length; i++){
+				alert(arr[i]);
+			}
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				1.编写一个函数，计算两个数字的和、差、积、商
+				    要求：使用传参的形式
+				2.编写一个函数，计算三个数字的大小，按从小到大顺序输出
+				3.编写一个函数，输入n为偶数时，调用函数求1/2+1/4+...+1/n,当输入n为奇数时，调用函数求/1+1/3+...+1/n 
+			*/
+			//asc 升序  desc降序
+			function ascNum(num1, num2, num3){
+				//找出最小的数
+				if(num1 > num2){
+					var tmp = num1;
+					num1 = num2;
+					num2 = tmp;
+				}
+				if(num1 > num3){
+					var tmp = num1;
+					num1 = num3;
+					num3 = tmp;
+				}
+				if(num2 > num3){
+					var tmp = num2;
+					num2 = num3;
+					num3 = tmp;
+				}
+
+				alert(num1 + ", " + num2 + ", " + num3);
+			}
+
+			ascNum(20, 10, 30);
+
+
+			function sum(n){
+				var res = 0; //声明一个记录和的值
+				if(n % 2 == 0){
+					for(var i = 2; i <= n; i += 2){
+						res += 1 / i;
+					}
+				}else{
+					for(var i = 1; i <= n; i += 2){
+						res += 1 / i;
+					}
+				}
+
+				return res;
+			}
+
+			/*var num = sum(4);
+			alert(num);*/
+			alert(sum(4));
+
+
+
+			function count(num1, operator, num2){
+				switch(operator){
+					case "+":
+						return num1 + num2;
+						break;
+					case "-":
+						return num1 - num2;
+						break;
+					case "*":
+						return num1 * num2;
+						break;
+					case "/":
+						return num1 / num2;
+						break;
+					default:
+						break;
+				}
+			}
+
+			/*var res = count(10, "*", 30);
+			alert(res);*/
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			
+
+			
+			window.onload = function(){
+				alert(2);
+				//等整个窗口中的内容，都加载完毕以后才去执行
+			}
+
+
+			//当document文档加载完成以后，才去执行
+			$(document).ready(function(){
+				alert(1);
+			})
+			$(function(){
+				alert(3);
+			})
+		</script>
+	</head>
+	<body>
+		<div>div1</div>
+		<div>div2</div>
+		<div>
+			div3
+			<em>em</em>
+			<strong>strong</strong>
+		</div>
+	</body>
+</html>

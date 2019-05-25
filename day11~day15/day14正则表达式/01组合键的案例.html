@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 200px; height: 200px; background-color: red; position: absolute;}
+		</style>
+		<script src = 'tool.js'></script>
+		<script>
+			/*
+				组合键的案例
+			*/
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+
+				window.onkeydown = function(ev){
+					var e = ev || window.event;
+					var which = e.keyCode || e.which;
+					var speed = 10;
+
+					if(e.shiftKey){
+						speed *= 10;
+					}
+
+					switch(which){
+						case 37:
+							oDiv1.style.left = oDiv1.offsetLeft - speed + 'px';
+							break;
+						case 38:
+							oDiv1.style.top = oDiv1.offsetTop - speed + 'px';
+							break;
+						case 39:
+							oDiv1.style.left = oDiv1.offsetLeft + speed + 'px';
+							break;
+						case 40:
+							oDiv1.style.top = oDiv1.offsetTop + speed + 'px';
+							break;
+						default:
+							break;
+					}
+
+
+					//ctrl + c
+					if(e.ctrlKey && which == 67){
+						oDiv1.style.backgroundColor = randomColor()
+					}
+				}
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				ECMA6 新增了两个方法
+				json格式的字符串	
+
+				JSON.stringify()  将数据结构  =>  对应格式的字符串
+				JSON.parse()      将对应的字符串 => 对应的数据结构
+			*/
+
+			/*var arr = [10, true, "hello", "100"];
+			alert(arr)
+
+			var str = JSON.stringify(arr);
+			alert(str); //'[10,true,"hello"]'*/
+
+			/*var str = '[10,true,"hello"]';
+			var arr = JSON.parse(str);
+			alert(arr[1])*/
+
+			/*var xiaoming = {
+				name: "小明",
+				age: 18,
+				sex: '男'
+			}
+			alert(xiaoming)
+			var str = JSON.stringify(xiaoming);
+			alert(str); //'{"name":"小明","age":18,"sex":"男"}'*/
+
+			var str = '{"name":"小明","age":18,"sex":"男"}';
+			var xiaoming = JSON.parse(str);
+			alert(xiaoming.name)
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

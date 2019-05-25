@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			*{margin: 0px; padding: 0px}
+			#airplane{width: 66px; height: 80px; background: url(image/我的飞机.gif) no-repeat; position: absolute; left: 800px; top: 700px}
+			body{background: url(image/background_1.png);}
+			#clip div{width: 6px; height: 14px; background: url(image/bullet1.png) no-repeat; position: absolute;}
+		</style>
+		<script src = 'js/tool.js'></script>
+		<script src = 'js/line_startMove.js'></script>
+		<script>
+			
+
+
+			window.onload = function(){
+
+				drag($("airplane"));
+
+				//初始化所有的子弹
+				init();
+
+				//发射子弹
+				Gatlin()
+				
+
+			}
+
+			function init(){
+				var aBullets = $("clip").getElementsByTagName("div");
+				//给每一颗子弹设置标识
+				for(var i = 0; i < aBullets.length; i++){
+					aBullets[i].isrunning = false; //isrunning true 已经飞了  isrunning 没有在运动
+				}
+			}
+
+			function Gatlin(){
+				setInterval(function(){
+					var oBullet = load();
+					if(oBullet){
+						oBullet.isrunning = true;
+						fire($("airplane"), oBullet);
+					}
+				}, 500);
+			}
+
+			//上膛
+			function load(){
+				var aBullets = $("clip").getElementsByTagName("div");
+				for(var i = 0; i < aBullets.length; i++){
+					if(!aBullets[i].isrunning){
+						return aBullets[i];
+					}
+				}
+			}
+
+			//开火
+			function fire(oAirplane, oBullet){
+				//1、计算枪口的位置
+				var X = oAirplane.offsetLeft + (oAirplane.offsetWidth - oBullet.offsetWidth) / 2;
+				var Y = oAirplane.offsetTop - 20;
+				//2、将子弹挪动到枪口的位置
+				oBullet.style.left = X + 'px';
+				oBullet.style.top = Y + 'px';
+				//3、发射
+				startMove(oBullet, 5, "top", 0, function(){
+					//当子弹运动到目的值，再拿回来重新用
+					this.isrunning = false;
+				})
+			}
+
+			//获取当前元素
+			function $(id){
+				return document.getElementById(id);
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'airplane'></div>
+		<div id = 'clip'>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</body>
+</html>

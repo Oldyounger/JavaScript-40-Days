@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+$colors: (dark: black, light: white);
+
+@function getColor($key){
+	@if not map-has-key($colors, $key){
+		/*
+			@warn  警告
+			@error 报错
+		*/
+
+		/*@warn "in $colors not have a key == #{$key}";*/
+		/*@error "in $colors not have a key == #{$key}";*/
+	}
+
+	@return map-get($colors, $key);
+}
+
+
+.box{
+	background-color: getColor("xxx");
+}

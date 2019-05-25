@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			window.onload = function(){
+				var oGet = document.getElementById("get");
+				var oPost = document.getElementById("post");
+
+				//get请求
+				oGet.onclick = function(){
+					var xhr = null;
+					try{
+						xhr = new XMLHttpRequest();
+					}catch(error){
+						xhr = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+
+					//调用open  get请求参数直接拼接在url身上
+					/*
+						1、url中的中文 进行编码encodeURI
+						2、IE中，自动去缓冲下载到的数据，如果多次请求url相同，会返回第一次请求下来的数据(数据不更新)
+					*/
+					xhr.open("get", "1.get.php?username=" + encodeURI("钢铁侠") + "&password=123456abc&age=40&" + new Date().getTime(), true);
+
+					xhr.send();
+
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4){
+							alert(xhr.responseText);
+						}
+					}
+				}
+
+				//post请求
+				oPost.onclick = function(){
+					var xhr = null;
+					try{
+						xhr = new XMLHttpRequest();
+					}catch(error){
+						xhr = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+
+					xhr.open("post", "1.post.php", true);
+
+					//send方法之前设置请求头
+					xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+
+					/*
+						post的数据是通过send方法进行提交
+					*/
+					xhr.send("username=钢铁侠&age=40&password=123456abc");
+
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4){
+							alert(xhr.responseText);
+						}
+					}
+				}
+
+
+			}
+		</script>
+	</head>
+	<body>
+		<button id = 'get'>GET请求</button>
+		<button id = 'post'>POST请求</button>
+	</body>
+</html>

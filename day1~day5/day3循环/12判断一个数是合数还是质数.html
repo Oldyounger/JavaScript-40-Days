@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				7. 判断一个数是不是合数。(指自然数中除了能被1和本身整除外，还能被其他的数整除（不包括0)的数。)
+				8. 判断一个数是不是质数。(除了1和它本身以外不再有其他的除数整除。)
+			*/
+
+			/*
+				【关键点】1~num中间的这些数，有没有能整除的数字。
+			*/
+
+			var num = 6;
+			var isYes = false; //假设他是一个质数
+			for(var i = 2; i < num; i++){
+				if(num % i == 0){
+					isYes = true;
+					break;
+				}
+			}
+
+			if(isYes){
+				alert("是合数");
+			}else{
+				alert("质数");
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

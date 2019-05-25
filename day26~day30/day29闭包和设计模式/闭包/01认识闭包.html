@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				闭包的特点：
+					1、函数嵌套函数
+					2、内部函数引用外部函数的形参和变量
+					3、被引用的形参和变量就不会被【垃圾回收机制】所回收
+
+				作用：
+					1、被引用的形参和变量常驻内存。（内存泄漏）
+			*/
+
+			/*function show(a){
+				var b = 20;
+				alert(a + ", " + b);
+			}
+
+			show(5);
+			alert(a);*/
+
+
+			function aaa(a){
+				var b = 20;
+
+				function bbb(){
+					alert(a + ", " + b);
+				}
+				return bbb;
+			}
+
+			var ccc = aaa(5);
+			ccc();
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

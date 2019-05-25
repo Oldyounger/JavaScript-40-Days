@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 100px; height: 100px; background-color: red}
+		</style>
+		<script>
+			/*
+				document.getElementById(id)
+				【注】通过id，在整个页面上去找复合条件的元素节点。
+
+				document.getElementsByTagName(tagName);
+				node.getElementsByTagName(tagName);
+				【注】指定查询的范围，node节点的子节点
+	
+
+				传参：传入标签的种类
+				功能：通过你传入的标签类型，在整个页面下去查找符合条件的元素。
+				返回值：伪数组（我起的）本质是对象
+
+
+				document.getElementsByName(name)
+				【注】一般情况下，只有表单元素name才有效，所以，上述方法一版情况下获取表单元素就行。
+			*/
+			window.onload = function(){
+				//获取页面上所有name=hello的元素
+
+				var nodes = document.getElementsByName("hello");
+				alert(nodes.length)
+			}
+
+		</script>
+	</head>
+	<body>
+		<div id = 'div1' name = 'hello'></div>
+		<input type="text" name = 'hello' />
+		<span name = 'hello'>span</span>
+	</body>
+	
+</html>

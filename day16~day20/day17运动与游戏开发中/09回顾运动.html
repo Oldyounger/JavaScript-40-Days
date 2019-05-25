@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				匀速运动
+					<1>每次启动定时器之前，先将上一次定时器关闭
+					<2>运动和停止要分开 if...else
+
+				缓冲运动  startMove(iTarget)
+					var speed = (iTarget - iCur) / 8(缩放系数)
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed)
+				
+				多物体运动 startMove(node, iTarget)
+					定时器不能共用，所有的中间变量都不能共用
+
+				多物体多样式运动 startMove(node, attr, iTarget)
+					尽量不要用offset系列，我们要用getStyle
+					对透明度做了兼容
+
+				链式运动 startMove(node, attr, iTarget, complete)
+					回调函数
+
+				完美运动 startMove(node, cssObj, complete)
+					等所有动画都到达目的值，才能关闭定时器
+
+				匀速运动补充
+					Math.abs(iCur - iTarget) < Math.abs(speed)
+					关闭定时器，将运动物体手动挪动到目的值。
+
+			*/
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

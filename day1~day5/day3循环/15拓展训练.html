@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				4. 输入两个数n，a，如果n==3，a==2；
+			        输出 2 + 22 + 222 的值。（不用输出式子）
+			        如果n==4，a==3；
+			        输出 3 + 33 + 333 + 3333的值。
+			     思路：
+			    1. n = 3,相加三次,每次相加比前一次相加的数,多一位
+			    2. 每次多的这个位数的值为a
+			*/
+			var n = 4;
+			var a = 3;
+			var sum = 0;
+			var tmp = a;
+			for(var i = 0; i < n; i++){
+				sum += tmp;
+				tmp = tmp * 10 + a;
+			}
+
+			// alert(sum); //3702
+
+
+
+			/*
+				  5. 五位数中，对称的数称为回文数，找出所有的回文数。 如12321
+    思路：
+     1. 先找出五位数中的第一位和第五位数比较
+     2. 在找出五位数中第二位和第四位比较。
+			*/	
+			//12345
+
+			for(var i = 10000; i < 100000; i++){
+				//判断是否是回文
+				var a = i % 10;
+				var b = parseInt(i / 10) % 10;
+
+				var c = parseInt(i / 1000) % 10;
+				var d = parseInt(i / 10000);
+				if(a == d && b == c){
+					document.write(i + "<br/>");
+				}
+			}
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

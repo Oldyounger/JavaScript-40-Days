@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			div{padding: 50px}
+			#div1{background-color: red}
+			#div2{background-color: yellow}
+			#div3{background-color: blue}
+		</style>
+		<script>
+			/*
+				浏览器默认有事件流
+					事件冒泡：根据层级，由里向外逐层触发，叫做事件冒泡（默认）
+					事件捕获：根据层级，由外向里逐层触发，叫做事件捕获
+
+				阻止事件冒泡
+			*/
+			window.onload = function(){
+				var aDivs = document.getElementsByTagName("div");
+
+				//通过循环给每一个div添加点击
+				for(var i = 0; i < aDivs.length; i++){
+					aDivs[i].addEventListener("click", function(ev){
+						var e = ev || window.event;
+					
+						alert(this.id);
+					}, true)
+				}
+			}
+
+			/*
+				跨浏览器的阻止冒泡
+			*/
+			function stopBubble(e){
+				if(e.stopPropagation){
+					e.stopPropagation();
+				}else{
+					e.cancelBubble = true;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<div id = 'div2'>
+				<div id = 'div3'></div>
+			</div>
+		</div>
+	</body>
+</html>

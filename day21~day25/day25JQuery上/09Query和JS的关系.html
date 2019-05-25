@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				$  是一个function的名字
+				$  就是一个构造函数
+				$() 相当于 调用  new JQuery();
+				【注】构造函数可以封装大型的JS库。
+
+			*/
+
+			/*alert(typeof $);*/
+
+
+			/*
+				一、JQ选择网页元素
+					1、模拟css选择器的格式
+						基本上在jq中不用循环，所有的操作都是批量操作。
+					2、独有的表达式的写法
+					3、多种筛选方式
+				二、JQ的写法
+					1、方法函数化
+						在JQ中没有=号赋值，只有函数传参
+					2、链式操作
+					3、取值赋值一体化
+				三、JQ和JS的关系
+					JS和JQ是可以共存，但是不能混用
+
+			*/
+			/*window.onload = function(){
+				
+				alert(1);
+
+			}
+			alert(2);*/
+
+
+
+			$(function(){
+				/*$("#div1").innerHTML = "xxx";
+				new JQuery("#div1")*/
+
+				//JS的对象，如果想用JQ的方法，必须用$()调用一下
+
+				$(document).click(function(){
+					alert(123);
+				})
+
+			})
+			
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>div</div>
+		<div>div</div>
+		<div name = 'hello'>div</div>
+		<div>div</div>
+		<div class = 'box'>div</div>
+		<div class = 'box'>div</div>
+		<input type="text" value = '123'>
+	</body>
+</html>

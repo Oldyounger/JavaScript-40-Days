@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				解构
+				1、中括号解构
+
+
+				2、大括号解构
+			*/
+
+			/*let [x, y] = [10, 20];
+			alert(x + ', ' + y)*/
+
+			/*let [x, [a, b], y] = [10, [30, 40], 20];
+
+			alert(a + ',' + y)*/
+
+
+			/*let {name, sex, age} = {
+				sex: "男",
+				age: 18,
+				name: 'xxx'
+			}
+			alert(name + ", " + sex);*/
+
+			/*
+				解构赋值的好处
+
+				1、交换两个数的位置
+				2、让函数调用的返回值，返回多个结果
+				3、函数的参数定义方式，不用再考虑顺序（默认值也可以顺便带上）
+           			 function exec({time, speed, pos}){ }
+           		4、获取数组的指定元素(第一个和最后一个)
+			*/
+			/*var x = 10;
+			var y = 20;
+			[x, y] = [y, x];
+			alert(x + ', ' + y)*/
+
+
+			/*function show(){
+				return ["结果1", "结果2", "结果3"];
+			}
+			let [x, y, z] = show();
+			alert(y + ', ' + z);*/
+
+			/*function showSelf(name, sex, age){
+				alert("我叫" + name + ", 我是" + sex + "的，今年" + age + "岁");
+			}*/
+
+			/*function showSelf({name, sex = '男', age}){
+				alert("我叫" + name + ", 我是" + sex + "的，今年" + age + "岁");
+			}
+
+			showSelf({
+				sex: "女",
+				age: 20,
+				name: "xxx"
+			})*/
+
+			var arr = [10, 20, 30, 40, 50];
+			var {0:head, 4:last} = arr;
+			alert(head + ', ' + last);
+			alert(arr[0] + ', ' + arr[4]);
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

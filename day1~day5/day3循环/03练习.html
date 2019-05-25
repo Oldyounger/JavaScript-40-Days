@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				计算1到100的和
+			*/
+
+			var i = 1;
+			var sum = 0; //用于记录累加的和
+			while(i <= 100){
+				sum += i;
+				i++;
+			}
+
+			// alert(sum);
+
+
+			/*
+				5.求出1-1/2+1/3-1/4…..1/100的和 var i=1;
+				6.打印出1000-2000年中所有的闰年，并以每行四个数的形式输出
+			*/
+			var i = 1;
+			var sum = 0; 
+			while(i <= 100){
+				//循环内容
+				//判断分母是否是奇数
+				if(i % 2 == 0){
+					sum -= 1 / i;
+				}else{
+					sum += 1 / i;
+				}
+
+				i++;
+			}	
+			// alert(sum);
+
+
+			var i = 1000;
+			var count = 0; //记录闰年的个数
+			while(i <= 2000){
+				//判断是否是闰年
+				if(i % 4 == 0 && i % 100 != 0 || i % 400 == 0){
+					if(count % 4 == 0 && count != 0){
+						document.write("<br/>");
+					}
+					document.write(i + "&nbsp;")
+					count++;
+				}
+			
+				i++;
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

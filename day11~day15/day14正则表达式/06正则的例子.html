@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				验证一个邮政编码
+			*/
+			/*var box = /^[1-9]\d{5}$/;
+			alert(box.test("266000"))*/
+
+			/*
+				检查一个文件名是否是压缩包
+				xxx.zip xxx.rar xxx.rg
+
+				【注】如果你要在正则中用元字符本来的字符，需要通过转义字符，转义一下。
+				\. = 字符.
+			*/
+			/*var box = /^\w+\.(zip|rar|rg)$/i;
+			alert(box.test("1.zip"))*/
+
+
+			//匹配单个的中文
+			var box = /^[\u4e00-\u9fa5]$/;
+			alert(box.test("1"))
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

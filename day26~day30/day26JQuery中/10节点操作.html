@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				• 
+				parents()  获取当前节点所有的父节点  参数是筛选条件(CSS选择器的字符串)
+				closest()  获取当前节点的父节点，必须传入参数，获取第一个符合条件的父节点（包括本身）
+
+
+
+				• siblings() 获取，当前节点的同级兄弟节点，参数筛选条件
+				• 
+				nextAll()    获取，当前节点的往下同级兄弟节点，参数筛选条件
+				prevAll()    获取，当前节点的往上同级兄弟节点，参数筛选条件
+				• parentsUntil() 从当前节点开始，找所有的父节点，直到某个节点为止
+				nextUntil()  获取，当前节点的往下直到某一个节点为止所有同级兄弟节点，参数筛选条件
+				prevUntil() 
+
+				
+				• clone()
+			*/
+			$(function(){
+				// $("#div3").parents("div").css("backgroundColor", "red");
+				// $("#div3").closest(".box").css("backgroundColor", "red");
+
+
+				// $("span").siblings("h2").css("backgroundColor", 'red');
+
+				// $("span").nextAll().css("backgroundColor", 'red');
+
+				// $("span").prevAll().css("backgroundColor", 'red');
+
+				// $("span").nextUntil("h3").css("backgroundColor", 'red');
+
+				// $("span").prevUntil("h3").css("backgroundColor", 'red');
+
+
+				$("#div3").parentsUntil("body").css("backgroundColor", 'red');
+			})
+		</script>
+	</head>
+	<body class = 'box'>
+		<div id = 'div1' class = 'box'>
+			<div id = 'div2'>
+				<div id = 'div3' class = 'box'></div>
+			</div>
+		</div>
+		<div>
+			<h3>h3</h3>
+			<h2>h2</h2>
+			<em>em</em>
+			<span>span</span>
+			<h1>h1</h1>
+			<h3>h3</h3>
+		</div>
+	</body>
+</html>

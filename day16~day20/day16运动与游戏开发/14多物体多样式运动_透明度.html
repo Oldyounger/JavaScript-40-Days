@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			div{width: 100px; height: 100px; background-color: red; margin: 40px; opacity: 0.3; filter:alpha(opacity=30)}
+		</style>
+		<script>
+			window.onload = function(){
+				var aDivs = document.getElementsByTagName("div");
+				//宽变宽
+				aDivs[0].onclick = function(){
+					startMove(this, "width", 300)
+				}	
+
+				//高变高
+				aDivs[1].onclick = function(){
+					startMove(this, "height", 300)
+				}
+
+				//marginLeft 变宽
+				aDivs[2].onclick = function(){
+					startMove(this, "marginLeft", 300)
+				}
+
+				//字体大小发生变化
+				aDivs[3].onclick = function(){
+					startMove(this, "fontSize", 50);
+				}
+
+				aDivs[4].onmouseover = function(){
+					startMove(this, "opacity", 100);
+				}
+
+				aDivs[4].onmouseout = function(){
+					startMove(this, "opacity", 30);
+				}
+			}
+
+			function startMove(node, attr, iTarget){
+				clearInterval(node.timer);
+				node.timer = setInterval(function(){
+					//1、获取当前样式
+					var iCur = null;
+					if(attr == "opacity"){
+						iCur = parseInt(parseFloat(getStyle(node, attr)) * 100);
+					}else{
+						iCur = parseInt(getStyle(node, attr));
+					}
+
+					var speed = (iTarget - iCur) / 8;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+					if(iCur == iTarget){
+						clearInterval(node.timer);
+					}else{
+						if(attr == "opacity"){
+							iCur += speed;
+							node.style.opacity = iCur / 100;
+							node.style.filter = "alpha(opacity=" + iCur + ")";
+						}else{
+							node.style[attr] = iCur + speed + 'px';
+						}
+					}
+
+
+				}, 30);
+			}
+			// 浏览器兼容写法
+			function getStyle(node, styleType){
+				return node.currentStyle ? node.currentStyle[styleType] : getComputedStyle(node)[styleType];
+			}
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div>div文本</div>
+		<div></div>
+	</body>
+</html>

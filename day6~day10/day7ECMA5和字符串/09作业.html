@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				   5.已知一个字符串对象中,英语单词用各种非字母字符分割，统计单词个数
+	            传入:”Yes, she*is%my@love.”;
+	            返回 5
+
+
+	            【注】如果前一个字符是字母，后一个字符是非字母的时候，这是一个单词。
+			*/
+			function countOfWord(str){
+				var count = 0;
+				for(var i = 0; i < str.length - 1; i++){
+					if(isBCD(str[i]) && !isBCD(str[i + 1])){
+						count++;
+					}
+				}
+				return count;
+			}
+
+			// alert(countOfWord('Yes, she*is%my@love.'));
+
+			//判断单个字符是否是字母的函数
+			function isBCD(charStr){
+				if(charStr >= "a" && charStr <= "z" || charStr >= "A" && charStr <= "Z"){
+					return true;
+				}else{
+					return false;
+				}
+			}
+
+			/*
+			6.实现函数，查找子串出现的次数，返回字符串str中出现substring的次数
+            传入:”abcabcabc”, “abc”
+            返回:3
+			*/
+
+			// alert(countOfStr("abcabcabc", "abc"))
+
+			function countOfStr(supStr, subStr){
+				var count = 0; //用于计数
+				var start = 0; //开始查找的下标
+				while(1){
+					start = supStr.indexOf(subStr, start);
+					if(start == -1){
+						break;
+					}else{
+						count++;
+						//每次都要跳过已经查找过的字符串，往后去查
+						start += subStr.length;
+					}
+				}
+				return count;
+			}
+
+
+			/*
+				  7.已知千峰邮箱的用户名只能由数字字母下划线组成，域名为@1000phone.com,
+			          判断一个字符串是否是千锋邮箱，是返回true，不是返回false。
+			mail@1000phone.com   是
+			$mail@1000phone.com  不是
+			mail@1000phone.comp  不是
+			*/
+
+			function isEmail(email){
+				//<1>找到@出现的位置
+				var start = email.indexOf("@");
+
+				//<2>判断结尾
+				var str = email.substring(start);
+
+				if(str != "@1000phone.com"){
+					return false;
+				}else{
+					//<3>判断用户名
+					var username = email.substring(0, start);
+					var isYes = true; //假设用户名正确
+					for(var i = 0; i < username.length; i++){
+						if(!isABC(username[i])){
+							isYes = false;
+							break;
+						}
+					}
+					return isYes;
+				}
+			}
+
+			alert(isEmail("mail@1000phone.com"));
+			alert(isEmail("mail@1000phone.comp"));
+			alert(isEmail("$mail@1000phone.com"));
+			//判断单个字符是否都是数字、字母、下划线
+
+			function isABC(charStr){
+				if(charStr >= "A" && charStr <= "Z" || charStr >= "a" && charStr <= "z" || charStr >= "0" && charStr <= "9" || charStr == "_"){
+					return true;
+				}else{
+					return false;
+				}
+			}
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

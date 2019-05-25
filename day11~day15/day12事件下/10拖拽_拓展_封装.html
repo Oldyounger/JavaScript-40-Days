@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 200px; height: 200px; background-color: red; position: absolute; left: 200px; top: 100px}
+		</style>
+		<script>
+			/*
+
+			拖拽的流程：
+				mousedown  mousemove  mouseup 拖拽三剑客
+
+				mousedown
+					记录被拖拽物体和鼠标按下位置的相对坐标
+					offsetX = e.clientX - oDiv.offsetLeft
+					offsetY = e.clientY - oDiv.offsetTop
+				mousemove
+					oDiv.style.left = e.clientX - offsetX + 'px';
+					oDiv.style.top = e.clientY - offsetY + 'px';
+				mouseup
+					document.onmousemove = null;
+			*/
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+				limitDrag(oDiv)
+			}
+
+			function limitDrag(node){
+				var offsetX = 0;
+				var offsetY = 0;
+				node.onmousedown = function(ev){
+					var e = ev || window.event;
+					//1、记录相对位置
+					offsetX = e.clientX - node.offsetLeft;
+					offsetY = e.clientY - node.offsetTop;
+
+					//2、添加鼠标移动
+					document.onmousemove = function(ev){
+						var e = ev || window.event;
+						var l = e.clientX - offsetX;
+						if(l <= 0){
+							l = 0;
+						}
+						var windowWidth = document.documentElement.clientWidth || document.body.clientWidth;
+						if(l >= windowWidth - node.offsetWidth){
+							l = windowWidth - node.offsetWidth;
+						}
+						var t = e.clientY - offsetY;
+						if(t <= 0){
+							t = 0;
+						}
+						var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+						if(t >= windowHeight - node.offsetHeight){
+							t = windowHeight - node.offsetHeight;
+						}
+
+						node.style.left = l + 'px';
+						node.style.top = t + 'px';
+					}
+				}
+
+				document.onmouseup = function(){
+					document.onmousemove = null;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+	</body>
+</html>

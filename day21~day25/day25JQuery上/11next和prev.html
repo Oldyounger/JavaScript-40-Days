@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				next()  找到同级元素中的上一个节点
+				prev()  找到同级元素中的下一个节点
+
+
+			*/
+			$(function(){
+				/*$(".box").next().css("backgroundColor", 'blue');
+				$(".box").prev().css("backgroundColor", 'blue')*/
+
+				// $("li:eq(3)").css("backgroundColor", 'orange');
+
+
+				$("li").eq(3).css("backgroundColor", 'orange');
+			})
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>111111</li>
+			<li>111111</li>
+			<li class = 'box'>111111</li>
+			<li>111111</li>
+			<li>111111</li>
+			<li>111111</li>
+		</ul>
+	</body>
+</html>

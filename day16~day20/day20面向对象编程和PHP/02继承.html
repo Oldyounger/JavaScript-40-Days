@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				面向对象编程思想（五点去解释）
+				
+				通过面向对象实现的程序，特点是：
+					封装(封装构造函数)、继承、多态
+
+			*/
+
+			function Person(name, sex){
+				//this = new Object(); 原料操作
+				//添加属性
+				this.name = name;
+				this.sex = sex;
+				//return this;  出厂操作
+			}
+
+			//通过原型给该构造函数添加方法
+			Person.prototype.showName = function(){
+				alert("我的名字叫" + this.name);
+			}
+			Person.prototype.showSex = function(){
+				alert("我是" + this.sex + "的");
+			}
+
+			/*
+				创建一个白领的构造函数
+				如果白领构造函数，直接继承Person属性和方法
+				job
+			*/
+
+			//继承于Person，创建一个Worker构造函数
+			function Worker(name, sex, job){
+				//继承属性
+				//构造函数的伪装
+				Person.call(this, name, sex);
+				/*Person.apply(this, [name, sex]);
+				Person.bind(this)(name, sex);*/
+				//拓展自己的属性
+				this.job = job;
+			}
+
+			//继承Person方法
+			//1、原型链
+			/*for(var funcName in Person.prototype){
+				Worker.prototype[funcName] = Person.prototype[funcName];
+			}*/
+			//2、Object.create
+			// Worker.prototype = Object.create(Person.prototype);
+			//3、直接调用父一级的构造函数，进行继承
+			Worker.prototype = new Person();
+
+
+
+			//添加自己的方法
+			Worker.prototype.showJob = function(){
+				alert("我的工作是" + this.job);
+			} 
+
+			var w1 = new Worker("小明", "男", "程序员");
+			w1.showName();
+			w1.showSex();
+			w1.showJob();
+
+			var p1 = new Person("blue", "男");
+			p1.showName();
+			p1.showSex();
+			alert(p1.showJob);
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

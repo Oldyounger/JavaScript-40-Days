@@ -1,0 +1,39 @@
+/* 
+	@mixin 声明代码块
+	@include 引用代码块
+ */
+
+//无参数的混合
+@mixin box_center{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.box{
+	@include box_center;
+}
+
+//带参数的混合
+@mixin xxx($padding: 20px, $border: 2px solid black){
+	padding-left: $padding;
+	padding-right: $padding;
+	border-bottom: $border;
+}
+
+
+
+.box2{
+	@include xxx;
+}
+
+.box3{
+	@include xxx(30px);
+}
+
+.box4{
+	@include xxx($border: 1px dashed red);
+}
+
+.box5{
+	@include xxx(50px, 1px dashed red);
+}

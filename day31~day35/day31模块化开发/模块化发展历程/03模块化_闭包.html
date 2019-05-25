@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			//小明
+			var module1 = (function(){
+				var _count = 5;
+
+				function mm1(){
+					alert("mm1 " + (_count + 5));
+				}
+				function mm2(){
+					alert("mm2 " + (_count + 15));
+				}
+				return {
+					m1: mm1,
+					m2: mm2
+				}
+			})();
+
+			module1.m1()
+			module1.m2()
+
+			alert(_count);
+
+			/*
+				缺点：后续没有办法拓展。
+			*/
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

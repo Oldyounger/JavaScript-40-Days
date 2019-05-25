@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>淘宝幻灯片上下滑动效果</title>
+		<link href = "css.css" rel = "stylesheet" type = "text/css" />
+		<script src = '../jquery-1.10.1.min.js'></script>
+		<script>
+			$(function(){
+				var aBtns = $(".play").find("ol").find("li");
+				var oUl = $(".play").find("ul");
+				var aLis = oUl.find("li");
+
+				//<1>设置iNow，代表当前点击的按钮的下标，iNow显示图片的下标
+				var iNow = 0;
+				var timer = null; //记录定时器的返回值
+
+				aBtns.click(function(){
+					iNow = $(this).index();
+					//切换图片
+					tab();
+				})
+
+				//切换图片
+				function tab(){
+					//<2>切换图片，被选中的按钮也要同时切换
+					aBtns.attr("class", "");
+					aBtns.eq(iNow).attr("class", "active");
+
+					//将整个ul滚动到对应图片的位置
+					oUl.stop().animate({top: -150 * iNow}, 500, function(){
+						//动画结束的时候
+						if(iNow == aBtns.size()){
+							iNow = 0;
+							oUl.css("top", 0);
+						}
+					})
+				}
+
+				//启动定时器
+				function timerInner(){
+					iNow++;
+					document.title = iNow;
+					tab();
+
+					if(iNow == aBtns.size()){
+						aBtns.eq(0).attr("class", 'active');
+					}
+				}
+
+				//<3>启动定时器
+				timer = setInterval(timerInner, 2000);
+
+				oUl.mouseenter(function(){
+					clearInterval(timer);
+				});
+				oUl.mouseleave(function(){
+					timer = setInterval(timerInner, 2000);
+				});
+			})
+		</script>
+	</head>
+	<body>
+	<div class="play" id="play">
+	    <ol>
+	    	<li class="active">1</li>
+	        <li>2</li>
+	        <li>3</li>
+	        <li>4</li>
+	        <li>5</li>
+	    </ol>
+		<ul>
+			<li><a href="http://www.baidu.com/"><img src="images/1.jpg" alt="广告一" /></a></li>
+			<li><a href="http://www.baidu.com/"><img src="images/2.jpg" alt="广告二" /></a></li>
+			<li><a href="http://www.baidu.com/"><img src="images/3.jpg" alt="广告三" /></a></li>
+			<li><a href="http://www.baidu.com/"><img src="images/4.jpg" alt="广告四" /></a></li>
+			<li><a href="http://www.baidu.com/"><img src="images/5.jpg" alt="广告五" /></a></li>
+			<li><a href="http://www.baidu.com/"><img src="images/1.jpg" alt="广告一" /></a></li>
+		</ul>
+	</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

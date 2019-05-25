@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'IQuery.js'></script>
+		<script>
+			$(function(){
+				//获取其中一个css样式
+
+				// alert($("li").css("height"))
+
+				//设置
+
+				// $("li").css("height", "400px")
+
+				//设置多个样式
+				$("li").css({
+					height: "300px",
+					backgroundColor: "red"
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li id = 'li1'></li>
+			<li class = 'box' name = 'hello'></li>
+			<li></li>
+			<li></li>
+			<li class = 'box'></li>
+			<li name = 'hello'></li>
+		</ul>
+	</body>
+</html>

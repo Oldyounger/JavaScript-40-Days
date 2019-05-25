@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				1.打印100以内7的倍数
+				2.打印100以内的奇数
+				3.打印100以内所有偶数的和
+				4.•打印图形
+				* * * * * * * * * *
+				* * * * * * * * * *
+				* * * * * * * * * *
+				* * * * * * * * * *
+			*/
+			var i = 0;
+			while(i < 40){
+				if(i % 10 == 0 && i != 0){
+					document.write("<br>");
+				}
+
+				document.write("*");
+				i++;
+			}
+
+
+
+			/*var i = 1;
+			while(i <= 100){
+				if(i % 7 == 0){
+					document.write(i);
+					document.write("<br/>");
+				}
+				++i;
+			}*/
+
+			/*var a = 1;
+			while(a <= 100){
+				if(a % 2 != 0){
+					document.write(a + "<br/>");
+				}
+				++a;
+			}*/
+
+			var i = 1, sum = 0;
+			while(i <= 100){
+				if(i % 2 == 0){
+					sum += i;	
+				}
+				++i;
+			}
+			// document.write(sum);
+
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

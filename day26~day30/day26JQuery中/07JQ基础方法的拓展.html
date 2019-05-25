@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				get()  可以实现JS和JQ的混用
+
+				$().get(下标).JS代码
+
+				【注】JS和JQ可以共存，但是不能混用。
+			*/
+
+			$(function(){
+				/*alert($("div").html());
+
+				alert($("div").get(1).innerHTML);*/
+
+				// alert($("div")[1].innerHTML);
+
+
+				// alert($("div:eq(2)").html())
+
+
+
+				/*
+					text() 获取元素节点中，包括子节点中的纯文本 innerText
+				*/
+
+				// alert($("div").text())
+
+				// $("div").text("<h1>h1</h1>");
+			})
+		</script>
+	</head>
+	<body>
+		<div>div1</div>
+		<div>div2</div>
+		<div>
+			div3
+			<em>em</em>
+			<strong>strong</strong>
+		</div>
+	</body>
+</html>

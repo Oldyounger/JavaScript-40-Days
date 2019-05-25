@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+document.oncontextmenu=function(ev){
+	var oUl=document.getElementById('ul');
+	var oEvent=ev || event;
+	oUl.style.display='block';
+	scrolltop=document.documentElement.scrollTop||document.body.scrollTop;
+	scrollleft=document.documentElement.scrollLeft||document.body.scrollLeft;
+	oUl.style.top=(oEvent.clientY+scrolltop)+'px';
+	oUl.style.left=(oEvent.clientX+scrollleft)+'px'
+	
+	oUl.onclick=function(){
+		
+		window.event? window.event.cancelBubble = true : oEvent.stopPropagation();
+		
+		}
+	
+	
+	return false;
+	}
+document.onclick=function(){
+	var oUl=document.getElementById('ul');
+	oUl.style.display='none'
+	
+	}
+
+</script>
+</head>
+
+<body>
+<ul id="ul" style="width:100px; height:80px; background:#FF9; position:absolute; top:0; left:0; display:none;">
+<li>111111111</li>
+<li>111111111</li>
+<li>111111111</li>
+<li>111111111</li>
+</ul>
+</body>
+</html>

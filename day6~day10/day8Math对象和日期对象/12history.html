@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				histroy 
+				window.history
+
+
+				属性
+					history.length  当前窗口的历史记录，url发生变化。
+
+				方法
+					back  后退到前一条记录
+					forward 前进到下一条记录
+					go()
+						传参：
+						正整数  前进n条记录
+						0       刷新当前页面
+						负整数  后退n条记录
+			*/
+
+			function btnClick(){
+				alert(history.length);
+			}
+
+			function backFunc(){
+				history.back();
+			}
+
+			function forwardFunc(){
+				history.forward();
+			}
+
+			function goFunc(){
+				history.go(0)
+			}
+
+
+		</script>
+	</head>
+	<body>
+		<button onclick = 'btnClick();'>输出历史记录</button>
+		<button onclick = 'backFunc();'>back</button>
+		<button onclick = 'forwardFunc();'>forward</button>
+		<button onclick = "goFunc();">go</button>
+	</body>
+</html>

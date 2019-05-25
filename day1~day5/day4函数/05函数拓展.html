@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				function 函数名(形参...){
+					函数体;
+					return 表达式;
+				}
+			*/
+
+			function show(num1, num2){
+				alert(num1 + num2);
+			}
+
+			/*
+			【了解】
+				三个参数都是字符串
+
+				前面的参数都是 函数的形参
+				最后一个参数是 函数体的代码
+			*/
+			var show = new Function("num1", "num2", "alert(num1 + num2)");
+
+			show(10, 20);
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

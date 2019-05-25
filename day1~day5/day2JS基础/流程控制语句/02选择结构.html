@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				1、判断一个数是否偶数还是奇数。
+				判断这个数  
+				num % 2 == 0;
+			*/
+
+			/*
+				单分支语句语法结构：
+					if(判断条件){
+						如果判断成功，执行的语句。
+					}
+			*/
+			/*var num = 7;
+			if(num % 2 == 0){
+				alert(num + '是一个偶数');
+			}*/
+
+			/*
+				双分支语句
+				格式：
+					if(判断语句){
+						如果判断成功，执行的语句;
+					}else{
+						如果判断失败，执行的语句;
+					}
+			*/
+			var num = 7;
+			if(num % 2 == 0){
+				alert(num + '是一个偶数');
+			}else{
+				alert(num + "是一个奇数");
+			}
+
+			
+
+			/*if(判断条件){
+				执行语句;
+			}else{
+				执行语句;
+			}*/
+
+			/*var food = "xx";
+			if(food == "油条"){
+				alert("这油条怎么都冷了");
+			}else{
+				alert("来份包子");
+			}*/
+
+			/*
+				代码缩进：
+					执行语句要缩进一个tab键。
+
+			*/
+
+			/*
+				2、求两个数的最大数； 
+				*/
+				var num1 = 10;
+				var num2 = 20;
+				if(num1 > num2){
+					alert("num1大");
+				}else{
+					alert("num2大");
+				}
+
+				/*3、判断一个年份是闰年还是平年；
+   				 【注】能被4整除且不能被100整除，或者能被400整除;
+   				 */
+				var year = 2018;
+				if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+					alert("是闰年");
+				}else{
+					alert("是平年");
+				}
+			
+
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

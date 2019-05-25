@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				arguments
+
+				【注】在任何函数中，系统都有一个内置的变量，这个变量就是arguments。
+				object Arguments
+				【注】arguments里面存储的是，我们调用该函数的时候实际传入的参数。
+
+				输出arguments一共存储多少个实参：
+					arguments.length
+				访问arguments中的每一个值,通过下标去访问
+					arguments[下标]
+			*/
+
+			/*function show(){
+				alert(arguments.length);
+				alert(arguments[1]);
+			}
+			show(10, 20, 30);*/
+
+			/*
+				形参  声明函数的时候设置的参数是形参
+				arguments 也可以存储参数
+
+				原则：优先使用形参，设置形参编写的代码可读性更强。
+					arguments是在特殊情况下使用的。
+			*/
+
+			/*function add(num1, num2){
+				alert(num1 + num2);
+			}
+
+			add(10, 20);
+
+			function add(){
+				alert(arguments[0] + arguments[1]);
+			}
+			add(30, 40);*/
+
+
+
+			/*
+				arguments
+
+				应用题：求和，对传入的所有参数进行求和。
+			*/
+			function add(){
+				var sum = 0;
+				for(var i = 0; i < arguments.length; i++){
+					sum += arguments[i];
+				}
+				return sum;
+			}
+
+			var res = add(10, 20, 30, 40);
+			alert(res);
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

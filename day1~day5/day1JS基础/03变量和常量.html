@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*数学概念:
+				常量：值不可以修改的叫做常量。
+				变量：值可以修改的叫做变量。
+
+				100
+				x = 100; x = 200;
+			*/
+
+			/*
+				数据类型：
+				基本数据类型：
+					数字(Number)
+						100(整数)   3.14(浮点数)
+					字符串(String)
+						概念：凡是带单引号或者双引号的都是字符串。在JS中单引号和双引号作用是一样。""''
+					布尔值(Boolean)
+						true  false
+
+				复合数据类型：（后面讲）
+				特殊数据类型：
+					undefined
+					null（空） 
+					NaN(not a number)
+			*/
+
+
+			/*
+				变量：
+				【注】必须先声明才能使用。声明变量的时候，要用关键字【var】。
+				底层原理：我必须先向计算机申请内存空间，然后才能存储数据。
+
+
+				1、变量初始化：声明变量的时候，同时给这个变量赋值，叫做初始化。
+				2、如果声明了变量，但是没有赋值，那么这个变量他默认的值是undefined。
+				3、小技巧：如果声明变量的时候，没有值赋值，现将这个变量赋值成null。可以提高程序运行效率。
+			*/
+
+
+			// var num = 10;
+			/*var num;
+			alert(num); //undefined
+			num = 20;
+			alert(num);*/
+
+			/*var num = null;
+			num = 20;
+			alert(num);*/
+
+
+			/*
+				JavaScript是弱引用语言：变量赋值的时候是什么数据类型，变量也是什么数据类型。
+
+				【注】尽量不要去改变变量的数据类型，很容易引起程序歧义。
+
+				typeof  关键字(在JS中有特殊作用的单词)
+				作用：输出当前常量/变量的数据类型.
+			*/
+
+
+			var num = 10;
+			// alert(typeof num); //number
+
+			// num = "hello";
+			// alert(typeof num); //string
+
+			// num = true;
+			// alert(typeof num);
+
+			/*num = undefined;
+			alert(typeof num); //undefined*/
+
+			/*num = null;
+			alert(typeof num); //object*/
+
+			/*num = NaN;
+			alert(typeof num); //number*/
+
+
+
+
+			/*
+				一台电脑组成部分：
+				CPU(运算器)  内存  主板  GPU  硬盘
+
+
+				执行程序。
+				【注】程序被CPU运行。
+
+				磁盘 => 内存 => 被CPU运行。
+
+
+			*/
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+			兔子繁殖问题，设有一对新生兔子，从第四个月开始他们每个月月初都生一对兔子，新生的兔子从第四个月月初开始又每个月生一对兔子
+				按此规律，并假定兔子没有死亡,n(n <= 20)个月月末共有多少对兔子？
+			*/
+
+			/*
+				一月兔      二月兔      三月兔      成熟兔
+			1      1          0           0            0          1
+			2      0          1           0            0          1
+			3      0          0           1            0          1
+			4      1          0           0            1 		  2
+			5      1          1           0            1          3
+			6      1          1           1            1          4
+			7      2          1           1            2          6
+			8      3          2           1            3          9
+			9      4          3           2            4          13
+			10     6          4           3            6          19
+			11     9          6           4            9          28
+
+			*/
+
+			/*
+				最强王者法则:
+				1. 首先去找临界值，即无需计算，获得的值。
+				2. 找这一次和上一次的关系
+				3. 假设当前函数已经可以使用，调用自身计算上一次和这一次的关系
+
+				 rabbit(4) =  rabbit(3) +  rabbit(1);
+				 rabbit(n) =  rabbit(n - 1) +  rabbit(n - 3);
+			*/
+
+			function rabbit(n){
+				if(n < 4){
+					return 1;
+				}
+				return rabbit(n - 1) +  rabbit(n - 3);
+			}
+
+			alert(rabbit(8))
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

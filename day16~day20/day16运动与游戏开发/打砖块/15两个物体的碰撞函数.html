@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 100px; height: 100px; background-color: red; position: absolute; top: 200px; left: 500px}
+			#div2{width: 100px; height: 100px;  background-color: blue; position: absolute; left: 300px}
+		</style>
+		<script>
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+				var oDiv2 = document.getElementById("div2");
+				drag(oDiv2);
+			}
+
+
+			function knock(node1, node2){
+				var l1 = node1.offsetLeft;
+				var r1 = node1.offsetLeft + node1.offsetWidth;
+				var t1 = node1.offsetTop;
+				var b1 = node1.offsetTop + node1.offsetHeight;
+
+				var l2 = node2.offsetLeft;
+				var r2 = node2.offsetLeft + node2.offsetWidth;
+				var t2 = node2.offsetTop;
+				var b2 = node2.offsetTop + node2.offsetHeight;
+
+				if(l2 > r1 || r2 < l1 || t2 > b1 || b2 < t1){
+					return false;
+				}else{
+					return true;
+				}
+
+			}
+
+			function drag(node){
+				var offsetX = 0;
+				var offsetY = 0;
+				var oDiv1 = document.getElementById("div1");
+				node.onmousedown = function(event){
+					var e = event || window.event;
+					offsetX = e.clientX - node.offsetLeft;
+					offsetY = e.clientY - node.offsetTop;
+
+
+					//改变当前被拖拽物体的位置
+					document.onmousemove = function(event){
+						var e = event || window.event;
+						node.style.left = e.clientX - offsetX + 'px';
+						node.style.top = e.clientY - offsetY + 'px';
+
+						if(knock(oDiv1, node)){
+							oDiv1.style.backgroundColor = 'black';
+						}else{
+							oDiv1.style.backgroundColor = 'red';
+						}
+					}
+				}
+							//取消拖拽
+				document.onmouseup = function(){
+					document.onmousemove = null;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+		<div id = 'div2'></div>
+	</body>
+</html>

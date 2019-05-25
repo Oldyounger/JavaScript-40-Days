@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				分支语句嵌套：
+				【注】代码缩进。
+				【注】分支语句嵌套尽量不要超过三层。如果超过三层，逻辑有问题。
+			*/
+
+			var score = 87;
+
+			if(score > 85){
+				alert("优秀");
+				//分配奖励
+				if(score > 95){
+					alert("奖励1000块，买个SK-2");
+				}else if(score > 90 && score <= 95){
+					alert("奖励800块，充卡");
+				}else{
+					alert("奖励300块，买个口红");
+				}
+			}else if(score >= 75 && score <= 85){
+				alert("良好");
+			}else if(score >= 60 && score < 75){
+				alert("及格");
+			}else{
+				alert("不及格");
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

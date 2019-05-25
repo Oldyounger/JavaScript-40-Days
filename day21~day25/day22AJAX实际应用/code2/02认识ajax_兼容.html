@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			window.onload = function(){
+				/*
+					客户端在用当前页面
+					从服务器端去下载数据到客户端
+
+					AJAX  Asynchronous Javascript And XML
+							异步的js和xml
+							异步的javascript和数据传输
+
+					同步：阻塞，必须等前面的程序执行完毕以后，才能执行后面的程序。
+					异步：非阻塞，前面程序是否执行完毕，不影响后面程序执行的。
+
+
+					宜家 建好的
+					运输 拆了(有规律)
+					你家 建好的
+
+					服务端 数据结构
+					运输   字符串(有格式) xml(最开始)  json格式
+					客户端 数据结构
+
+					xml  格式  存储的数据类型丰富  适应于大型的门户类网站
+						腾讯新闻
+						新浪新闻
+						凤凰网
+
+					json 格式  使用移动端 小型数据(90%以上的公司)
+
+	
+
+
+
+				*/
+				var oBtn = document.getElementById("btn1");
+				oBtn.onclick = function(){
+					//1、声明一个ajax对象
+					//<1>打开窗口
+					/*
+						IE6以下不兼容
+						new XMLHttpRequest()
+
+						IE6以下使用
+						new ActiveXObject("Microsoft.XMLHTTP");
+					*/
+					var xhr = null;
+					if(window.XMLHttpRequest){
+						xhr = new XMLHttpRequest();
+					}else{
+						xhr = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+
+					//<2>地址栏输入网址
+					xhr.open("get", "1.txt", true);
+
+					//<3>回车 发送请求
+					xhr.send();
+
+					//<4>等待响应
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4){
+							alert(xhr.responseText);
+						}
+					}
+
+
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>下载</button>
+	</body>
+</html>

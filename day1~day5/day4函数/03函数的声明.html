@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				无参数无返回值的函数
+			*/
+			/*function print(){
+				for(var i = 0; i < 10; i++){
+					document.write("hello world!<br/>");
+				}
+			}
+
+			print();*/
+
+
+			// 有参数无返回值的函数
+			/*
+				格式：
+					function 函数名(形参1, 形参2...){
+						函数体;
+					}
+
+				【注】什么时候需要参数？如果有不确定的值得时候，我们要把函数中不确定的值设置成参数。
+				形参：声明函数的时候用的参数叫做形参（形式上的参数）。
+				实参：调用函数的时候传入的参数叫做实参（实际上的参数）。
+				
+				【注】在调用函数的时候，我们需要传入参数（传参），用实参给形参赋值。
+			*/
+
+			/*function print(n){ //假设有n次输出 n = 5
+				for(var i = 0; i < n; i++){
+					document.write("hello world!<br/>");
+				}
+			}
+
+
+			//调用函数  确定具体多少次
+			print(5);
+
+			print(10);*/
+
+
+			/*
+				计算两个数的和
+			*/
+			/*function add(num1, num2){
+				alert("两个数的和:" + (num1 + num2));
+			}
+
+			add(10, 20);
+			add(40, 50);*/
+
+
+			/*
+				有参数有返回值的函数
+				【注】必须将函数处理的结果，交给外面去执行后续操作。
+
+				如果你想让函数调用有结果，可以外部拿到。必须用返回值的概念。
+
+				格式：
+				function 函数名(形参1, 形参2...){
+					函数体;
+					return 表达式;
+				} 
+
+				var res = 函数名(实参1, 实参2...);
+
+				res <==> return  表达式。
+				【注】函数调用的结果，就是return后面所跟表达式的值。
+				【注】函数运行的时候，如果遇到return，函数调用就结束了。
+				【注】函数名必须体现其功能性。
+			*/
+
+			function add(num1, num2){
+				alert(1);
+				return num1 + num2;
+				alert("运行在return后面的代码是执行不到的");
+			}
+
+			//第一次计算结果 通过 document.write()输出
+			var res = add(10, 20);
+			document.write(res);
+
+			//第二次的计算结果  通过console.log() 输出
+			var res = add(40, 50); 
+			console.log(res);
+
+			/*
+				函数：
+				1、功能
+				2、值  return 后面所跟表达式的值
+
+				表达式
+				1、功能
+				2、值
+
+				函数就是一个复杂版本的表达式。
+
+				10 + 20
+				print()
+			*/
+
+
+
+
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

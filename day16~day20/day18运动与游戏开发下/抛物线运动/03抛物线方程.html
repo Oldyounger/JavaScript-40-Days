@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 50px; height: 50px; background-color: red; position: absolute; left: 50px; top: 250px}
+			#div2{width: 50px; height: 50px; background-color: blue; position: absolute; left: 400px; top: 400px}
+			div{width: 5px; height: 5px; background-color: red; position: absolute;}
+		</style>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script src = 'parabola.js'></script>
+		<script>
+			/*
+				抛物线方程
+				y = a*x^2 + b*x + c;
+				解  a b c
+			*/
+			window.onload = function(){
+				//1、声明抛物线对象
+				var bool = new Parabola({
+					el: "#div1",
+					// offset: [300, 400], 偏移位置
+					targetEl: "#div2",
+					duration: 4000,
+					curvature: 0.005,
+					callback: function(){
+						//抛物线运动执行完毕以后指定的函数
+						alert("运动结束了");
+					},
+					stepCallback: function(){
+						//抛物线运动过程中不停的运动的函数
+						var oDiv = document.getElementById("div1");
+						var node = document.createElement("div");
+						node.style.left = oDiv.offsetLeft + 'px';
+						node.style.top = oDiv.offsetTop + "px";
+						document.body.appendChild(node);
+					},
+					// autostart: true
+				})
+
+
+				var aBtns = document.getElementsByTagName("button");
+
+				//开始
+				aBtns[0].onclick = function(){
+					bool.start();
+				}
+
+				//停止
+				aBtns[1].onclick = function(){
+					bool.stop();
+				}
+
+				aBtns[2].onclick = function(){
+					bool.reset();
+				}
+
+				aBtns[3].onclick = function(){
+					bool.setOptions({
+						targetEl: null,
+						offset: [500, 200]
+					})
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button>开始</button>
+		<button>停止</button>
+		<button>reset</button>
+		<button>setOptions</button>
+		<div id = 'div1'></div>
+		<div id = 'div2'></div>
+	</body>
+</html>

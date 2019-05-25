@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				这种元素节点自带的行为，叫做默认行为
+				超链接的默认行为：点击a标签，就自动完成页面跳转。
+
+				阻止超链接的默认行为
+					1、简单的阻止方式，我们给这个标签添加点击事件，点击的时候，直接return false
+					2、系统提供的阻止默认行为的方法
+			*/
+			window.onload = function(){
+				var oA = document.getElementById("a1");
+				oA.onclick = function(ev){
+					/*return confirm("你确定要跳转么？");
+					alert("还想去做的事情");*/
+					
+					var e = ev || window.event;
+					preDef(e);
+
+					alert(1)
+
+				}
+			}
+
+			//跨浏览器的阻止默认行为
+			function preDef(e){
+				if(e.preventDefault){
+					e.preventDefault();
+				}else{
+					window.event.returnValue = false;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<a href="https://www.baidu.com" id = 'a1'>百度</a>
+		<img src="http://img4.imgtn.bdimg.com/it/u=1689551442,2823123806&fm=26&gp=0.jpg" alt="">
+	</body>
+</html>

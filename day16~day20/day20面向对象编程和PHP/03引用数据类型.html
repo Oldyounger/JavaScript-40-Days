@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			var obj = {
+				name: "小明",
+				age: 18,
+				sex: "男"
+			}
+
+			//【注】对象是不能直接通过等于号赋值的。地址的赋值。
+			var obj2 = {};
+			for(var i in obj){
+				obj2[i] = obj[i]
+			}
+			// var obj2 = obj;
+			obj2.xxx = 'yyy';
+			console.log(obj);
+			console.log(obj2)
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				存储用户的数据
+				name=value;[expires=date];[path=path];[domain=somewhere.com];[secure]
+				【注】name和value必须有的(自定义的)，后面带中括号的值是可选项。
+
+
+				【注】cookie一般情况下需要在服务器环境下加载。火狐支持本地加载。
+			*/
+
+			//设置cookie
+			// document.cookie = 'username=tianyufei';
+
+			//获取cookie
+			// alert(document.cookie);
+
+
+			/*
+				设置cookie的时候，有可能在cookie中存储中文。
+				【注】如果在cookie中有中文，一般情况下采取下述的处理方式。
+						1、编码去存储(中文 => 字符)
+						2、解码去读取(字符 => 中文)
+					encodeURIComponent  编码
+					decodeURIComponent  解码
+			*/
+
+			/*
+				expires
+				设置cookie过期日期，可以通过自定义的方式自定义过期日期。
+
+				【注】如果我们不去设置这个键，默认是当前会话结束时消失（只要将整个浏览器关闭）
+
+				细节：cookie过期的话，系统会自动清除过期的cookie。
+					删除cookie，我们可以将cookie过期日期，设置成，过去的某一时刻。
+
+
+
+				path
+				限制访问路径
+					如果我们不去设置path，默认是当前加载的.html文件路径
+				【注】如果设置的cookie路径和，加载文件的路径不一致的话，不能访问到cookie。
+			*/
+			// document.cookie = 'username=tian;path=' + '/cookie/';
+			// document.cookie = 'username=tian;path=' + '/cookie/demo/';
+
+			alert(document.cookie);
+
+			/*function numOfDate(n){
+				//传入一个n
+				var d = new Date();
+				var date = d.getDate();
+				d.setDate(n + date);
+				return d;
+			}
+
+
+			// alert(document.cookie);
+
+			window.onload = function(){
+				var oBtn = document.getElementById("btn1");
+				oBtn.onclick = function(){
+					document.cookie = 'username=tian;expires=' + new Date(0);
+				}
+			}*/
+
+
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>删除cookie</button>
+	</body>
+</html>

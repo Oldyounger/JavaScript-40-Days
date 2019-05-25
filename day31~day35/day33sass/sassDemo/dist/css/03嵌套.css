@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* 
+	选择器嵌套(用的比例非常高)
+
+	属性嵌套(几乎不用)
+ */
+.top_nav {
+  font-size: 16px; }
+  .top_nav a {
+    color: red; }
+    .top_nav a:hover {
+      background-color: yellow; }
+  .top_nav li {
+    width: 300px; }
+
+.box {
+  border-top-width: 2px;
+  border-top-style: dashed;
+  border-top-color: yellow;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: red; }

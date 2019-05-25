@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#q{width: 300px; height: 30px; padding: 5px; border: 1px solid #f90; font-size: 16px;}
+			#ul1{border: 1px solid #f90; width: 310px; margin: 0px; padding: 0px; display: none;}
+			#ul1 li{list-style: none}
+			#ul1 li a{line-height: 30px; padding: 5px; display: block; text-decoration: none; color: black}
+			#ul1 li a:hover{background-color: #f90; color: white}
+		</style>
+		<script>
+			function download(data){
+				var oUl = document.getElementById("ul1");
+				oUl.innerHTML = '';
+				// alert("下载到的数据：" + data);
+				var arr = data.s;
+				// alert(arr);
+				/*
+					通过循环将数据添加到页面上
+				*/
+				for(var i = 0; i < arr.length; i++){
+					var oLi = document.createElement("li");
+					var oA = document.createElement("a");
+					oA.href = "https://www.baidu.com/s?wd=" + arr[i];
+					oA.target = "_blank";
+					oA.innerHTML = arr[i];
+					oLi.appendChild(oA);
+					oUl.appendChild(oLi);
+				}
+
+			}
+		</script>
+		<script>
+			window.onload = function(){
+				var oQ = document.getElementById("q");
+				var oUl = document.getElementById("ul1");
+
+				oQ.onkeyup = function(){
+					if(this.value){
+						oUl.style.display = 'block';
+						//2、下载数据，动态的创建script标签
+						var oScript = document.createElement("script");
+						oScript.src = `http://suggestion.baidu.com/su?wd=${this.value}&cb=download`;
+						document.body.appendChild(oScript);
+
+					}else{
+						oUl.style.display = 'none';
+					}
+				}
+			}
+
+			/*
+				http://suggestion.baidu.com/su?wd=查询的内容&cb=回调函数
+			*/
+		</script>
+	</head>
+	<body>
+		<input type="text" id = 'q' />
+		<ul id = 'ul1'>
+			<!-- <li><a href="#">百度</a></li>
+			<li><a href="#">百度</a></li>
+			<li><a href="#">百度</a></li> -->
+		</ul>
+	</body>
+</html>

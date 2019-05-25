@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			div{width: 100px; height: 50px; background-color: red; margin: 40px}
+		</style>
+		<script>
+			window.onload = function(){
+				var aDivs = document.getElementsByTagName("div");
+				for(var i = 0; i < aDivs.length; i++){
+					aDivs[i].onmouseover = function(){
+						startMove(this, 300);
+					}
+
+					aDivs[i].onmouseout = function(){
+						startMove(this, 100);
+					}
+				}
+			}
+
+
+			/*
+				关键点：是所有的物体运动的时候共用一个定时器。
+					【注】我们可以让每一个物体去用一个自己的定时器。
+			*/
+			// var timer = null;
+			function startMove(node, iTarget){
+				clearInterval(node.timer);
+				node.timer = setInterval(function(){
+					var speed = (iTarget - node.offsetWidth) / 8;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+					if(node.offsetWidth == iTarget){
+						clearInterval(node.timer);
+					}else{
+						node.style.width = node.offsetWidth + speed + 'px';
+					}
+				}, 30);
+			}
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>

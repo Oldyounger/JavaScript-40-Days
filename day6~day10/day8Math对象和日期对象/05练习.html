@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				1、封装一个函数，可以根据输入的数值n(天数)显示n天后的时间
+				2、判断两个日期相差的天数
+			*/
+			function numOfDate(n){
+				var d = new Date();
+				var day = d.getDate();
+				d.setDate(day + n);
+				return d;
+			}
+
+			// alert(numOfDate(30));
+
+
+			function numByDate(d1, d2){
+				var time1 = d1.getTime();
+				var time2 = d2.getTime();
+
+				var time = Math.abs(time1 - time2);
+
+				return time / 1000 / 3600 / 24;
+			}
+
+			var d1 = new Date("2008-08-08");
+			var d2 = new Date("2019-01-03");
+
+			alert(numByDate(d1, d2));
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

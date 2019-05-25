@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				 5.    编写函数has(arr , 60) 判断数组中是否存在60这个元素，返回布尔类型
+			*/
+
+			function has(arr, item){
+				var isYes = false; //假设不存在
+				for(var i = 0; i < arr.length; i++){
+					if(arr[i] === item){
+						isYes = true;
+						break;
+					}
+				}
+				return isYes;
+			}
+
+			/*var arr = [10, 20, 30, 60, 50, 40];
+			alert(has(arr, 100))*/
+			//12345
+			function testCode(n){
+				//n是12位数字
+				//1、如何将每一位数都取出来
+				var numArr = [];
+				while(1){
+					var num = n % 10;
+					numArr.push(num);
+					n = parseInt(n / 10);
+					if(n == 0){
+						break;
+					}
+				}
+				numArr.reverse();
+				//6,9,0,1,2,3,4,5,6,7,8,9
+				var odd = 0;
+				var even = 0;
+
+				for(var i = 0; i < numArr.length; i++){
+					if(i % 2 == 0){
+						odd += numArr[i];
+					}else{
+						even += numArr[i];
+					}
+				}
+				var tmp = (odd + even * 3) % 10;
+				if(tmp == 10){
+					tmp = 0;
+				}else{
+					tmp = 10 - tmp;
+				}
+
+				numArr.push(tmp);
+				return Number(numArr.join(""));
+			}
+
+			// alert(testCode(692223361219));
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

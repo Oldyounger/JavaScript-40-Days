@@ -1,0 +1,45 @@
+$theme: "xxx";
+body{
+	@if $theme == "dark"{
+		background-color: black;
+	}@else if $theme == "light"{
+		background-color: white;
+	}@else{
+		background-color: gray;
+	}
+}
+
+/* 
+	> @for $var from <开始值> through <结束值>  包含结束值
+    > @for $var from <start> to <end>
+ */
+
+$count: 12;
+@for $i from 1 through $count{
+	.col-lg-#{$i}{
+		width: 100% / $count * $i;
+	}
+}
+@for $i from 1 to $count{
+	.col-md-#{$i}{
+		width: 100% / $count * $i;
+	}
+}
+
+
+
+$icons: success error warning xxx yyy;
+@each $icon in $icons{
+	bg-#{$icon}{
+		background: url(images/#{$icon}.png);
+	}
+}
+
+
+$num: 6;
+@while $num > 0{
+	.item#{$num}{
+		width: 2em * $num;
+	}
+	$num: $num - 1;
+}

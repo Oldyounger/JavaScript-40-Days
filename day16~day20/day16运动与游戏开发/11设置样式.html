@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 100px; height: 100px; background-color: red; border: 1px solid black; padding: 8px; margin: 10px}
+		</style>
+		<script src = 'tool.js'></script>
+		<script>
+			window.onload = function(){
+				//获取当前的宽
+				var oDiv = document.getElementById("div1");
+
+				alert(getStyle(oDiv, "width"));
+
+				alert(oDiv.offsetWidth); //width + border + padding 
+				/*
+					offset系列 获取，你眼睛看到的实际大小
+				*/
+
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+	</body>
+</html>

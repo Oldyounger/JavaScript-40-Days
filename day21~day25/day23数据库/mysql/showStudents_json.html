@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'ajax.js'></script>
+		<script>
+			window.onload = function(){
+				var oBtn = document.getElementById("btn1");
+				var oT1 = document.getElementById("t1");
+				oBtn.onclick = function(){
+					//1、下载数据
+					ajax({
+						method: 'get',
+						url: "showStudents_json.php",
+						success: function(data){
+							// alert(data);
+
+							//2、解析数据
+							var arr = JSON.parse(data);
+							for(var i = 0; i < arr.length; i++){
+								var oTr = document.createElement("tr");
+								oTr.innerHTML = `
+										<td>${arr[i].id}</td>
+										<td>${arr[i].name}</td>
+										<td>${arr[i].english}</td>
+										<td>${arr[i].math}</td>
+										<td>${arr[i].chinese}</td>
+									`;
+								oT1.appendChild(oTr);
+							}
+						},
+						error: function(msg){
+							alert(msg);
+						}
+					})
+
+				}
+			}
+
+		</script>
+	</head>
+	<body>
+		<h1>显示数据</h1>
+		<button id = 'btn1'>显示学员成绩</button>
+		<table id = 't1' border = 1>
+			<tr>
+				<th>学号</th>
+				<th>姓名</th>
+				<th>英语</th>
+				<th>数学</th>
+				<th>语文</th>
+			</tr>
+
+		</table>
+	</body>
+</html>

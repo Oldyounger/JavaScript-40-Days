@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+
+				//获取属性节点
+				//object NamedNodeMap  映射(集合)
+				/*
+					集合
+					1、无序
+					2、不重复
+				*/
+				// alert(oDiv.attributes);
+
+				//输出属性节点的个数
+				// alert(oDiv.attributes.length);
+
+				//取出一个属性节点
+				// alert(oDiv.attributes.getNamedItem("title"));
+				/*alert(oDiv.attributes.getNamedItem("title").nodeName);
+				alert(oDiv.attributes.getNamedItem("title").nodeValue);
+				alert(oDiv.attributes.getNamedItem("title").nodeType);*/
+
+
+				alert(oDiv.attributes["id"]);
+				alert(oDiv.attributes["id"].nodeName);
+				alert(oDiv.attributes["id"].nodeType);
+				alert(oDiv.attributes["id"].nodeValue);
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1' title = 'hello' class = 'box' ></div>
+	</body>
+</html>

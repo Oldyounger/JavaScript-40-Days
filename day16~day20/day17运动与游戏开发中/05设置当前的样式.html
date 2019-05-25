@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 100px; height: 100px; background-color: red}
+		</style>
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+
+				oDiv.onclick = function(){
+					setStyle(oDiv, "width", "200px");
+					setStyle(oDiv, "height", "200px");
+					setStyle(oDiv, "backgroundColor", "blue")
+				}
+
+			}
+			function setStyle(obj, attr, value){
+				obj.style[attr] = value;
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+	</body>
+</html>

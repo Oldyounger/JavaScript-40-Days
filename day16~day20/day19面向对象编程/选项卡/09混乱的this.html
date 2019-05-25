@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				this  指向当前函数的主人
+
+				构造函数中的this，指向新创建的对象。
+
+				加了定时器以后，赋值的函数，中this的指向是window。
+			*/
+
+			function Aaa(){
+				this.a = 10;
+
+				setInterval(this.show, 3000);
+			}
+			Aaa.prototype.show = function(){
+				alert(this);
+			}
+
+			var a1 = new Aaa();
+			alert(a1.a);
+			a1.show();
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+			工厂模式：
+				1、原料
+				2、加工
+				3、出厂
+			【注】符合上述三个条件的函数，叫做工厂函数。
+			*/
+
+			function createPerson(name, sex){
+				//1、原料
+				var person = new Object();
+				//2、加工
+				//添加属性
+				person.name = name;
+				person.sex = sex;
+				//添加方法
+				person.showName = function(){
+					alert("我的名字叫" + this.name);
+				}
+				person.showSex = function(){
+					alert("我是" + this.sex + "的");
+				}
+				//3、出厂
+				return person;
+			}
+
+			var p1 = createPerson("blue", "男");
+			p1.showName();
+			p1.showSex();
+
+			var p2 = createPerson("red", "女");
+			p2.showName();
+			p2.showSex();
+			alert(p1.showName == p2.showName); //false
+
+			/*
+				自己封装的创建对象的函数和系统官方创建对象的方法
+				区别是
+				1、没有new
+				2、所有对象的函数，不是共用一份，而是各自有各自的。
+			*/
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

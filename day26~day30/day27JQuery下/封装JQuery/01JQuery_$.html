@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			//相当于 window.onload
+			$(function(){
+
+				/*
+					$()
+					function   =>  window.onload
+
+					string    => 选择网页元素
+
+					object    => 还是对象本身
+				*/
+
+				//字符串  css选择器
+
+				//#id
+				// $("#li1").css("backgroundColor", 'red');
+
+				//.box
+				// $(".box").css("backgroundColor", 'red');
+
+				//[name=xxx]
+				// $("[name=hello]").css("backgroundColor", 'red');
+
+				//tagname
+				// $("li").css("backgroundColor", 'red');
+
+
+				$(document).click(function(){
+					alert(123)
+				})
+				alert(1);
+			})
+
+			$(function(){
+				alert(2)
+			})
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li id = 'li1'></li>
+			<li class = 'box' name = 'hello'></li>
+			<li></li>
+			<li></li>
+			<li class = 'box'></li>
+			<li name = 'hello'></li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			window.onload = function(){
+				var oUl = document.getElementById("ul1");
+				var aLis = oUl.getElementsByTagName("li");
+				var oBtn = document.getElementById("btn1");
+
+				for(var i = 0; i < aLis.length; i++){
+					aLis[i].onclick = function(){
+						this.style.backgroundColor = 'red';
+					}
+				}
+				var i = 6;
+				oBtn.onclick = function(){
+					//给ul中插入标签
+					var node = document.createElement("li");
+					node.innerHTML = 11111 * i++;
+					oUl.appendChild(node);
+				}
+
+				/*
+					1、浪费资源
+					2、后添加节点，不会拥有这个事件
+				*/
+			}
+		</script>
+	</head>
+	<body>
+		<ul id = 'ul1'>
+			<li>11111</li>
+			<li>22222</li>
+			<li>33333</li>
+			<li>44444</li>
+			<li>55555</li>
+		</ul>
+		<button id = 'btn1'>按钮</button>
+	</body>
+</html>

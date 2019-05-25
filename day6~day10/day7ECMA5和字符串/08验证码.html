@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				随机生成验证码
+				a-z 97~122
+					36~61 + 61
+				A-Z 65-90
+					10~35 + 55
+				0-9 数字
+
+				30~70
+				0~ 40
+
+				parseInt(Math.random() * 41) + 30;
+
+			*/
+
+			function testCode(n){
+				//n代表要随机几位验证码
+				var arr = [];
+				for(var i = 0; i < n; i++){
+					var index = parseInt(Math.random() * 62);
+					if(index >= 0 && index <= 9){
+						arr.push(index);
+					}else if(index >= 10 && index <= 35){
+						arr.push(String.fromCharCode(index + 55));
+					}else{
+						arr.push(String.fromCharCode(index + 61));
+					}
+				}
+				return arr.join("");
+			}
+
+			// alert(testCode(6));
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

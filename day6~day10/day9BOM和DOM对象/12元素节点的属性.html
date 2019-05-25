@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+				//元素节点行间属性的值获取
+
+				/*alert(oDiv.id);
+				alert(oDiv.title);
+				alert(oDiv.className);*/
+
+				//设置
+				// oDiv.title = 'world';
+
+
+				//获取行间的样式
+				//如果遇到中间带-的，将-去掉，后面的单词首字母大写。
+				alert(oDiv.style.width);
+				alert(oDiv.style.backgroundColor);
+
+				//设置行间样式
+				oDiv.style.width = "300px";
+				oDiv.style.backgroundColor = 'blue';
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1' title = 'hello' class = 'box' style = 'width:100px; height: 100px; background-color: red'>div文本</div>
+	</body>
+</html>

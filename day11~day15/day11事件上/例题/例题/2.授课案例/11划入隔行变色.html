@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>隔行变色</title>	
+		<style>
+			ul{
+				list-style: none;
+			}
+			.a{
+				background: red;
+				cursor: pointer;
+			}
+			.b{
+				background: yellow;
+			}
+		</style>
+		<script>
+			window.onload = function(){
+				var oUL = document.getElementById("list");
+				var list = oUL.children;
+				for(var i=0; i<list.length; i++){
+					list[i].onmouseover = function(){
+						this.className = "a";
+						//三目运算符： 如果上一个元素存在，则改变其className
+						this.previousElementSibling ? this.previousElementSibling.className = "b" : "";
+						//三目运算符： 如果下一个元素存在，则改变其className
+						this.nextElementSibling ? this.nextElementSibling.className = "b" : "";
+					}
+					//划出事件，将所有li样式清空
+					list[i].onmouseout = function(){
+						//this.parentNode.children 从当前元素-->父节点-->所有子元素
+						var list = this.parentNode.children;
+						for(var i=0; i<list.length; i++){
+							list[i].className = "";
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>AAAAAAAAAAAA</li>
+			<li>BBBBBBBBB</li>
+			<li>CCCCCCCCCCC</li>
+			<li>DDDDDDDDDD</li>
+			<li>EEEEEEEEEE</li>
+			<li>FFFFFFFFFFFFF</li>
+		</ul>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

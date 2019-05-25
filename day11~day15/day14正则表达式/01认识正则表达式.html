@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				正则表达式  是一个对象
+				功能和字符串一样，都是用来对字符串进行【模式匹配】和【文本检索】与【替换】。
+				正则表达式能替代字符串去做一些复杂的操作，而且做的比字符串还要漂亮
+				【注】正则表达式可以理解成一个super String。
+			*/
+
+
+			/*
+				声明正则表达式：
+			*/
+			//1、通过new运算符声明
+			/*
+				第一个参数  传入的是生成正则表达式的字符串
+				第二个参数  传入修饰符
+							i 忽略大小写
+							g 全局匹配
+							m 换行匹配
+			*/
+			/*var box = new RegExp("box", "ig");
+			alert(box); ///box/gi*/
+
+			//2、省略new
+			/*var box = RegExp("box", "ig");
+			alert(box); ///box/gi*/
+
+
+			//3、可以通过正则常量赋值
+			// var box = /box/ig;
+
+
+
+			/*
+				正则表达式的方法
+				test
+					格式：正则.test(字符串)
+					功能：在字符串中匹配正则是否存在。
+					返回值：如果匹配成功返回true，否则返回false
+
+				exec
+					格式：正则.exec(字符串)
+					功能：在字符串中匹配正则是否存在。
+					返回值：如果匹配成功，返回，匹配成功字符串的数组，
+						    如果匹配失败返回null。
+			*/
+
+			/*var str = 'This is Box';
+			var box = /box/;
+			alert(box.test(str));*/
+
+			var str = 'This is Box';
+			var box = /box/i;
+			alert(box.exec(str));
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

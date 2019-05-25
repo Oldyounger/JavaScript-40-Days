@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset = "utf-8" />
+		<script type="text/javascript">
+
+		/*
+			用法:
+				1、模块化代码
+				2、在循环中直接找到哦对应元素的索引
+		*/
+
+
+
+		window.onload = function(){
+			var aLi = document.getElementsByTagName("li");
+			/*for(var i = 0; i < aLi.length; i++){
+				aLi[i].onclick = function(){
+					alert(i);
+				}
+			}*/
+
+			for(var i = 0; i < aLi.length; i++){
+				/*aLi[i].onclick = (function(i){
+					return function(){
+						alert(i);
+					}
+				})(i);*/
+
+				aLi[i].onclick = show(i)
+
+
+				function show(index){
+					return function(){
+						alert(index);
+					}
+				}
+			}
+
+
+		}
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>1111111111111111111</li>
+			<li>2222222222222222222</li>
+			<li>3333333333333333333</li>
+			<li>4444444444444444444</li>
+		</ul>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

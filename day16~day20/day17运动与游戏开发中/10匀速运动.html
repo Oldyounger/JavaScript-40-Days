@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 100px; height: 100px; background-color: red; position: absolute; left: 900px; top: 50px}
+			span{width: 1px; height: 300px; background-color: black; position: absolute; left: 500px}
+		</style>
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+				oDiv.onclick = function(){
+					startMove(oDiv, 7, "left", 500)
+				}
+			}
+
+			function startMove(node, speed, attr, iTarget, complete){
+				clearInterval(node.timer);
+				node.timer = setInterval(function(){
+					var iCur = parseInt(getStyle(node, attr));
+					speed = iCur > iTarget ? -Math.abs(speed) : Math.abs(speed);
+
+					if(Math.abs(iCur - iTarget) < Math.abs(speed)){
+						clearInterval(node.timer);
+						//手动挪动到目的值
+						node.style[attr] = iTarget + 'px';
+
+						if(complete){
+							complete.call(node);
+						}
+					}else{
+						node.style[attr] = iCur + speed + 'px';
+					}
+
+				}, 30);
+			}
+			// 浏览器兼容写法
+			function getStyle(node, styleType){
+				return node.currentStyle ? node.currentStyle[styleType] : getComputedStyle(node)[styleType];
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+		<span></span>
+	</body>
+</html>

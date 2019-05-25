@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 200px; height: 150px; padding: 50px; border: 1px solid black; margin: 100px auto;text-align: center}
+			#username{width: 200px; height: 30px; font-size: 16px; margin-bottom: 5px}
+			#username_span{color: red; font-size: 13px}
+		</style>
+		<script>
+			/*
+				失去焦点
+				blur
+
+				【注】要去修改双标签中间的内容用 innerHTML属性
+			*/
+			function testUsername(){
+				//获取标签节点
+				var oUsername = document.getElementById("username");
+				var oUsername_span = document.getElementById("username_span");
+				//表单验证
+				var oValue = oUsername.value;
+				oValue = oValue.replace(/ /g, "");
+				oUsername.value = oValue;
+
+				//1、用户名的长度
+				if(oValue.length > 18 || oValue.length < 6){
+					oUsername_span.innerHTML = "用户名的长度必须是6~18位";
+				}else if(/\d/.test(oValue[0])){
+					oUsername_span.innerHTML = "用户名的首字母不能是数字";
+				}else if(/\W/.test(oValue)){
+					oUsername_span.innerHTML = '用户名必须是数字、字母下划线组成';
+				}else{
+					oUsername_span.innerHTML = '输入正确√'
+				}
+			} 
+
+
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<input type="text" placeholder="用户名" id = 'username' onblur="testUsername();"><br/>
+			<span id = 'username_span'>6~18个字符，可使用字母、数字、下划线，需以字母开头</span>
+		</div>
+	</body>
+</html>

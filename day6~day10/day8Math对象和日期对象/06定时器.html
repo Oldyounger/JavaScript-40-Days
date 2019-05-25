@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				定时器格式：
+					var timer = setInterval(函数名/匿名函数, 毫秒数);
+					功能：每隔对应的毫秒数，调用一次传入的函数。
+					返回值：是一个定时器启动以后，系统分配给他的一个唯一编号。
+
+				取消定时器
+					clearInterval(timer);
+			*/
+
+			var i = 0;
+			/*function show(){
+				i++;
+				document.write(i + "<br/>");
+			}*/
+
+			/*var show = function(){
+				i++;
+				document.write(i + "<br/>");
+			}
+
+			setInterval(show, 1000);*/
+
+
+			var timer = setInterval(function(){
+				i++;
+				document.write(i + "<br/>");
+				if(i == 6){
+					clearInterval(timer);
+				}
+			}, 1000);
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

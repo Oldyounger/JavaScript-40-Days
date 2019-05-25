@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 200px; height: 200px; position: absolute; left: 100px; top: 100px; background-color: yellow; margin-left: -50px; margin-top: -50px}
+			#div2{width: 100px; height: 100px; position: absolute; left: 100px; top: 100px; background-color: red}
+		</style>
+		<script src = '../startMove.js'></script>
+		<script>
+			window.onload = function(){
+				var oDiv2 = document.getElementById("div2");
+
+				oDiv2.onmouseover = function(){
+					startMove(this, {width: 200, height: 200, marginLeft: -50, marginTop: -50})
+				}
+
+				oDiv2.onmouseout = function(){
+					startMove(this, {width: 100, height: 100, marginLeft: 0, marginTop: 0})
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+		<div id = 'div2'></div>
+	</body>
+</html>

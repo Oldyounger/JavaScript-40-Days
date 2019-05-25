@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				延时器
+
+				var timer = setTimeout(匿名函数/函数名, 毫秒数);
+
+				功能：过对应毫秒数，执行一次该函数，有且仅执行一次。
+				返回值：每启动一个延时器，都会返回当前延时器的编号。
+
+				取消延时器
+
+				clearTimeout(timer);
+
+				【注】是否能够通过定时器模拟延时器。
+			*/
+
+			var timer = setTimeout(function(){
+				alert("hello world");
+			}, 4000);
+
+			function btnClick(){
+				clearTimeout(timer);
+			}
+
+
+			/*var timer = setInterval(function(){
+				alert("hello world");
+				clearInterval(timer);
+			}, 2000);*/
+		</script>
+	</head>
+	<body>
+		<button onclick = 'btnClick();'>按钮</button>
+	</body>
+</html>

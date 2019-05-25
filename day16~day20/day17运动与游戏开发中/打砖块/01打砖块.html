@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 500px; height: 500px; border: 1px solid black; margin: 100px auto; position: relative;}
+			#ball{width: 20px; height: 20px; background-color: red; position: absolute; border-radius: 50%; left: 240px; bottom: 20px}
+			#bat{width: 100px; height: 20px; background-color: blue; position: absolute; bottom: 0px; left: 200px}
+			#brick div{width: 98px; height: 18px; border: 1px solid black; float: left;}
+		</style>
+		<script src = '../tool.js'></script>
+		<script>
+			/*
+				1、自行去设计关卡 实现简单 困难
+				2、设计计分板实现积分。
+			*/
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+				var oBall = document.getElementById("ball");
+				var oBat = document.getElementById("bat");
+
+				//随机水平方向速度
+				var speedX = parseInt(Math.random() * 5) + 4;
+				var speedY = -(parseInt(Math.random() * 6) + 6);
+
+				setInterval(function(){
+					oBall.style.left = oBall.offsetLeft + speedX + 'px';
+					oBall.style.top = oBall.offsetTop + speedY + 'px';
+
+					if(oBall.offsetLeft >= 500 - 20 || oBall.offsetLeft <= 0){
+						speedX *= -1;
+					}
+
+					if(oBall.offsetTop <= 0){
+						speedY *= -1;
+					}
+
+					if(oBall.offsetTop >= 500 - 20){
+						alert("GAME OVER");
+						location.reload();
+					}
+
+					//拍子和小球的碰撞
+					if(knock(oBall, oBat)){
+						//需要让小球弹回去
+						speedY *= -1;
+					}
+
+					//砖块和小球的碰撞
+					var oBrick = document.getElementById("brick");
+					var nodes = oBrick.getElementsByTagName("div");
+					for(var i = 0; i < nodes.length; i++){
+						if(knock(nodes[i], oBall)){
+							speedY *= -1;
+							//碰撞的砖块应该被销毁
+							oBrick.removeChild(nodes[i]);
+						}
+					}
+
+				}, 30);
+
+
+				//给拍子添加拖拽
+				dragX(oBat);
+
+				//创建砖块，开始游戏
+				createBrick(40)
+			}
+
+			//创建砖块的函数
+			function createBrick(n){
+				var oBrick = document.getElementById("brick");
+				for(var i = 0; i < n; i++){
+					var node = document.createElement("div");
+					node.style.backgroundColor = randomColor();
+					oBrick.appendChild(node);
+				}
+
+				//相对定位 => 绝对定位
+				var nodes = oBrick.getElementsByTagName("div");
+
+				for(var i = 0; i < nodes.length; i++){
+					nodes[i].style.left = nodes[i].offsetLeft + 'px';
+					nodes[i].style.top = nodes[i].offsetTop + 'px';
+				}
+				//必须等所有的div将坐标设置成功以后才能设置
+				for(var i = 0; i < nodes.length; i++){
+					nodes[i].style.position = 'absolute'
+				}
+			}
+
+			function knock(node1, node2){
+				var l1 = node1.offsetLeft;
+				var r1 = node1.offsetLeft + node1.offsetWidth;
+				var t1 = node1.offsetTop;
+				var b1 = node1.offsetTop + node1.offsetHeight;
+
+				var l2 = node2.offsetLeft;
+				var r2 = node2.offsetLeft + node2.offsetWidth;
+				var t2 = node2.offsetTop;
+				var b2 = node2.offsetTop + node2.offsetHeight;
+
+				if(l2 > r1 || r2 < l1 || t2 > b1 || b2 < t1){
+					return false;
+				}else{
+					return true;
+				}
+
+			}
+
+			function dragX(node){
+				var offsetX = 0;
+				node.onmousedown = function(ev){
+					var e = ev || window.event;
+					offsetX = e.clientX - node.offsetLeft;
+
+					document.onmousemove = function(ev){
+						var e = ev || window.event;
+						var l = e.clientX - offsetX;
+						if(l <= 0){
+							l = 0;
+						}
+
+						if(l >= 400){
+							l = 400;
+						}
+						node.style.left = l + 'px';
+					}
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<div id = 'ball'></div>
+			<div id = 'bat'></div>
+			<div id = 'brick'>
+				
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 100px; height: 100px; background-color: red; border: 1px solid black}
+		</style>
+		<script src = 'tool.js'></script>
+		<script>
+			window.onload = function(){
+				/*
+					offset 系列在运动里面是很有可能出误差的，所以，我们在进行运动的时候，
+					最好不要去用offset系列
+						getStyle
+				*/
+				var oDiv = document.getElementById("div1");
+				oDiv.onclick = function(){
+					setInterval(function(){
+						//1、获取当前样式
+						var iCur = parseInt(getStyle(oDiv, "width"));
+
+						oDiv.style.width = iCur - 1 + 'px';
+
+					}, 30);
+				}
+
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+	</body>
+</html>

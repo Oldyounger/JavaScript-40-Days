@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 100px; height: 100px; background-color: red; position: absolute; right: 0px}
+		</style>
+		<script>
+			window.onload = function(){
+				startMove(getTop());
+				window.onscroll = function(){
+					startMove(getTop());
+				}
+			}
+
+			//获取当前div1的目的值
+			function getTop(){
+				var oDiv1 = document.getElementById("div1");
+				var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				var top = (clientHeight - oDiv1.offsetHeight) / 2 + scrollTop;
+				return parseInt(top);
+			}
+
+			//编写缓冲运动
+			var timer = null;
+			function startMove(iTarget){
+				var oDiv1 = document.getElementById("div1");
+				clearInterval(timer);
+				timer = setInterval(function(){
+					//1、计算速度
+					var speed = (iTarget - oDiv1.offsetTop) / 8;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+					if(oDiv1.offsetTop == iTarget){
+						clearInterval(timer);
+					}else{
+						oDiv1.style.top = oDiv1.offsetTop + speed + "px";
+					}
+
+					document.title = oDiv1.offsetTop + ', ' + iTarget;
+				}, 30);
+			}
+		</script>
+	</head>
+	<body style = 'height: 3000px'>
+		<div id = 'div1'></div>
+	</body>
+</html>

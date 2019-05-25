@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'ajax.js'></script>
+		<script>
+			window.onload = function(){
+				var oBtn = document.getElementById("btn1");
+				/*
+					1、通过ajax下载数据(json格式的字符串)
+					2、分析数据结构(bejson.com分析)
+					3、JSON.parse 转成对应的数据结构
+					
+					后台接口：
+					数据类型: json
+					url: localhost/code2/getNews.php
+					参数: 无
+				*/
+				var oUl = document.getElementById("ul1");
+				oBtn.onclick = function(){
+
+					oUl.innerHTML = '';
+					ajax({
+						method: "get",
+						url: "getNews.php",
+						success: function(data){
+							/*alert(data);*/
+							var arr = JSON.parse(data);
+
+							//通过循环创建节点插入到页面上
+							for(var i = 0; i < arr.length; i++){
+								var oLi = document.createElement("li");
+								var oA = document.createElement("a");
+								oA.href = "#";
+								oA.innerHTML = arr[i].title;
+
+								var oSpan = document.createElement("span");
+								oSpan.innerHTML = `【${arr[i].date}】`;
+
+								oLi.appendChild(oA);
+								oLi.appendChild(oSpan);
+								oUl.appendChild(oLi);
+							}
+						},
+						error: function(msg){
+							alert(msg);
+						}
+					})
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>按钮</button>
+		<ul id = 'ul1'>
+			<!-- <li><a href="#">新闻</a><span>【日期】</span></li> -->
+		</ul>
+	</body>
+</html>

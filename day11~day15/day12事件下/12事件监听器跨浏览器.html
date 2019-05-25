@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				addEventListener
+				removeEventListener
+
+				attachEvent()和 
+				detachEvent()
+			*/
+
+			//添加事件
+			function addEvent(node, eventType, func){
+				if(node.addEventListener){
+					node.addEventListener(eventType, func, false);
+				}else{
+					node.attachEvent("on" + eventType, func);
+				}
+			}
+
+			//删除事件
+			function removeEvent(node, eventType, func){
+				if(node.removeEventListener){
+					node.removeEventListener(eventType, func);
+				}else{
+					node.detachEvent("on" + eventType, func)
+				}
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

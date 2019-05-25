@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			function *showWords(){
+				yield "one";
+				yield "two";
+				return "three";
+			}
+
+
+			var show = showWords();
+			// alert(show); //object Generator
+
+			/*
+				yield  调用一次函数的返回值，计算的结果
+				return 整个函数执行完毕以后的返回值，最后一次调用函数的返回值
+
+				next() 在执行一次这个函数
+				返回值：对象
+					{value:  ,done: }
+					value 这一次调用函数的结果
+					done  迭代是否完成
+			*/
+			console.log(show.next());
+			console.log(show.next());
+			console.log(show.next());
+			console.log(show.next());
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

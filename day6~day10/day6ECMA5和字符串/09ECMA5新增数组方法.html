@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				map  映射
+			*/
+
+			/*var arr = [10, 20, 30, 40, 50];
+
+			var newArr = arr.map(function(item, index, arr){
+				return item * 1.3;
+			})
+
+			alert(newArr);
+			alert(arr);*/
+
+			/*
+				filter() 过滤
+				过滤条件 return后面的表达式
+			*/
+			/*var arr = [10, 20, 30, 40, 50];
+			var newArr = arr.filter(function(item, index, arr){
+				return item > 20;
+			})
+
+			alert(newArr);
+			alert(arr);*/
+
+
+			/*
+				some() 某些
+
+				【注】按照return后面的表达式，判断数组中是否有符合条件的元素，有返回true，没有返回false
+			*/
+
+			/*var arr = [10, 20, 30, 40, 50];
+			var res = arr.some(function(item, index, arr){
+				alert(item)
+				return item > 20;
+			})
+			alert(res)*/
+
+			/*	
+				every 每一个
+				【注】判断每一个元素是否符合条件。都符合条件返回true，否则返回false;
+			*/
+
+			/*var arr = [10, 20, 30, 40, 50];
+			var res = arr.every(function(item, index, arr){
+				alert(item)
+				return item < 40;
+			})
+			alert(res)*/
+
+
+			/*
+				reduce() 归并
+			*/
+
+			var arr = [10, 20, 30, 40, 50];
+
+			var res = arr.reduce(function(prev, next, index, arr){
+
+				/*
+					next 是当前遍历到的元素
+					prev 上一次循环，return后面的结果
+				*/
+				alert(prev + ', ' + next);
+				return prev + next;
+			})
+			alert(res);
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

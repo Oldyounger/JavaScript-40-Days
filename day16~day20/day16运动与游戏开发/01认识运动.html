@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 100px; height: 100px; background-color: red; position: absolute; left: 0px}
+		</style>
+		<script>
+			/*
+				人眼能够识别的最小间隔是  18帧
+				电影 24帧
+
+				定时器 >= 18帧
+				【注】设置30毫秒。
+
+
+
+			*/
+
+			/*
+				分析运动中的问题
+				1、不会停止
+				2、重复点击会启动多个定时器，会让速度加快
+					保证同一时间只有一个定时器在运行
+					每次启动定时器的时候，都将上一次的定时器关闭掉
+				3、停不下来
+				4、到达目的值以后，点一下，还会往前运行一下
+					运动和停止分开，互斥的
+
+
+				运动框架
+					1、每次启动定时器的时候，都将上一次的定时器关闭掉
+					2、运动和停止分开，互斥的
+						if...else
+
+			*/
+			window.onload = function(){
+				var oBtn = document.getElementById("btn1");
+				var oDiv = document.getElementById("div1");
+
+				var timer = null; //记录定时器的返回值
+
+				oBtn.onclick = function(){
+					var speed = 7;
+					clearInterval(timer);
+					timer = setInterval(function(){
+
+						if(oDiv.offsetLeft >= 500){
+							clearInterval(timer);
+						}else{
+							oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+						}
+
+						
+					}, 30);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>开始运动</button>
+		<div id = 'div1'></div>
+	</body>
+</html>

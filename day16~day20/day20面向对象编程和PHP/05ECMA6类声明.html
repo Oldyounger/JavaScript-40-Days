@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*function Phone(size, color){
+				//构造函数属性
+				this.size = size;
+				this.color = color;
+			}
+			//构造函数函数
+			Phone.prototype.show = function(){
+				alert(`您选择了${this.color}颜色的，${this.size}GB的手机`);
+			}
+
+			var iphone = new Phone(256, "玫瑰金");
+			iphone.show();*/
+
+			/*
+				ECMA6class类的语法
+			*/
+			class Phone{
+				constructor(size, color){
+					this.size = size;
+					this.color = color;
+				}
+				show(){
+					alert(`您选择了${this.color}颜色的，${this.size}GB的手机`);
+				}
+			}
+
+			var iphone1 = new Phone(256, "玫瑰金");
+			iphone1.show();
+
+			var iphone2 = new Phone(128, "黑色");
+			iphone2.show();
+
+			alert(iphone1.show == iphone2.show)
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

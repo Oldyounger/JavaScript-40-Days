@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			//通过闭包实现变量和函数的私有化
+
+			function show(){
+				var a = 2;  //私有成员
+
+				function aaa(){ //私有方法
+					a++;  //私有方法可以去访问私有变量
+					alert("a+1之后的结果：" + a);
+				}
+
+				function bbb(){
+					a += 10;
+					alert("a+10之后的结果：" + a); 
+				}
+				return {
+					a1: aaa,
+					b1: bbb
+				}
+
+			}
+
+			function show1(){
+				var a = 2;  //私有成员
+
+				function aaa(){ //私有方法
+					a += 5;  //私有方法可以去访问私有变量
+					alert("a+5之后的结果：" + a);
+				}
+
+				function bbb(){
+					a += 11;
+					alert("a+11之后的结果：" + a); 
+				}
+				return {
+					a1: aaa,
+					b1: bbb
+				}
+
+			}
+
+			var xiaoming = show();
+			xiaoming.a1();
+			xiaoming.b1();
+
+			var xiaohua = show1();
+			xiaohua.a1();
+			xiaohua.b1();
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

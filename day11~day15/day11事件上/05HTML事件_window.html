@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*	
+				事件绑定的格式：
+					元素节点.on + 事件类型 = 函数;
+
+				事件类型
+
+				鼠标事件(可以添加到任何元素节点上)
+					click     单击
+					dblclick  双击
+					mousedown 鼠标按下
+					mouseup   鼠标抬起
+					mouseover 鼠标移入
+					mouseout  鼠标移出
+					mousemove 鼠标移动  只要不停的移动，重复不停的被触发
+
+				键盘事件(window，表单输入框)
+					keydown   键盘按下(支持全键位) 如果按下不放，重复触发
+					keyup     键盘抬起
+					keypress  键盘按下(只支持字符键)  如果按下不放，重复触发
+
+				HTML事件
+					window事件
+						load     当页面加载完成以后触发
+						unload   当页面解构的时候触发(只有IE浏览器支持)
+						scroll   当页面滚动的时候调用
+						resize   当窗口大小发生变化的时候触发
+
+					表单事件(input，textarea)
+			*/
+			/*window.onload = function(){
+				alert(1);
+			}*/
+			/*window.onunload = function(){
+				alert("页面解构时");
+			}*/
+
+			/*var i = 0;
+			window.onscroll = function(){
+				document.title = i++;
+			}*/
+
+
+			/*
+				获取当前滚动的距离
+				scrollTop  获取垂直滚动距离
+				scrollLeft 获取水平滚动距离
+			*/
+
+			/*
+				短路操作
+			*/
+			/*var num = false || 20;
+			alert(num);*/
+
+			window.onload = function(){
+				document.onclick = function(){
+					/*var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+					alert(scrollTop)*/
+
+					/*var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+					alert(scrollLeft)*/
+				}
+
+				var i = 0;
+				window.onresize = function(){
+					document.title = i++;
+				}
+			}
+		</script>
+	</head>
+	<body style = "width: 3000px; height: 3000px">
+		<button id = 'btn1'>鼠标事件</button>
+	</body>
+</html>

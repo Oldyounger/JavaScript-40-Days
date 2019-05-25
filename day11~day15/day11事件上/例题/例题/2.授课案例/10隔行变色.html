@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>隔行变色</title>	
+		<style>
+			ul{
+				list-style: none;
+			}
+			.a{
+				background: red;
+			}
+			.b{
+				background: yellow;
+			}
+		</style>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script>
+			onload = function(){
+				var oUL = document.getElementById("list");
+				var list = oUL.children; 
+				//children属性非W3C的标准，但由于大部分浏览器都支持，实际开发当中用的会比较多
+				//该属性可以自动过滤空白节点
+//				for(var i=0; i<list.length; i++){
+//					alert(list[i].innerHTML)
+//				}
+
+				// var list = getChildElements(oUL);
+				for(var i=0; i<list.length; i++){
+					if(i%2 == 0) {
+						list[i].className = "a";
+					} else {
+						list[i].className = "b";
+					}
+				}
+
+/*				//childNodes  W3C提供的标准
+				var list = oUL.childNodes;
+				alert(list.length); //一共13个，包含了文本节点
+				for(var i=0; i<list.length; i++){
+//					alert(list[i].nodeType); //nodeType  表示节点类型
+//					alert(list[i].nodeName); //nodeName 表示节点的名称 文本节点，只显示#text 
+					//如果是元素节点，会显示标签的名称
+					if(list[i].nodeType == 1) {
+						if(((i+1)/2)%2 == 0) {
+							list[i].className = "a";
+						} else {
+							list[i].className = "b";
+						}
+					}
+//					alert(list[i].nodeValue);// 显示文本节点的内容，元素节点没有nodeValue
+				}*/
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>AAAAAAAAAAAA</li>
+			<li>BBBBBBBBB</li>
+			<li>CCCCCCCCCCC</li>
+			<li>DDDDDDDDDD</li>
+			<li>EEEEEEEEEE</li>
+			<li>FFFFFFFFFFFFF</li>
+		</ul>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

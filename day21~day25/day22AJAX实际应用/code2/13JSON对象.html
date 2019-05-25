@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				处理json格式字符串的函数。
+
+				JSON.parse()
+					json格式的字符串  => 数据结构
+
+				JSON.stringify()
+					数据结构 => json格式的字符串
+
+				拓展：
+					eval()  可以将字符串转成对应的数据结构
+					【注】最外层是数组，里面的元素是对象。
+			*/
+
+			/*var arr = [10, true, "hello"];
+			var str = JSON.stringify(arr);
+			alert(str); //[10,true,"hello"]*/
+
+
+			/*var str = '[10,true,"hello"]';
+			var arr = JSON.parse(str);
+			alert(arr)*/
+
+
+			/*var obj = {
+				name: "钢铁侠",
+				age: 40,
+				sex: "男"
+			}
+
+			var str = JSON.stringify(obj);
+			alert(str) //{"name":"钢铁侠","age":40,"sex":"男"}*/
+
+			var str = '{"name":"钢铁侠","age":40,"sex":"男"}';
+			var obj = JSON.parse(str);
+
+			alert(obj.name)
+
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

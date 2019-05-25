@@ -1,0 +1,36 @@
+/* 
+	选择器嵌套(用的比例非常高)
+
+	属性嵌套(几乎不用)
+ */
+
+ //选择器嵌套
+ .top_nav{
+ 	font-size: 16px;
+ 	a{
+ 		color: red;
+ 		&:hover{
+ 			background-color: yellow;
+ 		};
+ 	}
+ 	li{
+ 		width: 300px;
+ 	}
+ }
+
+ //属性嵌套
+
+.box{
+	border:{
+		top:{
+			width: 2px;
+			style: dashed;
+			color: yellow;
+		};
+		top:{
+			width:1px;
+			style: solid;
+			color: red;
+		}
+	};
+}

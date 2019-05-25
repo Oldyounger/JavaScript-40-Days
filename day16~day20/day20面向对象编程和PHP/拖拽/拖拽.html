@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 200px; height: 200px; background-color: red; position: absolute; left: 200px; top: 100px}
+		</style>
+		<script>
+
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+				var offsetX = 0;
+				var offsetY = 0;
+				oDiv.onmousedown = function(ev){
+					var e = ev || window.event;
+					//1、记录相对位置
+					offsetX = e.clientX - oDiv.offsetLeft;
+					offsetY = e.clientY - oDiv.offsetTop;
+
+					//2、添加鼠标移动
+					document.onmousemove = function(ev){
+						var e = ev || window.event;
+						oDiv.style.left = e.clientX - offsetX + 'px';
+						oDiv.style.top = e.clientY - offsetY + 'px';
+					}
+				}
+
+				document.onmouseup = function(){
+					document.onmousemove = null;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 50px; height: 50px; background-color: red; position: absolute; left: 200px; top: 200px}
+			#div2{width: 50px; height: 50px; background-color: blue; position: absolute; left: 500px; top: 300px}
+		</style>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script src = 'parabola.js'></script>
+		<script>
+			window.onload = function(){
+
+				var aBtns = document.getElementsByTagName("button");
+				var oDiv = document.getElementById("div1");
+				var oDiv2 = document.getElementById("div2");
+				//创建抛物线对象
+
+				var bool = new Parabola({
+					el: "#div1", //设置要做抛物线运动的元素
+					offset: [500, 200],  //偏移位置 [x, y]
+					// targetEl: oDiv2,  //目的节点的位置
+					duration: 2000,  //默认500毫秒
+					curvature: 0.001,
+					callback: function(){
+						alert("动画结束了");
+					},
+					stepCallback: function(){
+
+						/*
+							显示轨迹
+							在抛物线运动中不停的调用的函数
+						*/
+						var node = document.createElement("div");
+						node.style.width = '1px';
+						node.style.height = '1px';
+						node.style.backgroundColor = 'black';
+						node.style.position = 'absolute';
+						node.style.left = oDiv.offsetLeft + 'px';
+						node.style.top = oDiv.offsetTop + 'px';
+						document.body.appendChild(node);
+					}
+				})
+
+				aBtns[0].onclick = function(){
+					bool.start();
+				}
+				aBtns[1].onclick = function(){
+					bool.stop();
+				}
+				aBtns[2].onclick = function(){
+					bool.reset();
+				}
+				aBtns[3].onclick = function(){
+					bool.setOptions({
+						targetEl: oDiv2
+					});
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button>开始</button>
+		<button>停止</button>
+		<button>重置</button>
+		<button>重新设置参数</button>
+		<div id = 'div1'></div>
+		<div id = 'div2'></div>
+	</body>
+</html>

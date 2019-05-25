@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			body{margin: 0px}
+			#ul1{width: 1080px; margin: 100px auto}
+			#ul1 li{list-style: none; width: 248px; float: left; margin-left: 10px}
+			#ul1 li div{border: 1px solid black; padding: 10px; margin-bottom: 10px}
+			#ul1 li div img{width: 225px;display: block}
+			#load{width: 1000px; height: 40px; background-color: orange; font-size: 22px; margin:10px auto; display: block}
+		</style>
+		<script src = 'ajax.js'></script>
+		<script>
+			window.onload = function(){
+				var oUl = document.getElementById("ul1");
+				var aLis = oUl.getElementsByTagName("li");
+				var oLoad = document.getElementById("load");
+				//声明一个页数
+				var cPage = 1;
+				var isload = false; //代表当前数据没有加载
+
+				//1、页面加载完成以后加载数据
+				getList();
+
+				//2、点击加载更多
+				oLoad.onclick = function(){
+					if(!isload){
+						cPage++;
+						isload = true;
+						getList();
+					}
+					document.title = cPage;
+				}
+
+
+
+				//给按钮添加点击事件
+				function getList(){
+					ajax({
+						method: "get",
+						url: "getPics.php",
+						data: "cpage=" + cPage,
+						success: function(data){
+							// alert(data);
+							var arr = JSON.parse(data);
+
+							//通过循环，创建节点，添加到页面上
+							for(var i = 0; i < arr.length; i++){
+								var oDiv = document.createElement("div");
+								var oImg = document.createElement("img");
+								if(arr[i].preview){
+									oImg.src = arr[i].preview;
+								}else{
+									oImg.src = arr[i].image;
+								}
+								//预设图片的高度
+								oImg.style.height = 225 / arr[i].width * arr[i].height + "px";
+
+								var oP = document.createElement("p");
+								oP.innerHTML = arr[i].title;
+
+								oDiv.appendChild(oImg);
+								oDiv.appendChild(oP)
+
+								//找到最短的li，插入到这个li标签中
+								var _index = getShort();
+								aLis[_index].appendChild(oDiv);
+
+							}
+
+							//所有的商品添加在页面上了
+							isload = false;
+						},
+						error: function(msg){
+							alert(msg);
+						}
+					})
+				}
+
+
+
+
+
+				//找出最短那一列
+				function getShort(){
+					var iH = aLis[0].offsetHeight;
+					var index = 0;
+					for(var i = 1; i < aLis.length; i++){
+						if(aLis[i].offsetHeight < iH){
+							iH = aLis[i].offsetHeight;
+							index = i;
+						}
+					}
+					return index;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<br />
+		<img src="http://7xjyw1.com1.z0.glb.clouddn.com/pos003.jpg" alt="">
+		<ul id = "ul1">
+			<li>
+
+			</li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<button id = "load">加载更多</button>
+	</body>
+</html>

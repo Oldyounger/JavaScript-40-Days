@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				find 查找子节点
+				
+				index()直接找出当前节点在兄弟节点中的下标
+			*/
+			$(function(){
+				
+
+				// $("li").css("backgroundColor", 'orange');
+
+				//必须是ul下的li标签  find 查找子节点
+
+				// $("ul").find("li").css("backgroundColor", 'blue')
+				// $("ul").find("[name=hello]").css("backgroundColor", 'blue')
+				// $("ul li").css("backgroundColor", 'blue')
+
+
+				alert($(".box").index());
+			})
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>111111</li>
+			<li>111111</li>
+			<li class = 'box'>111111</li>
+			<li name = 'hello'>111111</li>
+			<li>111111</li>
+			<li>111111</li>
+		</ul>
+		<ol>
+			<li>222222</li>
+			<li>222222</li>
+			<li>222222</li>
+		</ol>
+	</body>
+</html>

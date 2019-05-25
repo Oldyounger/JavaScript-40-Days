@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			div{height: 200px; background-color: red}
+			#div1{width: 300px; background-color: orange}
+		</style>
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+
+
+
+				/*alert(oDiv.style.width);
+				alert(oDiv.style.height);
+				alert(oDiv.style.backgroundColor);*/
+				//上述方式只能获取行间的css样式。
+
+				/*
+					获取当前有效样式
+					elem.currentStyle ? elem.currentStyle[attr] : getComputedStyle(elem)[attr];
+				*/
+
+				// alert(oDiv.currentStyle["height"]);
+				// alert(getComputedStyle(oDiv)["height"]);
+
+				alert(getStyle(oDiv, "backgroundColor"));
+
+				//设置样式，设置在行间
+				oDiv.style.backgroundColor = 'blue';
+			}
+			//浏览器兼容
+			function getStyle(node, styleAttr){
+				if(node.currentStyle){
+					return node.currentStyle[styleAttr];
+				}else{
+					return getComputedStyle(node)[styleAttr];
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1' style = 'width: 100px'></div>
+	</body>
+</html>

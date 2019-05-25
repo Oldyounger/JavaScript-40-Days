@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				1、函数的课堂练习做一下
+				2、昨天循环的所有题，封装函数。
+				3、整理概念
+				4、代码缩进
+					运算符前后加空格
+					分号和逗号后面如果有代码，加一个空格
+					代码缩进
+			*/
+
+			function printTrigon(n){
+				for(var i = 0; i < n; i++){
+					//输出对应的空格数
+					for(var k = 0; k < n - i - 1; k++){
+						document.write("X");
+					}
+
+					//输出对应的圆圈个数
+					for(var j = 0; j <= i; j++){
+						document.write("Y");
+					}
+
+					document.write("<br/>");
+				}
+			}
+
+
+			printTrigon(20);
+
+
+			function nAndA(n, a){
+				var sum = 0;
+				var tmp = a;
+				for(var i = 0; i < n; i++){
+					sum += tmp;
+					tmp = tmp * 10 + a;
+				}
+				return sum;
+			}
+
+			var res = nAndA(3, 2);
+			alert(res);
+
+
+
+			function narcissus(){
+				for(var i = 100; i < 1000; i++){
+					var a = i % 10;
+					var b = parseInt(i / 10) % 10;
+					var c = parseInt(i / 100);
+
+					var sum = Math.pow(a, 3) + Math.pow(b, 3) + Math.pow(c, 3);
+					if(i == sum){
+						document.write(i + "<br/>");
+					} 
+				}
+			}
+
+			narcissus()
+
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

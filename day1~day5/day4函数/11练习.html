@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				最强王者法则:
+				1. 首先去找临界值，即无需计算，获得的值。
+				2. 找这一次和上一次的关系
+				3. 假设当前函数已经可以使用，调用自身计算上一次和这一次的关系
+				封装一个函数 传入n，输出n个hello world。
+			*/
+
+			function print(n){
+				if(n == 0){
+					return;
+				}
+				document.write("hello world<br>");
+				return print(n - 1);
+			}
+			print(5);
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

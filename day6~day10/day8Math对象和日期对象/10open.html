@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				window.open()
+
+				open()
+					第一个参数：跳转的url  打开新窗口，加载对应的url
+					第二个参数：给打开的新窗口，起一个名字
+					第三个参数：一串有特殊功能的字符串，控制打开窗口的一些参数。
+
+				opener 打开当前窗口的父窗口的window对象。
+			*/
+
+			function btnClick(){
+				open("https://www.baidu.com", "百度", "width=400,height=400,top=200,left=200");
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick = 'btnClick();'>按钮</button>
+	</body>
+</html>

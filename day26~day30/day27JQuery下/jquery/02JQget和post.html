@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			div{width: 200px; height: 200px; background-color: orange; border: 1px solid black}
+		</style>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				load
+
+				下载完数据以后，将数据填充在前面的元素中
+
+				$.get()
+
+				$.post()
+				$.post(URL,data,callback);
+			*/
+			$(function(){
+				$("button").click(function(){
+					/*$.get("1.txt", function(data, status, xhr){
+						//status  success error
+
+						alert(data);
+						alert(status)
+					})*/
+
+
+					/*$.post("1.post.php", {
+						username: "钢铁侠",
+						age: 18,
+						password: 123456
+					}, function(data, status, xhr){
+						alert(data);
+						alert(status);
+						alert(xhr.status);
+					})*/
+
+
+					$.ajax({
+						type: "post",
+						url: "1.1post.php",
+						data: {
+							username: "钢铁侠",
+							age: 18,
+							password: 123456
+						},
+						success: function(data, status, xhr){
+							alert(data);
+							alert(status);
+							alert(xhr.status);
+						},
+						error: function(error, status){
+							alert(error + ", " + status);
+						}
+					})
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<button>下载</button>
+		<div></div>
+	</body>
+</html>

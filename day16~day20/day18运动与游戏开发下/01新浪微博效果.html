@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 400px; height: 600px; margin: 10px auto; border: 1px solid black; overflow: hidden;}
+			#div1 div{padding-left: 10px; border-bottom: 1px dashed black; padding-bottom: 5px; opacity: 0; filter: alpha(opacity=0)}
+		</style>
+		<script src = 'startMove.js'></script>
+		<script src = 'tool.js'></script>
+		<script>
+			//XSS攻击
+			window.onload = function(){
+				var oTxt = document.getElementById("txt1");
+				var oBtn = document.getElementById("btn1");
+				var oDiv = document.getElementById("div1");
+
+				oBtn.onclick = function(){
+					//1、判断用户的输出框是否为空
+					if(!oTxt.value){
+						alert("请输入内容");
+					}else{
+						var node = document.createElement("div");
+						var text = document.createTextNode(oTxt.value);
+						node.appendChild(text);
+						
+						node.style.backgroundColor = randomColor();
+						if(oDiv.childNodes.length){
+							oDiv.insertBefore(node, oDiv.firstChild);
+						}else{
+							oDiv.appendChild(node);
+						}
+
+						//开始动画  height  0 > height  链式运动 opacity 0 > 100
+
+						var iHeight = node.offsetHeight;
+						node.style.height = "0px";
+
+						startMove(node, {height: iHeight}, function(){
+							startMove(this, {opacity: 100})
+						})
+					}
+				}
+
+			}
+
+		</script>
+	</head>
+	<body>
+		<textarea name="" id="txt1" cols="30" rows="10"></textarea>
+		<button id = 'btn1'>发布</button>
+		<div id = 'div1'>
+		</div>
+	</body>
+</html>

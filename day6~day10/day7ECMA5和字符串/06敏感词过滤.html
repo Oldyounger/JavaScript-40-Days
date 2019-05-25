@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 300px; height: 300px; border: 1px solid black; background-color: orange}
+		</style>
+		<script>
+			function btnClick(){
+				var oTxt = document.getElementById("txt1");
+				var oDiv = document.getElementById("div1");
+
+				//将敏感词全部装在数组中
+				var arr = [/tmd/ig, /靠/ig, /nm/ig];
+
+				var oValue = oTxt.value;
+				/*
+					进行敏感词过滤，将敏感词替换成*
+				*/
+				for(var i = 0; i < arr.length; i++){
+					oValue = oValue.replace(arr[i], "*");
+				}
+
+				oDiv.innerHTML = oValue;
+
+				oTxt.value = '';
+			}
+		</script>
+	</head>
+	<body>
+		<textarea name="" id="txt1" cols="30" rows="10"></textarea>
+		<input type="button" onclick = 'btnClick();' value = '发布'/>
+		<div id = 'div1'>
+			
+		</div>
+	</body>
+</html>

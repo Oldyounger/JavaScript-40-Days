@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#img1{opacity: 0.3; filter: alpha(opacity=30)}
+		</style>
+		<script>
+
+			window.onload = function(){
+				var oImg = document.getElementById("img1");
+
+				oImg.onmouseover = function(){
+					startMove(100)
+				}
+
+				oImg.onmouseout = function(){
+					startMove(30)
+				}
+
+			}
+			/*
+				【注】设置一个中间变量去进行计算
+			*/
+			var alpha = 30;
+			var timer = null;
+			function startMove(iTarget){
+				var oImg = document.getElementById("img1");
+				var speed = 1;
+				clearInterval(timer);
+				timer = setInterval(function(){
+					if(alpha > iTarget){
+						speed = -Math.abs(speed);
+					}else{
+						speed = Math.abs(speed);
+					}
+					if(alpha == iTarget){
+						clearInterval(timer);
+					}else{
+						alpha += speed;
+						//给当前的透明度样式进行赋值
+						oImg.style.opacity = alpha / 100;
+						oImg.style.filter = "alpha(opacity=" + alpha + ")";
+					}
+
+					document.title = alpha;
+
+				}, 30);
+			}
+		</script>
+	</head>
+	<body>
+		<img id = 'img1' src="img/060222vdfceizbtiqtwddw.jpg" alt="">
+	</body>
+</html>

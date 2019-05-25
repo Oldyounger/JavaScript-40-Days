@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- 
+			action  url  点击submit按钮，会跳转到action后面的url上
+			method  表单提交数据的方式
+					get 默认是
+						http://localhost/code2/1.get.php?username=tian&age=20&password=123456
+					get的发送数据方式：直接将数据以查询字符串的格式，拼接在url后面进行传输的。
+					缺点：
+						1、不安全
+						2、最大只能传输2kb
+						3、没有办法上传
+					优点：简单方便
+				
+
+					post
+		 -->
+		<form action="1.get.php" method="get">
+			<input type="text" name = 'username' value = '' placeholder="用户名">
+			<input type="text" name = 'age' value = '' placeholder="年龄">
+			<input type="text" name = 'password' value = '' placeholder="密码">
+			<input type="submit" />
+		</form>
+	</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				【注】不要为了使用JQ而使用JQ。
+				one()  绑定事件只能触发一次
+			*/
+			$(function(){
+				/*$("li").click(function(){
+					// this.style.backgroundColor = 'red';
+					$(this).css("backgroundColor", 'blue');
+				})*/
+
+
+				function yellow(){
+					alert(123);
+				}
+				//使用on方法添加点击事件
+
+				//1、传两个参数
+				// $("li").one("click", yellow);
+
+				//2、传入两个参数
+				/*var i = 0;
+				$("li").one("click mouseover", function(){
+					this.innerHTML = i++;
+				})*/
+
+				//3、给不同的事件，添加不同的函数
+				/*$("li").one({
+					click: function(){
+						alert("点击");
+					},
+					mouseover: function(){
+						this.style.backgroundColor = 'red';
+					},
+					mouseout: function(){
+						this.style.backgroundColor = 'blue';
+					}
+				})*/
+
+				//4、实现事件委托  第二参数 选择器
+				$("ul").one("click", "li,div", function(){
+					this.style.backgroundColor = 'red';
+				})
+
+				$("button").click(function(){
+					//取消click事件上的所有函数
+					// $("li").off("click");
+
+					//取消所有的事件
+
+					// $("li").off();
+
+
+					//取消某一个事件下的某一个函数
+					// $("li").off("click", yellow);
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<button>取消</button>
+		<ul>
+			<li>11111111111</li>
+			<li>11111111111</li>
+			<li>11111111111</li>
+			<li>11111111111</li>
+			<li>11111111111</li>
+			<div>ssss</div>
+			<div>ssss</div>
+			<div>ssss</div>
+		</ul>
+	</body>
+</html>

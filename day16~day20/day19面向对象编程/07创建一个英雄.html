@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			function Hero(name, sex, age){
+				this.name = name;
+				this.sex = sex;
+				this.age = age;
+			}
+
+			Hero.prototype.showName = function() {
+				alert("我是" + this.name);
+			};
+			Hero.prototype.showSex = function() {
+				alert("我是" + this.sex);
+			};
+			Hero.prototype.showAge = function() {
+				alert("我是" + this.age);
+			};
+
+			var H1 = new Hero("蜘蛛侠", "男", "22");
+			H1.showName();
+			H1.showAge();
+			H1.showSex();
+
+			var H2 = new Hero("绿巨人", "男", "32");
+			H2.showName();
+			H2.showAge();
+			H2.showSex();
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

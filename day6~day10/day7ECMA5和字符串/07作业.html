@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				1.将字符中单词用空格隔开
+         已知传入的字符串中只有字母,每个单词的首字母大写，请将每个
+单词用空格隔开，只保留一个单词的首字母大写
+          传入:”HelloMyWorld”
+          返回:”Hello my world”
+
+          【注】字符串没法被修改，但是数组可以呗修改，那么我们可以将字符串转成数组，然后进行修改
+			*/
+			function spaceWithWord(str){
+				var arr = str.split("");
+				for(var i = 1; i < arr.length; i++){
+					if(arr[i] >= "A" && arr[i] <= "Z"){
+						arr[i] = arr[i].toLowerCase();
+						arr.splice(i, 0, " ");
+					}
+				}
+				return arr.join("");
+			}
+
+			/*var str = spaceWithWord("HelloMyWorld");
+			alert(str);*/
+
+			/*
+				3.将字符串按照单词进行逆序，空格作为划分单词的唯一条件
+        传入:”Welome to Beijing”改为 “Beijing to Welcome”
+			*/
+			function reverseStr(str){
+				var arr = str.split(" ");
+				arr.reverse();
+				return arr.join(" ");
+			}
+
+			// alert(reverseStr("Welome to Beijing"));
+
+
+			/*
+				  4.对称数组
+        传入一个数组，起元素类型与个数皆未知，返回新数组，由原数组的元素正序反序拼接而成。
+        传入
+            [“One”, “Two”,”Three”] 
+        返回
+            [“One”, “Two”, “Three”,”Three”,”Two”, “One”]
+			*/
+
+			function symmetryArr(arr){
+				var newArr = arr.concat();
+
+				for(var i = arr.length - 1; i >= 0; i--){
+					newArr.push(arr[i]);
+				}
+				return newArr;
+			}
+
+			// alert(symmetryArr(["one", "two", "three"]));
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

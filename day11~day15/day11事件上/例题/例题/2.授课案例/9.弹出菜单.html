@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+#div1 {width:100px; height:150px; background:#CCC; display:none;}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+window.onload=function ()
+{
+	var oBtn=document.getElementById('btn1');
+	var oDiv=document.getElementById('div1');
+	
+	oBtn.onclick=function (ev)
+	{
+		var oEvent=ev||event;
+		oDiv.style.display='block';
+		//alert('按钮被点了');
+		
+		//oEvent.cancelBubble=true;
+		window.event? window.event.cancelBubble = true : oEvent.stopPropagation();
+	};
+	
+	document.onclick=function ()
+	{
+		oDiv.style.display='none';
+		//alert('页面被点了');
+	};
+};
+</script>
+</head>
+
+<body>
+<input id="btn1" type="button" value="显示" />
+<div id="div1">
+</div>
+</body>
+</html>

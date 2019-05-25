@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				setAttribute()     设置属性的值
+				getAttribute()     获取属性的值
+				removeAttribute()  删除属性
+			*/
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+
+				/*alert(oDiv.id);
+				alert(oDiv.title);
+
+				//class
+				alert(oDiv.className);*/
+
+				// alert(oDiv.xxx);
+
+
+				/*alert(oDiv.getAttribute("id"));
+				alert(oDiv.getAttribute("title"));
+				//区别
+				alert(oDiv.getAttribute("class"))*/
+				//支持自定义的属性
+				// alert(oDiv.getAttribute("xxx"));
+
+
+				//设置
+				/*oDiv.setAttribute("class", 'box2');
+				oDiv.setAttribute("yyy", "zzz");*/
+
+				// oDiv.yyy = 'zzz'
+
+
+				//删除
+				// oDiv.className = '';
+
+				oDiv.removeAttribute("title");
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1' title = 'hello' class = "box"  xxx = 'yyy' ></div>
+	</body>
+</html>

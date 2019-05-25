@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				在JS中，一旦封装函数，每一个函数的内部，都会自动生成一个变量，这个变量就是this。
+				this存储的是当前函数主人的地址。
+
+				【注】函数的主人是谁，this里存储谁的地址。
+			*/
+
+			/*function show(){
+				alert(this)
+			}
+
+			show();*/
+
+			/*var xiaoming = {
+				name: "小明",
+				showName: function(){
+					alert(xiaoming.name);
+					alert(this.name);
+				}
+			}
+
+			xiaoming.showName();*/
+
+
+			window.onload = function(){
+				var oBtn = document.getElementById("btn1");
+				oBtn.onclick = function(){
+					alert(this.innerHTML)
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>按钮</button>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+			什么是闭包？
+				1、函数嵌套函数
+				2、内部函数引用了外部函数的形参和变量
+				3、被引用的形参和变量就不会被【垃圾回收机制】所回收了。
+			*/
+
+			/*function show(a){
+				var b = 20;
+				alert(a + ", " + b);
+			}
+
+			show(5);
+			alert(a);*/
+
+			function aaa(a){
+				var b = 20;
+				function bbb(){
+					alert(a + ", " + b + ", bbbb");
+				}
+
+				return bbb;
+			}
+
+			var ccc = aaa(5);
+
+			ccc();
+
+			/*window.onload = function(){
+				var oDiv = document.getElementById("div1");
+				oDiv.onclick = function(){
+					alert(oDiv.id);
+				}
+
+				alert("window.onload结束了")
+			}*/
+
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>div1</div>
+	</body>
+</html>

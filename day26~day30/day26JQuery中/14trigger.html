@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				事件
+				1、事件发生了
+				2、处理事件的行为
+
+				添加自定义的事件
+			*/
+			$(function(){
+				/*$("input").blur(function(){
+					alert("失去焦点了");
+				})
+
+				function show(){
+					alert(123);
+				}
+
+				$("input").blur(show)*/
+
+
+				/*
+					bind     添加自定义的事件（不要和JS的bind混起来）
+
+					trigger  触发事件上的函数
+				*/
+
+
+				//添加自定义事件，自己去设计一个事件类型
+				$("button").bind("play", function(){
+					alert("播放");
+				})
+
+				$("button").click(function(){
+
+					//主动触发某一事件类型上所有的函数
+					// $("input").trigger("blur");
+
+					$("button").trigger("play");
+
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<input type="text">
+		<button>播放</button>
+	</body>
+</html>

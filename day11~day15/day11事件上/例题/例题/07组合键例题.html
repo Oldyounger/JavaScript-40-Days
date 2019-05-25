@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset = "utf-8" />
+		<style type="text/css">
+		#div1{width: 200px; height: 200px; background: red; position: absolute;}
+		</style>
+		<script type="text/javascript" src = "../js/tool.js"></script>
+		<script type="text/javascript">
+		window.onload = function(){
+			var oDiv = document.getElementById("div1");
+			document.onkeydown = function(even){
+				var e = even || window.event;
+				// 37左  38 上  39 右 40 下
+				var speed = 5;
+				if(e.shiftKey){ //如果shiftKey为真,说明我们按下了shift健
+					speed *= 5;
+				}
+
+				switch(e.keyCode){
+					case 37:
+						startMove(oDiv, "Left", -speed);
+						break;
+					case 38:
+						startMove(oDiv, "Top", -speed);
+						break;
+					case 39:
+						startMove(oDiv, "Left", speed);
+						break;
+					case 40:
+						startMove(oDiv, "Top", speed);
+						break;
+					default:
+						//判断是否按下了alt健和r健如果按下了,我们就变色
+						if(e.altKey && e.keyCode == 82){
+							oDiv.style.backgroundColor = randomColor();
+						}
+						break;
+				}
+
+			}
+		}
+
+		function startMove(node, style, speed){
+			/*oDiv.style["left"] = oDiv["offset" + "Left"] - 5 + "px";
+			oDiv.style.left = oDiv.offsetLeft - 5 + "px";*/
+
+			node.style[style.toLowerCase()] = node["offset" + style] + speed + "px";
+		}
+		</script>
+	</head>
+	<body>
+		<div id = "div1"></div>
+	</body>
+</html>
+
+
+
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			
+			/*
+				• insertBefore()     before()
+				• insertAfter()      after()
+				• appendTo()         append()
+				• prependTo()        prepend()
+				• remove()
+			*/
+
+			$(function(){
+				//找到span节点，插入到div前面
+				// $("span").insertBefore($("div"));
+
+
+				//找到div节点，插入到span后面
+				// $("div").insertAfter("span");
+
+
+				//找到span节点插入到div节点子节点的末尾
+				// $("span").appendTo($("div"));
+
+				//找到span节点插入到div节点子节点的首位
+				// $("span").prependTo($("div"));
+
+
+				//删除节点
+				// $("span").remove();
+
+
+
+				//找到span节点，插入到div前面
+				// $("span").insertBefore($("div")).css("backgroundColor", 'red');
+
+				//div前面是span
+				$("div").before($("span")).css("backgroundColor", 'red');
+
+			})
+		</script>
+	</head>
+	<body>
+		<div>
+			div1
+			<em>em</em>
+		</div>
+		<span>span</span>
+	</body>
+</html>

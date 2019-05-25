@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'ajax.js'></script>
+		<script>
+			window.onload = function(){
+				var oBtn = document.getElementById("btn1");
+				/*
+					1、通过ajax下载数据(json格式的字符串)
+					2、分析数据结构
+					3、JSON.parse 转成对应的数据结构
+				*/
+				oBtn.onclick = function(){
+					ajax({
+						url: "getList.php",
+						success: function(data){
+							alert(data);
+							var arr = JSON.parse(data);
+							alert(arr)
+
+							/*var obj = JSON.parse(data);
+							alert(obj.username)*/
+						},
+						error: function(msg){  //别偷懒
+							alert(msg)
+						}
+					})
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>按钮</button>
+	</body>
+</html>

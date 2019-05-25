@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				try...throw...catch  抛出异常，捕获异常
+
+				格式：
+				try{
+					要去执行的代码;
+					throw new Error("错误文本信息");
+
+				}catch(error){
+					补救的代码;
+				}
+				【注】手动抛出异常的
+				【注】先去去尝试执行try中的代码，当try中的代码执行异常，就直接去执行catch中的代码进行补救，其中error错误对象，包含着我们try中代码执行的异常信息。
+
+				【功能】是用来进行代码调试的。
+			*/
+
+			var num = 0;
+
+			try{
+				alert("执行代码1");
+				//手动抛出异常
+
+				// throw new Error("这是演戏，不要紧张");
+
+				if(num != 10){
+					throw new Error("结果不是10");
+				}
+
+				alert("执行代码2");
+			}catch(error){
+				alert("补救代码，错误：" + error);
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

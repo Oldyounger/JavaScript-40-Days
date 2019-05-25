@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 200px; height: 200px; background-color: red}
+		</style>
+		<script>
+			function btnClick(){
+				// var oDiv = document.getElementById("div1");
+
+				//【注】document.write方法写的时候，会覆盖页面上原有的内容
+				// document.write("<h2>hello world</h2>");
+
+
+				//想给div1里面添加一个p标签
+				/*
+					格式：
+						document.createElement(标签名字)
+
+					格式：
+						node1.appendChild(node2)
+					功能：将node2插入到node1的子节点的的末尾
+
+					格式：
+						document.creatTextNode()
+					功能：创建文本节点
+				*/
+				// var oP = document.createElement("p");
+				
+				/*var oTxt = document.createTextNode("<h1>我是文本</h1>");
+				oP.appendChild(oTxt);*/
+
+				// oP.innerHTML = "<h1>我是文本</h1>"; //会自动解析里面标签
+
+				// oDiv.appendChild(oP);
+
+				/*
+					新创建的p节点，插入到div1之前
+					insertBefore()
+					格式：
+						node1.parentNode.insertBefore(node2, node1);
+					功能：将node2插入到node1之前。
+				*/
+
+				// oDiv.parentNode.insertBefore(oP, oDiv);
+
+
+				/*
+					replaceChild()
+					格式：
+						node1.parentNode.replaceChild(node2, node1)
+					功能：用node2替换node1
+				*/
+				// oDiv.parentNode.replaceChild(oP, oDiv);
+
+
+				/*
+					cloneNode  克隆节点
+					cloneNode(true)  克隆节点+节点中子节点
+				*/
+				/*var oDiv1 = document.getElementById("div1");
+				var oDiv2 = document.getElementById("div2");
+
+				var node = oDiv1.cloneNode(true);
+				oDiv2.appendChild(node);*/
+
+
+				/*
+					node.parentNode.removeChild(node)
+					删除node节点
+				*/
+				var oDiv1 = document.getElementById("div1");
+				oDiv1.parentNode.removeChild(oDiv1);
+			}
+		</script>
+	</head>
+	<body>
+		<h1>h1</h1>
+		<strong>strong</strong>
+		<div id = 'div1'>
+			<em>em</em>
+			<strong>strong</strong>
+		</div>
+		<div id = 'div2'></div>
+		<button onclick = 'btnClick();'>按钮</button>
+	</body>
+</html>

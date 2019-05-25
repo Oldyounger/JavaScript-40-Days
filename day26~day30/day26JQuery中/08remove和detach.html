@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			.box{width: 100px; height: 100px; background-color: red;}
+			#div2{width: 300px; height: 300px; background-color: blue}
+		</style>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				remove()  删除元素节点
+					返回值：就是删除的节点
+				detach()
+
+				clone()    克隆节点本身，无法克隆节点的行为
+				clone(true)还能够克隆行为
+
+				【注】上述这两个函数都是用来删除元素节点的，但是detach删除节点的时候，可以保留该节点之前的行为。
+			*/
+
+			$(function(){
+				$("#div1").hover(function(){
+					$(this).css("backgroundColor", 'orange');
+				}, function(){
+					$(this).css("backgroundColor", 'black');
+				})
+
+
+				$("button").click(function(){
+					// var node = $("#div1").remove();
+					var node = $("#div1").clone(true);
+					//填入到div2里面
+					node.appendTo($("#div2"));
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<button>按钮</button>
+		<div id = 'div1' title = 'name' class = 'box'>div1</div>
+		<div id = 'div2'>div2</div>
+	</body>
+</html>

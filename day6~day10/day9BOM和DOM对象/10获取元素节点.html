@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 100px; height: 100px; background-color: red}
+		</style>
+		<script>
+			/*
+				document.getElementById(id)
+				【注】通过id，在整个页面上去找复合条件的元素节点。
+
+				document.getElementsByTagName(tagName);
+				node.getElementsByTagName(tagName);
+				【注】指定查询的范围，node节点的子节点
+	
+
+				传参：传入标签的种类
+				功能：通过你传入的标签类型，在整个页面下去查找符合条件的元素。
+				返回值：伪数组（我起的）本质是对象
+
+
+				document.getElementsByName(name)
+				【注】一般情况下，只有表单元素name才有效，所以，上述方法一版情况下获取表单元素就行。
+
+
+
+				node.getElementsByClassName(class);(只兼容IE8以上)
+				功能：执行从node节点开始，查找符合条件的元素。
+			*/
+			window.onload = function(){
+				// var nodes = document.getElementsByClassName("box");
+
+
+				//获取 ul 下  class = box的节点
+				var oUl = document.getElementById("ul1");
+				var nodes = oUl.getElementsByClassName("box");
+
+				alert(nodes.length);
+				for(var i = 0; i < nodes.length; i++){
+					alert(nodes[i].innerHTML);
+				}
+			}
+
+		</script>
+	</head>
+	<body>
+		<div id = 'div1' name = 'hello'></div>
+		<input type="text" name = 'hello' />
+		<span name = 'hello' class = box>span</span>
+		<ul id = 'ul1'>
+			<li class = 'box'>111111111</li>
+			<li>222222222</li>
+			<li class = 'box'>333333333</li>
+		</ul>
+		<ol id = 'ol1'>
+			<li>444444444</li>
+			<li>555555555</li>
+			<li>666666666</li>
+		</ol>
+	</body>
+	
+</html>

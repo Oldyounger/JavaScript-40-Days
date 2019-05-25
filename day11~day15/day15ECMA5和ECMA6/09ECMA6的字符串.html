@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				ECMA6是通过 `` 括起来的
+				1、在传统的字符串中，如果换行，就会报错
+				2、使用+号去做字符串拼接
+
+
+				ECMA6字符串的好处
+				1、好处就是，写成啥样都行。
+				2、占位符的语法，${变量/表达式}
+			*/
+			/*var str = "hello \
+			world";
+			alert(str);*/
+
+
+			/*var str = `hello 
+			world`;
+			alert(str)*/
+
+
+			function showSelf(name, sex, age){
+				// alert("我叫" + name + "，性别是" + sex + ', 今年' + age);
+				alert(`我叫${name}, 性别是${sex}, 今年${age}, 计算的结果${10+20}`);
+			}
+
+			showSelf("钢铁侠", "男", 20);
+
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

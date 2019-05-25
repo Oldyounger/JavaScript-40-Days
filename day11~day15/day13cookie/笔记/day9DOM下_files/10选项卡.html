@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1 button{
+				background-color: gray;
+				color: black;
+				width: 80px;
+				height: 25px;
+				font-size: 16px
+			}
+			#div1 div{
+				width: 300px;
+				height: 300px;
+				border: 1px solid black;
+				background-color: orange;
+				display: none
+			}
+			#div1 .active{
+				background-color: pink
+			}
+		</style>
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+				var aBtns = oDiv.getElementsByTagName("button");
+				var aDivs = oDiv.getElementsByTagName("div");
+
+				//按钮添加点击
+				for(var i = 0; i < aBtns.length; i++){
+
+					aBtns[i].index = i;
+					aBtns[i].onclick = function(){
+						//<1>取消其余所有按钮样式
+						for(var j = 0; j < aBtns.length; j++){
+							aBtns[j].className = "";
+							aDivs[j].style.display = "none";
+						}
+						//<2>将当前的按钮变成被选中的
+						this.className = "active";
+						//<3>当前按钮所对应的div
+						aDivs[this.index].style.display = "block";
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = "div1">
+			<button class = "active">Java</button>
+			<button>HTML5</button>
+			<button>Python</button>
+			<div style = "display: block">Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向...</div>
+			<div>html5网站开发 找常州玉凌软件,资深web开发工程师一对一服务,您的满意是我们的宗旨!常州玉凌软件常年提供html5网站开发,开发企业级Web网站及基于Web平台上的各类管理系统</div>
+			<div>python用什么开发,python行业发展正旺,软件人才供不应求,Python人才毕业即可就业!python用什么开发?达内python培训好,入职起点高,16年60万学员就业满意,口碑好.</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#small,#pic1{width: 658px; height: 370px; position: absolute;}
+			#small{left: 20px; top: 20px;}
+			#pic1{left: 0px; top: 0px}
+			#big,#pic2{position: absolute;}
+			#big{width: 200px; height: 200px; position: absolute; top: 20px; left: 700px; border: 1px solid black; }
+			#pic2{width: 1316px; height: 740px; position: absolute; top: 0px; left: 0px}
+			#pic1 img{width: 100%; height: 100%}
+			#pic2 img{width: 100%; height: 100%}
+			#mask{width: 100px; height: 100px; background-color: black; opacity: 0.3; filter: alpha(opacity=30); display: none; position: absolute;}
+		</style>
+		<script>
+			/*
+				mouseover mouseenter
+				mouseout  mouseleave
+
+				放大镜原理
+				瀑布流   查阅
+			*/
+
+			window.onload = function(){
+				$("small").onmouseenter = function(){
+					$("mask").style.display = 'block';
+					$("big").style.display = "block";
+				}
+				$("small").onmouseleave = function(){
+					$("mask").style.display = 'none';
+					$("big").style.display = "none";
+				}
+				$("small").onmousemove = function(ev){
+					
+					var e = ev || window.event;
+					var l = e.clientX - $("small").offsetLeft - 50;
+					var t = e.clientY - $("small").offsetTop - 50;
+
+					if(l <= 0){
+						l = 0;
+					}
+					if(l >= 558){
+						l = 558;
+					}
+
+					if(t <= 0){
+						t = 0;
+					}
+					if(t >= 270){
+						t = 270;
+					}
+					
+					$("mask").style.left = l + 'px';
+					$("mask").style.top = t + 'px';
+
+					//改变samll和big坐标
+					$("pic2").style.left = -$("mask").offsetLeft * 2 + 'px';
+					$("pic2").style.top = -$("mask").offsetTop * 2 + 'px';
+				}
+			}
+
+
+			function $(id){
+				return document.getElementById(id);
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'small'>
+			<div id = 'pic1'>
+				<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547632378202&di=f11341513166e0c188c02c3fc8ff7a19&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fbf684f401184115f8e58f92d94a6fb748e98b54b1b375-2OU1YY_fw658" alt="">
+			</div>
+			<div id = 'mask'></div>
+		</div>
+		<div id = 'big'>
+			<div id = "pic2">
+				<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547632378202&di=f11341513166e0c188c02c3fc8ff7a19&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fbf684f401184115f8e58f92d94a6fb748e98b54b1b375-2OU1YY_fw658" alt="">
+			</div>
+		</div>
+	</body>
+</html>

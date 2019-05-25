@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			div{width: 100px; height: 100px; background-color: red; margin: 40px; opacity: 0.3; filter: alpha(opacity=30)}
+		</style>
+		<script>
+			window.onload = function(){
+				var aDivs = document.getElementsByTagName("div");
+				for(var i = 0; i < aDivs.length; i++){
+					//添加一个透明度
+					aDivs[i].alpha = 30;
+					aDivs[i].onmouseover = function(){
+						startMove(this, 100);
+					}
+
+					aDivs[i].onmouseout = function(){
+						startMove(this, 30);
+					}
+				}
+			}
+
+
+			/*
+				所有的值在多物体运动里都不能公用。
+				必须是每一个运动的物体各自有一份。
+			*/
+			
+			function startMove(node, iTarget){
+				clearInterval(node.timer);
+				node.timer = setInterval(function(){
+					var speed = (iTarget - node.alpha) / 8;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+					if(node.alpha == iTarget){
+						clearInterval(node.timer);
+					}else{
+						node.alpha += speed;
+						node.style.opacity = node.alpha / 100;
+						node.style.filter = "alpha(opacity=" + node.alpha + ")";
+					}
+
+				}, 30);
+			}
+
+			
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>

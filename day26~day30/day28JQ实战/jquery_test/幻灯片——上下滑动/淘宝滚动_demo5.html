@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>淘宝幻灯片上下滑动效果</title>
+		<link href = "css.css" rel = "stylesheet" type = "text/css" />
+		<script src = '../jquery-1.10.1.min.js'></script>
+		<script>
+			$(function(){
+				var aBtns = $(".play").find("ol").find("li");
+				var oUl = $(".play").find("ul");
+				var aLis = oUl.find("li");
+
+				//设置两个全局变量
+				var iNow = 0; //代表当前点击的按钮的下标,显示图片的下标
+				var timer = null; //记录定时器的返回值
+
+				//1、给按钮添加点击
+				aBtns.click(function(){
+					iNow = $(this).index();
+					tab();
+				})
+
+				function tab(){
+					aBtns.attr("class", "").eq(iNow).attr("class", "active");
+					if(iNow == aLis.size() - 1){
+						aBtns.eq(0).attr("class", "active");
+					}
+
+					//图片也应该滚动到对应的位置
+					oUl.animate({top: -150 * iNow}, function(){
+						if(iNow == aLis.size() - 1){
+							oUl.css("top", 0);
+							iNow = 0;
+						}
+					})
+
+					document.title = iNow;
+				}
+
+				//自动进行滚动
+				timer = setInterval(function(){
+					iNow++;
+					tab();
+				}, 2000);
+
+				$("#play").mouseover(function(){
+					clearInterval(timer);
+				})
+				$("#play").mouseout(function(){
+					timer = setInterval(function(){
+						iNow++;
+						tab();
+					}, 2000);
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+	<div class="play" id="play">
+	    <ol>
+	    	<li class="active">1</li>
+	        <li>2</li>
+	        <li>3</li>
+	        <li>4</li>
+	        <li>5</li>
+	    </ol>
+		<ul>
+			<li><a href="#"><img src="images/1.jpg" alt="广告一" /></a></li>
+			<li><a href="#"><img src="images/2.jpg" alt="广告二" /></a></li>
+			<li><a href="#"><img src="images/3.jpg" alt="广告三" /></a></li>
+			<li><a href="#"><img src="images/4.jpg" alt="广告四" /></a></li>
+			<li><a href="#"><img src="images/5.jpg" alt="广告五" /></a></li>
+			<li><a href="#"><img src="images/1.jpg" alt="广告一" /></a></li>
+		</ul>
+	</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				https://www.baidu.com/s?name=avery&age=20&sex=male 
+
+				要求：传入对应的name，返回对应的value。
+			*/
+
+			alert(valueByName("https://www.baidu.com/s?name=avery&age=20&sex=male", "sex"));
+			function valueByName(url, name){
+				//1、查找这个name在字符串中是否存在
+				var start = url.indexOf(name);
+				if(start == -1){
+					return null;
+				}else{
+					var end = url.indexOf("&", start);
+					//如果是最后一个键值对
+					if(end == -1){
+						end = url.length;
+					}
+
+					//2、通过start和end将字符串提取出来
+					var subStr = url.substring(start, end);
+					//3、通过字符串分割，取出value部分
+					var arr = subStr.split("=");
+					return arr[1];
+				}
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

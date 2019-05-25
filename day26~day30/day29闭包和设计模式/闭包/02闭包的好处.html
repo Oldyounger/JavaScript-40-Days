@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				好处:
+					1、希望一个变量常驻在内存当中
+					2、避免全局变量污染（尽可能避免全局变量的声明）
+					3、可以声明私有成员
+			
+			*/
+			/*var a = 2;  //全局变量
+
+			function show(){
+				a++;
+				alert(a);
+			}
+
+			show();
+			show();*/
+
+			/*function show(){
+				var a = 2;
+				a++;
+				alert(a);
+			}
+
+			show();
+			show();*/
+
+
+			/*
+				【注】既要实现a的累加，又要避免全局变量污染。
+					使用闭包
+			*/
+			/*function show(){
+				var a = 2;
+
+				return function(){
+					a++;
+					alert(a);
+				}
+			}
+
+			var ccc = show();
+			ccc();  //3
+			ccc();  //4
+
+			alert(a);
+*/			
+
+			
+
+			//前面的小括号函数声明，后面小括号函数调用
+			var ccc = (function(){
+				var a = 2;
+				return function(){
+					a++;
+					alert(a);
+				}
+			})();
+
+			ccc();
+			ccc();
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

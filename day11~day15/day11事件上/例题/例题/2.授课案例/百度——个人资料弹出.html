@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+ul{padding:0; margin:0; list-style:none; display:none;}
+
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	var oBtn=document.getElementById('btn');
+	var oUl=document.getElementById('ul1');
+	
+	oBtn.onclick=function(ev){
+		oUl.style.display='block'
+		var oEvent=ev || event;
+	 	window.event? oEvent.cancelBubble = true : oEvent.stopPropagation();
+		}
+	document.onclick=function(){
+		oUl.style.display='none'
+		
+		}
+	oUl.onclick=function(ev){
+		var oEvent=ev || event;
+	 	window.event? oEvent.cancelBubble = true : oEvent.stopPropagation();
+		}
+		
+	
+	}
+
+
+</script>
+</head>
+
+<body>
+<input type="button" value="菜单" id="btn" />
+<ul id="ul1">
+	<li>1111</li>
+    <li>1111</li>
+    <li>1111</li>
+    <li>1111</li>
+
+</ul>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				服务器 和 客户端 相对的概念
+
+				资源提供方：服务端
+				资源受惠方：客户端
+	
+				【注】一般情况下，我们的电脑磁盘不能被别人访问的。
+				【注】服务器程序：让你电脑上的某一个文件夹对外可见。
+				
+
+				PHPnow 服务器程序
+					PHP + MySQL + Apcahe(服务器)
+				WAMP
+					windows + Apcahe + MySql + PHP
+				LAMP
+					linux + Apcahe + MySql + PHP
+				
+
+				C:\PHPnow\htdocs  对外可见
+
+				通过域名或者IP访问某一个服务器的话，如果没有指定要加载的文件路径，默认加载的是index开头的文件。
+
+				index.php
+				index.jsp
+				index.html
+
+				细节：
+					访问本地主机的服务器
+					localhost
+					127.0.0.1
+					本机的IP
+			*/
+
+			/*
+				TCP协议概念：
+				TCP是一种面向连接的、可靠的、基于字节流的传输层通信协议。
+
+				【注】传输数据的时候，
+				1、先建立连接（三次握手）
+				2、开始传输
+				3、传输完毕以后断开连接（四次挥手）
+
+				好处：
+					1、准确性极高
+					网页、登录
+				缺点:
+					1、有延迟
+					2、成本高
+
+
+				UDP协议概念：
+				UDP 是User Datagram Protocol的简称，  参考模型中一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务。
+				1、不连接，直接传
+				2、不安全，容易丢
+
+				一般用于一些对于数据及时性要求非常高，但是对于数据准确定要求不高的软件。
+				视频聊天 语音聊天
+
+
+				http基于TCP协议实现的额。
+			*/
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

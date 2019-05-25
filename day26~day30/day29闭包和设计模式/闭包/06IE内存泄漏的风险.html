@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				内存泄漏
+			*/
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+
+				/*alert(oDiv1);
+				console.log(oDiv1);*/
+
+				/*oDiv1.onclick = function(){
+					alert(oDiv1.id);
+				}
+
+				window.onunload = function(){
+					//页面解构的时候调用
+					oDiv1 = null;
+				}*/
+
+				var id = oDiv1.id;
+				oDiv1.onclick = function(){
+					alert(id);
+				}
+				oDiv1 = null;
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>div</div>
+	</body>
+</html>

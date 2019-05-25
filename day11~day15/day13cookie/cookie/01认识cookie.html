@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				存储用户的数据
+				name=value;[expires=date];[path=path];[domain=somewhere.com];[secure]
+				【注】name和value必须有的(自定义的)，后面带中括号的值是可选项。
+
+
+				【注】cookie一般情况下需要在服务器环境下加载。火狐支持本地加载。
+			*/
+
+			//设置cookie
+			// document.cookie = 'username=tianyufei';
+
+			//获取cookie
+			// alert(document.cookie);
+
+
+			/*
+				设置cookie的时候，有可能在cookie中存储中文。
+				【注】如果在cookie中有中文，一般情况下采取下述的处理方式。
+						1、编码去存储(中文 => 字符)
+						2、解码去读取(字符 => 中文)
+					encodeURIComponent  编码
+					decodeURIComponent  解码
+			*/
+
+			document.cookie = "username=" + encodeURIComponent("钢铁侠");
+
+			alert(decodeURIComponent(document.cookie));
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

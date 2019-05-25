@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			function Person(name, sex){
+				//添加属性
+				this.name = name;
+				this.sex = sex;
+			}
+			
+			//通过原型添加方法
+			Person.prototype.showName = function(){
+				alert("我的名字叫" + this.name);
+			}
+			Person.prototype.showSex = function(){
+				alert("我是" + this.sex);
+			}
+
+			var p1 = new Person("blue", "男");
+
+			alert(p1 instanceof Person);
+
+			// alert(p1.__proto__ == Person.prototype);
+
+
+
+			/*
+				Person 这个构造函数，构造出来的对象
+
+				对象.__proto__  就是 Person.prototype
+			*/
+
+
+			/*
+				instanceof 关键字
+				判断某个对象，是不是这个构造函数构造出来的。
+			*/
+			var arr = new Array();
+			var d = new Date();
+			var str = new String();
+			/*alert(typeof arr);
+			alert(typeof d);
+			alert(typeof str)*/
+
+			alert(arr instanceof Array);
+			alert(d instanceof Date);
+			alert(str instanceof String);
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

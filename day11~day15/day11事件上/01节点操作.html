@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 400px; height: 300px; background-color: orange}
+			#div2{width: 400px; height: 500px; background-color: gray}
+			#input1{width: 300px; height: 30px; font-size: 18px; }
+			#div1 button{width: 100px; height: 30px; font-size: 18px}
+			#div2 div{padding-left: 5px; border-bottom: 1px dashed black; margin-bottom: 5px}
+		</style>
+		<script src = 'tool.js'></script>
+		<script>
+			window.onload = function(){
+				//1、获取元素节点
+				var oInput = document.getElementById("input1");
+				var oDiv1 = document.getElementById("div1");
+				var oDiv2 = document.getElementById("div2");
+				var aBtns = oDiv1.getElementsByTagName("button");
+
+				aBtns[0].onclick = function(){
+					//2、创建节点，添加div2部分
+					if(oInput.value == ''){
+						alert("请输入内容");
+					}else{
+						var node = document.createElement("div");
+						node.innerHTML = oInput.value;
+						node.style.backgroundColor = randomColor();
+
+						oInput.value = '';
+
+						oDiv2.appendChild(node);
+					}
+
+				}
+
+				aBtns[1].onclick = function(){
+					//删除最后一条数据
+					oDiv2.removeChild(oDiv2.lastChild);
+				}
+
+				aBtns[2].onclick = function(){
+					//将最后一条数据拷贝完成以后，重新插入到页面上
+					var node = oDiv2.lastChild.cloneNode(true);
+					oDiv2.appendChild(node);
+				}
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<input type="text" placeholder = '输入内容' id = 'input1'>
+			<br>
+			<button>增加</button>
+			<button>删除</button>
+			<button>拷贝</button>
+		</div>
+		<div id = 'div2'>
+			<!-- <div>xxx</div>
+			<div>xxx</div> -->
+		</div>
+	</body>
+</html>

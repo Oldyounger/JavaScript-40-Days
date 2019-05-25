@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#issue{
+				width: 300px;
+				height: 200px;
+				border: 1px solid black;
+				position: absolute;
+				display: none;
+				left: 50px;
+				top: 100px
+			}
+			#issue button {
+				height: 30px;
+				background-color: orange;
+				font-size: 18px
+			}
+			#close{
+				position: absolute;
+				right: 0px;
+			}
+			#issue .title{
+				background-color: gray
+			}
+			#txt{
+				width: 296px;
+				height: 167px;
+			}
+			#div1{
+				width: 300px;
+				height: 500px;
+				border: 1px solid black;
+				margin: 100px auto;
+				position: relative;
+			}
+			#div1 div button{
+				position: absolute;
+				right: 0;
+			}
+			#div1 div{
+				border-bottom: 1px dotted black
+			}
+		</style>
+		<script src = "tool.js"></script>
+		<script>
+			window.onload = function(){
+				$("btn").onclick = function(){
+					$("issue").style.display = 'block';
+				}
+
+				$("close").onclick = function(){
+					$("issue").style.display = 'none';
+				}
+
+				//点击提交按钮的时候，创建节点，添加到页面上
+				$("submit").onclick = function(){
+					if(!$("txt").value){
+						alert("请输入内容");
+					}else{
+						var node = document.createElement("div");
+						node.innerHTML = $("txt").value;
+
+						var oClose = document.createElement("button");
+						oClose.innerHTML = "X";
+						
+
+						node.appendChild(oClose);
+
+						$("div1").appendChild(node);
+						$("txt").value = '';
+					}
+				}
+
+				$("txt").onkeydown = function(ev){
+					var e = ev || window.event;
+					if(e.keyCode == 13 && e.ctrlKey){
+						//同时按下ctrl+enter，提交文本
+						$("submit").onclick();
+					}
+				}
+
+
+				//通过事件委托，实现，点击X，删除节点
+				$("div1").onclick = function(ev){
+					var e = ev || window.event;
+					var target = e.target || window.event.srcElement;
+					if(target.tagName.toLowerCase() == "button"){
+						$("div1").removeChild(target.parentNode);
+					}
+				}
+
+				//输入框，可以拖拽
+				drag($("issue"))
+
+			}	
+
+			//可以吧获取元素节点的方法简化一下
+			/*
+				document.getElementById(id);
+				$()
+			*/
+			function $(id){
+				return document.getElementById(id);
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value = "发布" id = "btn" />
+		<div id = "issue">
+			<div class = "title">
+				<button id = "submit">提交</button>
+				<button id = "close">X</button>
+			</div>
+			<textarea id="txt" cols="30" rows="10"></textarea>
+		</div>
+		<div id = "div1">
+			<!-- <div>我是发布的内容<button>X</button></div> -->
+		</div>
+	</body>
+</html>

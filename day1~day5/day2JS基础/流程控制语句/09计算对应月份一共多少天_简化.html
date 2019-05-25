@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				输如月份，显示当月的天数 
+				要求：1) 利用case穿透简化代码
+				【注】通过省略break简化代码。
+			*/
+			var year = 2018;
+			var month = 12;
+			switch(month){
+				case 1:
+				case 3:
+				case 5:
+				case 7:
+				case 8:
+				case 10:
+				case 12:
+					alert("31天");
+					break;
+				case 2:
+					if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+						alert("29天");
+					}else{
+						alert("28天");
+					}
+					break;
+				default:
+					alert("30天");
+					break
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

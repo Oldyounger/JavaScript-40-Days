@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset = "utf-8" />
+		<script type="text/javascript">
+		/*
+			闭包，有这么几个特点
+			1、函数嵌套函数
+			2、内部函数可以引用外部函数的参数和变量
+			3、参数和变量并不会被JS中的垃圾回收机制所回收
+
+		*/
+		/*function aaa(a){
+			var b = 5;
+			function bbb(){
+
+				//长期驻扎在我们的内存中
+				alert(a);
+				alert(b);
+			}
+			bbb();
+		}
+
+		aaa(10);*/
+
+
+		//【注】JS的垃圾回收机制
+		/*function aaa(){
+			var a = 1;
+		}
+
+		aaa();
+		alert(a); *///a is not defined   垃圾回收机制收回了，节省内存
+
+		function aaa(){
+			var a = 5;
+			function bbb(){
+				alert(a);
+			}
+			return bbb;
+		}
+
+		var c = aaa();
+		
+		c();
+
+
+
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

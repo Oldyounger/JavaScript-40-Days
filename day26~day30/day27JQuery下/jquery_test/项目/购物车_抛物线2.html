@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type = "text/javascript" src="jquery-1.11.3.js"></script>
+	<script type = "text/javascript" src="jquery.cookie.js"></script>
+	<script src = 'parabola.js'></script>
+	<script>
+		/*
+			eval()  将json格式的字符串 -> 数据结构
+			【注】json格式的字符串格式必须最外层是数组，里面每个元素都是对象。
+		*/
+
+		$(function(){
+			sc_car();
+
+			$.ajax({
+				type: "GET",
+				url: "data.json",
+				success: function(arr){
+					// alert(arr);
+					// 创建节点插入到页面上
+					for(var i = 0; i < arr.length; i++){
+						$(`<li class = 'goods_item'>
+						<div class = 'goods_pic'>
+							<img src="${arr[i].img}" alt="">
+						</div>
+						<div class = 'goods_title'>
+							<p>【京东超市】奥利奥软点小草莓</p>
+						</div>
+						<div class = "sc">
+							<div class = 'sc_btn' id = "${arr[i].id}">加入购物车</div>
+						</div>
+					</li>`).appendTo($(".goods_box ul"));
+						//【注】一定要注意批量操作
+
+					}
+				},
+				error: function(msg){
+					alert(msg);
+				}
+			})
+
+			//给购物车添加点击事件
+			$(".goods_box ul").on("click", ".sc_btn", function(){
+				ballMove(this);
+
+				var id = this.id;
+				//将该商品添加到cookie中，
+				/*
+					cookie里值存储商品的id和商品的数量
+					存储一条cookie  name是goods value json格式的字符串
+					[{id:1,num:5},{id:4,num:1}]
+				*/
+				//1、是否是第一次添加该商品
+				var first = $.cookie("goods") == null ? true : false;
+				if(first){
+					//第一次添加
+					var arr = [{id: id,num:1}];
+					$.cookie("goods", JSON.stringify(arr), {
+						expires: 7
+					})
+				}else{
+					//2、判断之前是否添加过
+					var cookieStr = $.cookie("goods");
+					var arr = eval(cookieStr);
+					var isSame = false;
+					for(var i = 0; i < arr.length; i++){
+						if(id == arr[i].id){
+							isSame = true;
+							//<1>添加过
+							arr[i].num++;
+							break;
+						}
+					}
+					//<2>没有添加过
+					if(!isSame){
+						var obj = {id: id, num: 1};
+						arr.push(obj);
+					}
+
+					//重新存储在数据库中
+					$.cookie("goods", JSON.stringify(arr), {
+						expires: 7
+					})
+				}
+				sc_car();
+			})
+
+			//购物车数量
+			function sc_car(){
+				var cookieStr = $.cookie("goods");
+				if(cookieStr){
+					var arr = eval(cookieStr);
+					var sum = 0; //求和数
+					for(var i = 0; i < arr.length; i++){
+						sum += arr[i].num;
+					}
+					$(".sc_right .sc_num").html(sum);
+				}else{
+					$(".sc_right .sc_num").html(0);
+				}
+
+			}
+
+			/*
+				mouseenter => mouseover
+				mouseleave => mouseout
+			*/
+			$(".sc_right").mouseenter(function(){
+				$(this).stop().animate({
+					right: 0
+				})
+				sc_msg();
+			});
+			$(".sc_right").mouseleave(function(){
+				$(this).stop().animate({
+					right: -270
+				})
+			});
+
+			//要将存储在cookie中的商品添加到页面上
+			function sc_msg(){
+				$.ajax({
+					url: "data.json",
+					type: "GET",
+					success: function(arr){
+						//将原有的数据清空
+						$(".sc_right ul").html("");
+
+						//只能加载存储在cookie中的商品
+						var cookieStr = $.cookie("goods");
+						var cookieArr = eval(cookieStr);
+						var goodsArr = [];
+						for(var i = 0; i < arr.length; i++){
+							for(var j = 0; j < cookieArr.length; j++){
+								if(arr[i].id == cookieArr[j].id){
+									arr[i].num = cookieArr[j].num;
+									goodsArr.push(arr[i]);
+								}
+							}
+						}
+						
+						//创建节点，添加到页面上
+						for(var i = 0; i < goodsArr.length; i++){
+							$(`<li>
+								<div class = 'sc_goodsPic'>
+									<img src = "${goodsArr[i].img}">
+								</div>
+								<div class = 'sc_goodsTitle'>
+									<p>这是商品曲奇饼干</p>
+								</div>
+								<div class = 'sc_goodsBtn'>购买</div>
+								<div class = 'sc_goodsNum'>商品数量：${goodsArr[i].num}</div>
+							</li>`).appendTo($(".sc_right ul"));
+						}
+						
+					},
+					error: function(msg){
+						alert(msg);
+					}
+				})
+			}
+
+
+			//小球进行抛物线运动
+			function ballMove(node){
+				//node是我们点击的按钮
+				//<1>先将小球移动到购物车按钮的位置
+				$("#ball").css({
+					display: "block",
+					left: $(node).offset().left,
+					top: $(node).offset().top
+				});
+
+				var offsetX = $(".sc_pic").offset().left - $("#ball").offset().left;
+				var offsetY = $(".sc_pic").offset().top - $("#ball").offset().top;
+
+				//创建抛物线对象，配置参数
+				var bool = new Parabola({
+					el: "#ball",
+					targetEl: null,
+					offset: [offsetX, offsetY],
+					curvature: 0.0005,
+					duration: 400,
+					callback: function(){
+						$("#ball").hide();
+					}
+				})
+
+				bool.start();
+			}
+
+			//清除购物车
+			$("#clearBtn").click(function(){
+				$.cookie("goods", null);
+				sc_car();
+			})
+		})
+	</script>
+	<style>
+		
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			overflow: hidden;
+		}
+		li{
+			list-style-type: none;
+		}
+		.goods_box ul:after{
+			content: "",
+			display:block;
+			clear: both;
+		}
+		.goods_box ul{
+			width: 1100px;
+			margin:0 auto;
+		}
+		.goods_item{
+			padding: 10px 6px;
+			border-right: 1px solid #b6b6b6;
+			float: left;
+			position: relative;
+			margin-bottom: 20px;
+		}
+		.goods_pic{
+			padding: 2px 15px;
+			margin: 0 auto;
+			width: 160px;
+			height: 160px;
+			-webkit-transition:all 0.5s ease-in-out;
+			-moz-transition:all 1s ease-in-out;
+		}
+		.goods_pic:hover{
+			transform:rotate(180deg);
+			box-shadow: 2px 2px 5px #b6b6b6;
+		}
+		.goods_title{
+			font-size: 12px;
+		    text-align: left;
+		    color: #999;
+		    padding: 13px 0 7px;
+		    display: block;
+		    max-width: 100%;
+		    _width: 100%;
+		    white-space: nowrap;
+		    text-overflow: ellipsis;
+		    overflow: hidden;
+		}
+		.sc{
+			padding: 10px 5px;
+		}
+		.sc_btn{
+			width: 100px;
+			margin: 0 auto;
+			text-align: center;
+			padding: 5px 10px;
+			border-radius: 2px;
+			box-shadow: 0 0 2px #f10;
+			height: 20px;
+			background: #fc1934;
+			color: #fff;
+			font-weight: bold;
+			font-size: 18px;
+			cursor:pointer;
+
+		}
+		.sc_right{
+			position: absolute;
+			width: 270px;
+			border-left: 2px solid #b6b6b6;
+			right: -270px;
+			top: 0;
+			height: 100%;
+
+		}
+		.sc_pic{
+			width: 40px;
+			height: 40px;
+			padding: 4px 6px;
+			background: url(toolbars.png) #999 15px 15px no-repeat;
+			position: relative;
+			left: -52px;
+			top: 50%;
+			margin-top: -24px;
+
+		}
+		.sc_num{
+			position: absolute;
+			padding: 2px 8px;
+			border-radius: 50%;
+			background: red;
+			color: #fff;
+			top: -8px;
+			left: 20px;
+			z-index: 1;
+		}
+		.sc_goodsPic{
+			
+			width: 80px;
+			height: 80px;
+			border: 1px solid #b6b6b6;
+			float: left;
+
+		}
+		.sc_goodsPic img{
+			width: 100%;
+			height: 100%;
+		}
+		.sc_goodsTitle{
+			line-height: 40px;
+			color: #999;
+			margin-left: 20px;
+			float: left;
+		}
+		.sc_goodsBtn{
+			
+			background: #fc1934;
+			color: #fff;
+			text-align: center;
+			float: left;
+			line-height: 30px;
+			width: 60px;
+			height: 30px;
+			margin-left: 20px;
+			cursor: pointer;
+
+		}
+		.sc_goodsNum{
+			float: left;
+			line-height: 30px;
+			font-size: 10px;
+			margin-left: 5px;
+
+		}
+		.sc_right li{
+			height: 100px;
+		}
+		#ball{width: 50px; height: 50px; background-color: black; border-radius: 50%; position: absolute; display: none}
+
+	</style>
+
+	<script>
+		
+
+	</script>
+</head>
+<body>
+	<button id = 'clearBtn'>清除购物车</button>
+<!-- 商品列表 -->
+	<div class="goods_box">
+		
+		<ul>
+			
+			
+		</ul>
+
+	</div>
+
+<!-- 右边购物车 -->
+	<div class="sc_right">
+		<div class="sc_pic">
+			<!-- 购物车内商品的数量 -->
+			<div class="sc_num">
+				0
+			</div>
+		</div>
+
+		<ul>
+			
+		</ul>
+	</div>
+	<div id = 'ball'></div>
+</body>
+</html
+
+
+
+
+
+
+

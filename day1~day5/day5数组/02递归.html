@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				特点：
+					1、有参数
+					2、有return
+					3、函数自己调用自己
+
+				最强王者法则：
+					1、找临界值，不用计算直接得出
+					2、找这一次和上一次关系
+					3、假设函数已经可以用，通过函数写出对应公式
+
+					mul(100) = mul(99) * 100;
+					mul(n) = mul(n - 1) * n;
+			*/
+
+			//1~n乘积
+			function mul(n){
+				if(n == 1){
+					return 1;
+				}
+				return mul(n - 1) * n;
+			}
+
+			alert(mul(10));
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				【注】ECMA7 新语法，浏览器也兼容  async await
+
+				Promise  ECMA6新增的语法
+				语法结构：
+					new Promise(function(resolve, reject){
+						if(如果程序运行成功){
+							resolve(); //就是.then传入函数
+						}else{
+							reject();  //就是.catch中传入的函数
+						}
+					}).then(function(){
+	
+					}).catch(function(){
+	
+					})
+
+			*/
+
+			var num = 1; //如果值为1，那么代表支付成功，值为0，代表支付失败
+			new Promise(function(resolve, reject){
+				console.log("开始支付订单");
+				if(num == 1){
+					//支付成功，通知商家下订单
+					resolve("支付成功");
+				}else{
+					reject("支付失败");
+				}
+			}).then(function(value){
+				console.log(value + ".then");
+				console.log("通知商家下单");
+			}).catch(function(value){
+				console.log(value + ".catch");
+				console.log("让用户重新支付");
+			})
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

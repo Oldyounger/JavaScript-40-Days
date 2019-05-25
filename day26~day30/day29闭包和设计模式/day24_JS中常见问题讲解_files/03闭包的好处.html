@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset = "utf-8" />
+		<script type="text/javascript">
+		/*
+			好处:
+				1、让一个变量长期驻扎在内存中
+				2、避免了全局变量的污染
+				3、私有成员的存放
+
+		*/
+	/*	var a = 1;
+		function aaa(){
+			a++;
+			alert(a);
+		}
+
+		aaa(); //2
+		aaa(); //3*/
+
+		//【注】在编程的时候要尽可能的避免使用全局变量，会影响计算机的性能。
+
+		/*function aaa(){
+			var a = 1;
+			a++;
+			alert(a);
+		}
+
+		aaa(); //2
+		aaa(); //2*/
+
+
+		//【注】我们可以使用闭包做到既让a进行累加，又让a不在外面被访问到。
+
+		/*function aaa(){
+			var a = 1;
+			return function(){
+				a++;
+				alert(a);
+			}
+		}
+
+		var b = aaa();*/
+
+/*		var b = (function(){
+			var a = 1;
+			return function(){
+				a++;
+				alert(a);
+			}
+		})();
+
+		b(); //2
+		b(); //3
+
+		alert(a);*/
+
+
+		//【了解】
+
+
+		var aaa = (function(){
+			var a = 1; //私有变量
+			function bbb(){ //私有方法
+				a++;
+				alert(a);
+			}
+			function ccc(){ //私有方法
+				a++;
+				alert(a);
+			}
+			return {
+				b: bbb,
+				c: ccc
+			}
+		})();
+
+		//alert(a); //a is not defined
+
+		//bbb(); // bbb is not defined
+
+
+		aaa.b();
+		aaa.c();
+
+
+
+
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

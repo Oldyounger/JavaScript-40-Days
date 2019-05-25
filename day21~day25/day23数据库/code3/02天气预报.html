@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			function download(data){
+				var oT1 = document.getElementById("t1");
+				var oH1 = document.getElementById("h1");
+				oT1.innerHTML = `<tr>
+				<th>日期</th>
+				<th>天气情况</th>
+				<th>风向</th>
+				<th>气温</th>
+			</tr>`;
+
+			    oH1.innerHTML = `城市：${data.city}  pm25：${data.pm25}`;
+				// alert("下载到：" + data);
+				//通过循环创建对应的节点创建在页面上
+				var arr = data.weather;
+				for(var i = 0; i < arr.length; i++){
+					var oTr = document.createElement("tr");
+					for(var key in arr[i]){
+						if(key != "icon1" && key != "icon2"){
+							var oTd = document.createElement("td");
+							oTd.innerHTML = arr[i][key];
+							oTr.appendChild(oTd);
+						}
+					}
+					oT1.appendChild(oTr);
+				}
+			}
+
+
+
+			window.onload = function(){
+				var oCity = document.getElementById("city");
+				var oBtn = document.getElementById("search");
+
+				oBtn.onclick = function(){
+					if(!oCity.value){
+						alert("请输入城市名称");
+					}else{
+						//通过JSONP请求
+						var oScript = document.createElement("script");
+						oScript.src = "https://api.asilu.com/weather/?city=" + oCity.value + "&callback=download";
+						document.body.appendChild(oScript);
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" id = 'city' placeholder="城市名称" />
+		<input type="button" id = 'search' value = '查询' />
+		<h1 id = 'h1'>城市： pm25：</h1>
+		<table border = "1" id = 't1'>
+			<tr>
+				<th>日期</th>
+				<th>天气情况</th>
+				<th>风向</th>
+				<th>气温</th>
+			</tr>
+		</table>
+	</body>
+</html>

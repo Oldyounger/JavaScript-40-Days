@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				Set集合
+				1、无序
+				2、不重复
+				【注】SET集合没有提供下标方式的访问，因此只能使用for来遍历。
+			*/
+			let imgs = new Set();
+			imgs.add(1);
+			imgs.add(1);
+			imgs.add(5);
+			imgs.add("5");
+			imgs.add(new String("hello"));
+			imgs.add(new String("hello"));
+			// console.log(imgs);
+
+			/*
+				集合的遍历 for...of
+			*/
+			/*//根据集合的key遍历
+			for(var item of imgs.keys()){
+				console.log(item);
+			}
+
+			//根据集合的value遍历
+			for(var item of imgs.values()){
+				console.log(item);
+			}
+
+			for(var item of imgs.entries()){
+				console.log(item);
+			}*/
+
+
+			/*
+				 数组去重
+			*/
+
+			var arr = [10, 20, 30, 40, 50, 40, 30, 20, 10];
+			/*for(var i in arr){
+				alert(arr[i])
+			}*/
+			for(var i of arr){
+				alert(i)
+			}
+/*
+			var set = new Set(arr);
+
+			var newArr = [...set];
+			alert(newArr)*/
+
+			arr = [...new Set(arr)];
+			alert(arr);
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

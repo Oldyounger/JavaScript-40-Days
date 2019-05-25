@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 100px; height: 200px; position: absolute; left: 0px; background-color: gray; left: -100px}
+			#div1 span{color: blue; background-color: yellow; width: 20px; height: 60px;  line-height: 20px; position: absolute; left: 100px; top: 70px}
+		</style>
+		<script>
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+
+				//移入
+				oDiv1.onmouseover = function(){
+					startMove(0)
+				}
+
+				//移出
+				oDiv1.onmouseout = function(){
+					startMove(-100)
+				}
+
+
+			}
+
+			var timer = null;
+			function startMove(iTarget){
+				var oDiv1 = document.getElementById("div1");
+				var speed = 5;
+				//1、每次启动定时器之前，先将上一次定时器关闭到
+				clearInterval(timer);
+				timer = setInterval(function(){
+					if(oDiv1.offsetLeft < iTarget){
+						speed = Math.abs(speed);
+					}else{
+						speed = -Math.abs(speed);
+					}
+
+					//2、运动和停止分开
+					if(oDiv1.offsetLeft == iTarget){
+						clearInterval(timer);
+					}else{
+						oDiv1.style.left = oDiv1.offsetLeft + speed + 'px';
+					}
+				}, 30);
+			}
+
+			
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<span>分享到</span>
+		</div>
+	</body>
+</html>

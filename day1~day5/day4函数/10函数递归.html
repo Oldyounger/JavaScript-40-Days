@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				递归：函数自己调用自己，叫做递归。
+
+				递归特点：
+					1、有参数
+					2、有return
+					3、自己调用自己
+				【注】递归是凡是循环能做的，递归都能做，循环能以去做的，递归也能做。
+				【注】今天大家结束以后都会写递归，但是看不懂。
+			*/
+
+			/*
+				计算1+2+3+…+100的和
+			*/
+			/*function sum(n){
+				var res = 0;
+				for(var i = 1; i <= 100; i++){
+					res += i;
+				}
+				return res;
+			}
+
+			alert(sum(100));*/
+
+
+			/*
+				最强王者法则:
+				1. 首先去找临界值，即无需计算，获得的值。
+				2. 找这一次和上一次的关系
+				3. 假设当前函数已经可以使用，调用自身计算上一次和这一次的关系
+				
+				sum(100) = sum(99) + 100;
+				sum(n) = sum(n - 1) + n;
+			
+				计算1+2+3+…+n的和
+			*/
+
+			function sum(n){
+				if(n == 1){
+					return 1;
+				}
+				return sum(n - 1) + n;
+			}
+
+			alert(sum(100));
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

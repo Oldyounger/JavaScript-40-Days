@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				我们编程过程中需要一个可以存储大量数据的结构 -> 数组。
+
+				数组概念：存储大量数据。可以使用一个变量名，存储大量的数据。
+			*/
+
+			/*
+				1、声明数组方法
+				<1>通过new运算符创建数组
+					参数的部分：传入你想存储在数组中的元素（JS弱引用，数组中可以存储任意的数据类型）
+				【注】元素：数组中存储的每一个值，叫做数组的元素。
+
+				<2>省略new运算符创建数组
+
+				以上两种创建数组的方法都不常用。
+
+
+				<3>直接通过数组常量赋值。JS中数组就是通过 []表示。
+			*/
+			/*var arr = new Array(100, true, "hello");
+			alert(arr);*/
+
+			/*var arr = Array(100, true, "hello");
+			alert(arr);*/
+
+			/*var arr = [10, true, "hello"];
+			alert(arr);*/
+
+
+			/*
+				重点：使用 new Array  Array 创建数组的时候
+					  当参数是数字，并且只有这一个参数的时候，生成一个对应长度的空数组。
+			*/
+			// var arr = new Array(10);
+			/*var arr = Array(10);
+			alert(arr);*/
+
+
+			/*var arr = [10, 20, 30];
+			alert(typeof arr); //object*/
+			/*
+				访问数组的属性：
+				arr.length  输出数组中元素的个数
+
+				访问数组中的元素：
+				通过元素的下标访问，【注】元素下标从0开始的。
+			*/
+			/*var arr = [10, 20, 30];
+			alert(arr[2]);
+			arr[0] = "hello";
+			alert(arr);*/
+
+
+			/*
+				【注】循环和数组是绝配。
+			*/
+			var arr = [10, 20, 30, 40, 50];
+			for(var i = 0; i < arr.length; i++){
+				document.write(arr[i] + "<br>");
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

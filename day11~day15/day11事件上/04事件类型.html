@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*	
+				事件绑定的格式：
+					元素节点.on + 事件类型 = 函数;
+
+				事件类型
+
+				鼠标事件(可以添加到任何元素节点上)
+					click     单击
+					dblclick  双击
+					mousedown 鼠标按下
+					mouseup   鼠标抬起
+					mouseover 鼠标移入
+					mouseout  鼠标移出
+					mousemove 鼠标移动  只要不停的移动，重复不停的被触发
+
+				键盘事件(window，表单输入框)
+					keydown   键盘按下(支持全键位) 如果按下不放，重复触发
+					keyup     键盘抬起
+					keypress  键盘按下(只支持字符键)  如果按下不放，重复触发
+
+				HTML事件
+					window事件
+					表单事件
+			*/
+			window.onload = function(){
+				var oBtn = document.getElementById("btn1");
+				/*oBtn.ondblclick = function(){
+					alert("xxx");
+				}*/
+
+				/*oBtn.onmousedown = function(){
+					this.innerHTML = '按下';
+				}
+
+				oBtn.onmouseup = function(){
+					this.innerHTML = '抬起';
+				}*/
+
+				/*oBtn.onmouseover = function(){
+					this.style.backgroundColor = 'blue';
+				}
+				oBtn.onmouseout = function(){
+					this.style.backgroundColor = 'yellow';
+				}*/
+				/*var i = 0;
+				oBtn.onmousemove = function(){
+					document.title = i++;
+				}*/
+
+				var i = 0;
+				/*window.onkeydown = function(){
+					document.title = "按下" + i++;
+				}*/
+
+				window.onkeypress = function(){
+					document.title = "按下" + i++;
+				}
+				window.onkeyup = function(){
+					document.title = '抬起';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>鼠标事件</button>
+	</body>
+</html>

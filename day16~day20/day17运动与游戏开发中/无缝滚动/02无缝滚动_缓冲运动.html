@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			*{margin: 0px; padding: 0px}
+			#div1{width: 680px; height: 170px; border: 1px solid black; margin: 100px auto; position: relative;   overflow: hidden; }
+			#ul1{position: absolute; left: 0px}
+			#ul1 li{list-style: none; width: 150px; height: 150px; margin: 10px; float: left;}
+			#ul1 li img{width: 100%; height: 100%}
+		</style>
+		<script src = '../startMove.js'></script>
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+				var oUl = document.getElementById("ul1");
+				var aLis = oUl.getElementsByTagName("li");
+
+				//在ul的后面，再去添加四张图片
+				oUl.innerHTML += oUl.innerHTML;
+				//oUl的宽应该变成原来的两倍
+				oUl.style.width = 170 * aLis.length + 'px';
+
+				
+				//缓冲运动，每一次向左运动一个图片宽
+				var timer = null;
+
+				function timerInner(){
+					timer = setInterval(function(){
+						startMove(oUl, {left: oUl.offsetLeft - 170}, function(){
+							if(oUl.offsetLeft <= -oUl.offsetWidth / 2){
+								oUl.style.left = 0;
+							}
+						})
+
+					}, 2000);
+
+				}
+
+				timerInner();
+
+
+				oDiv.onmouseover = function(){
+					clearInterval(timer);
+				}
+
+				oDiv.onmouseout = function(){
+					timerInner()
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<ul id = 'ul1'>
+				<li>
+					<img src="img/1.jpg" alt="">
+				</li>
+				<li>
+					<img src="img/2.jpg" alt="">
+				</li>
+				<li>
+					<img src="img/3.jpg" alt="">
+				</li>
+				<li>
+					<img src="img/4.jpg" alt="">
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

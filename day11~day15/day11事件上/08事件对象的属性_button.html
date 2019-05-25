@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				识别你当前按下鼠标上的哪个键
+
+				button
+					0  左键
+					1  滚轮
+					2  右键
+				在IE下不兼容
+			*/
+			window.onload = function(){
+				var oBtn = document.getElementById("btn1");
+				oBtn.onmousedown = function(ev){
+					var e = ev || window.event;
+					alert(e.button);
+			 	}
+			}
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>按钮</button>
+	</body>
+</html>

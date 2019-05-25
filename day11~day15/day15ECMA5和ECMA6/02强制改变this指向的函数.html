@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				函数对象下，强制改变this指向的三个方法。
+				call
+					函数.call()
+					第一个参数位置，必定传入的是，this的指向
+					从第二个参数开始，是原有的参数，原有参数往后顺延一位
+
+				apply
+					函数.apply()
+					第一个参数位置，必定传入的是，this的指向
+					将原有的参数直接放在数组中，传入。
+
+				bind
+					函数.bind(this的指向);
+					功能：预设this的指向
+					返回值：还是原函数(函数中的this被预设了)
+			*/
+
+
+			function show(num1, num2){
+				alert(this);
+				alert(num1 + ', ' + num2)
+			}
+
+			// show(10, 20);
+			//强制改变这个函数中this的指向
+			// show.call("call", 40, 50);
+
+
+			// show.apply("apply", [30, 40]);
+
+
+		/*	var res = show.bind("bind");
+			
+			res(10, 20)
+*/			
+			// show.bind("bind")(10, 20);
+
+			window.onload = function(){
+				function xxx(){
+					alert(this);
+				}
+
+				var oBtn = document.getElementById("btn1");
+				oBtn.onclick = xxx.bind("yyy");
+			}
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>按钮</button>
+	</body>
+</html>

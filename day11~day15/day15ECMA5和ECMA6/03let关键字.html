@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				【注】声明变量要使用var声明，通过var声明的变量有作用域，作用域范围是一个函数的大括号。
+
+				let 关键字也是用来声明变量的
+					声明的变量只要遇到大括号，就会形成作用域。
+				【注】我们将let关键字形成的作用域叫做块级作用域。
+			*/
+
+			/*function show(){
+				var num = 10;
+				alert(num);
+			}
+
+			show();
+			alert(num); //num is not defined*/
+
+			/*if(1){
+				let num = 10;
+			}
+			alert(num); //num is not defined*/
+
+			/*for(let i = 0; i < 5; i++){
+				setTimeout(function(){
+					document.write(i + '<br>');
+				}, 2000);
+			}*/
+
+
+			/*for(var i = 0; i < 5; i++){
+				for(var i = 0; i < 5; i++){
+					document.write(i + "<br/>");
+				}
+			}*/
+
+			for(let i = 0; i < 5; i++){
+				for(let i = 0; i < 5; i++){
+					document.write(i + "<br/>");
+				}
+			}
+
+
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

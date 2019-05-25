@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			//CommonJS规范
+			alert(1)
+			var math = require("math");
+			math.add(10, 20);
+			alert(2);
+
+
+			alert(1);
+			//AMD规范
+			require(["math"], function(math){
+				math.add(10, 20);
+			})
+			alert(2);
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

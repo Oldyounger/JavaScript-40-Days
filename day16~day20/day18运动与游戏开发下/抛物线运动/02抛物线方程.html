@@ -1,0 +1,101 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <title>抛物线运动效果</title>
+	    <style type="text/css">
+	        .boll {
+	            width: 50px;
+	            height: 50px;
+	            background-color: #ff3333;
+	            position: absolute;
+	            top: 380px;
+	            left: 100px;
+	            -moz-border-radius: 50px;
+	            -webkit-border-radius: 50px;
+	            border-radius: 50px;
+	        }
+
+	        .target {
+	            width: 50px;
+	            height: 50px;
+	            background-color: #CDCDCD;
+	            position: absolute;
+	            top: 180px;
+	            left: 600px;
+	            -moz-border-radius: 50px;
+	            -webkit-border-radius: 50px;
+	            border-radius: 50px;
+	        }
+	    </style>
+	    <script type="text/javascript" src = "jquery-1.10.1.min.js"></script>
+	    <script type="text/javascript" src="parabola.js"></script>
+		<script type="text/javascript">
+
+
+		var i = 0;
+		window.onload = function(){
+			var bool = new Parabola({
+			    el: "#boll",  		   //选择我们哪个物体需要进行抛物线运动
+			    offset: [500, 100],    //初始位置和最终，到达的偏移的坐标
+			    curvature: 0.001,      //抛物线弯曲的曲率，越接近于0，就越平缓 
+			    duration: 1000,        //整个动画所用的时间
+			    callback:function(){
+			    					   //这个函数是在整个动画结束的时候调用
+			        alert("完成后回调")
+			    },
+			    stepCallback:function(x,y){
+			    			           //这是在运动过程中不断去调用的函数
+			        console.log(x,y);
+			        $("<div>").appendTo("body").css({
+			            "position": "absolute",
+			            "top": this.elOriginalTop + y,
+			            "left":this.elOriginalLeft + x,
+			            "background-color":"#CDCDCD",
+			            "width":"5px",
+			            "height":"5px",
+			            "border-radius": "5px"
+			        });
+			    }
+			});
+
+
+			$("#reset").click(function (event) {
+			    event.preventDefault();
+			    bool.reset()  //将位置重置
+			});
+			$("#run").click(function (event) {
+			    event.preventDefault();
+			    bool.start(); //动画开始
+			});
+			$("#stop").click(function (event) {
+			    event.preventDefault();
+			    bool.stop();  //动画停止
+			});
+			$("#setOptions").click(function (event) {
+			    event.preventDefault();
+			    bool.setOptions({
+			        targetEl: $("#target"), //必须元素节点 设置，小球运动到该元素节点的位置
+			        curvature: 0.005,
+			        duration: 1000
+			    });
+			});
+		}
+		</script>
+	</head>
+
+	<body>
+	<div class="btns" style="margin-top:20px">
+	    <a href="http://www.css88.com/archives/5355" target="_blank">回到JavaScript实现的抛物线运动效果</a>
+	</div>
+	    <div class="btns" style="margin-top:20px">
+	    <a href="#" class="btnA btn-danger" id="reset" rel="popover" title="A Title" style="">reset</a>
+	    <a href="#" class="btnA btn-danger" id="run" rel="popover" title="A Title" style="">run</a>
+	    <a href="#" class="btnA btn-danger" id="stop" rel="popover" title="A Title" style="">stop</a>
+	    <a href="#" class="btnA btn-danger" id="setOptions" rel="popover" title="A Title" style="">setOptions</a>
+	</div>
+	<div id="boll" class="boll"></div>
+	<div id="target" class="target"></div>
+	</body>
+</html>

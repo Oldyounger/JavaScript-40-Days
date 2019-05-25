@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			div{width: 100px; height: 100px; background-color: red; margin: 40px}
+		</style>
+		<script>
+			window.onload = function(){
+				var aDivs = document.getElementsByTagName("div");
+				//宽变宽
+				aDivs[0].onclick = function(){
+					startMove(this, "width", 300)
+				}	
+
+				//高变高
+				aDivs[1].onclick = function(){
+					startMove(this, "height", 300)
+				}
+
+				//marginLeft 变宽
+				aDivs[2].onclick = function(){
+					startMove(this, "marginLeft", 300)
+				}
+
+				//字体大小发生变化
+				aDivs[3].onclick = function(){
+					startMove(this, "fontSize", 5
+						0);
+				}
+			}
+
+			function startMove(node, attr, iTarget){
+				clearInterval(node.timer);
+				node.timer = setInterval(function(){
+					//1、获取当前样式
+					var iCur = parseInt(getStyle(node, attr));
+					
+					var speed = (iTarget - iCur) / 8;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+					if(iCur == iTarget){
+						clearInterval(node.timer);
+					}else{
+						node.style[attr] = iCur + speed + 'px';
+					}
+
+
+				}, 30);
+			}
+			// 浏览器兼容写法
+			function getStyle(node, styleType){
+				return node.currentStyle ? node.currentStyle[styleType] : getComputedStyle(node)[styleType];
+			}
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div>div文本</div>
+	</body>
+</html>

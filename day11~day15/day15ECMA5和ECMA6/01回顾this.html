@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				this  每一个函数内部都有的一个内置变量。
+				this  永远指向当前函数主人。
+			*/
+
+			/*
+				总结
+				1、当前函数的主人是window
+			*/
+			/*function show(){
+				alert(this);
+			}
+
+			// window.show();
+			show();*/
+
+			/*
+				事件绑定中，this一般情况下指向当前函数的绑定的元素节点
+			*/
+			/*window.onload = function(){
+				var oBtn = document.getElementById("btn1");
+				oBtn.onclick = show;
+
+				function show(){
+					alert(this);
+				}
+			}*/
+
+
+
+			/*
+				对象中的方法
+				this指向当前这个对象
+			*/
+			var obj = {
+				name: "小明",
+				sex: '男',
+				age: 18,
+				showName: function(){
+					alert(obj.name);
+					alert(this.name)
+				}
+			}
+
+			obj.showName();
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>按钮</button>
+	</body>
+</html>

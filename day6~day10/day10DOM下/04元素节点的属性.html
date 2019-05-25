@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				DOM节点类型
+				1、元素节点
+				2、属性节点
+				3、文本节点
+			*/
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+
+				//获取oDiv1的子节点
+				/*
+					childNodes  伪数组
+
+					firstChild
+					lastChild
+				*/
+				alert(oDiv1.childNodes.length); //3
+				// alert(oDiv1.childNodes[0]);
+				alert(oDiv1.firstChild);
+				alert(oDiv1.childNodes[1].tagName);
+				// alert(oDiv1.childNodes[2].tagName);
+				alert(oDiv1.lastChild.tagName);
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>div文本<em>em</em><strong>strong</strong></div>
+	</body>
+</html>

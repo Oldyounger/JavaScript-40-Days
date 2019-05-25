@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			function Bbb(){
+				this.b = 20;
+				var _this = this;
+
+				document.getElementById("btn1").onclick = function(){
+					_this.show();
+				};
+			}
+			Bbb.prototype.show = function(){
+				alert(this.b);
+			}
+
+			window.onload = function(){
+				var b1 = new Bbb();
+				alert(b1.b);
+				b1.show()
+			}
+
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>按钮</button>
+	</body>
+</html>

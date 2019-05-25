@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			/*div{width: 100px; height: 100px; background-color: red; position: absolute;}*/
+			#div1 .active{background-color: orange}
+			#div1 button{width: 100px; height: 30px; background-color: gray; font-size: 18px; color: blue}
+			#div1 div{width: 400px; height: 400px; border: 1px  solid black; display: none}
+		</style>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				插件  即插即用
+
+				【注】JQ提供了很多实用的方法，但是在实际开发中JQ是不能够满足所有的需求。经常会有这样的一个想法，JQ要是有这样一个函数就好了。
+
+
+				【注】自己去给JQ拓展函数。我们自己新增这部分函数，叫做插件函数。
+
+				JQ提供了两个用于拓展插件的函数
+
+				$.extend()   拓展工具方法  $.xxx()  $.yyy()
+
+				$.fn.extend()拓展JQ的函数  $().xxx()  $().yyy()
+
+				$() => new JQuery  $().xxx()
+				JQuery.prototype.xxx = func();
+			*/
+
+			$.extend({
+				aaa: function(){
+					alert("这是工具方法");
+				}
+			})
+
+
+			$.fn.extend({
+				aaa: function(){
+					alert("拓展JQ的函数");
+				},
+				drag: function(){
+					//this == $("div")
+					var offsetX = 0;
+					var offsetY = 0;
+					this.mousedown(function(ev){
+						//this 当前按下的div
+						offsetX = ev.clientX - $(this).offset().left;
+						offsetY = ev.clientY - $(this).offset().top;
+
+						var _this = this;
+						$(document).mousemove(function(ev){
+							$(_this).css({
+								left: ev.clientX - offsetX,
+								top: ev.clientY - offsetY
+							})
+						})
+					})
+					$(document).mouseup(function(){
+						$(document).off("mousemove");
+					})
+				}
+			})
+			$(function(){
+				/*$.aaa();
+
+				$("div").aaa();*/
+				$("div").drag();
+			})
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div id = 'div1'>
+			<button class = 'active'>钢铁侠</button> 
+			<!-- index = 0 -->
+			<button>黑寡妇</button>
+			<!-- index = 1 -->
+			<button>绿巨人</button>
+			<!-- index = 2 -->
+			<div style = 'display: block'>《钢铁侠》（Iron Man）是由美国漫威电影工作室出品的一部科幻冒险电影，改编自同名系列漫画，由乔恩·费儒执导，小罗伯特·唐尼及格温妮斯·帕特洛、杰夫·布里吉斯等主演。该作也是“漫威电影宇宙”系列的首部电影。该片于2008年5月2日在美国上映。影片讲述了托尼·斯塔克在遇难后改进了盔甲的功能，化身“钢铁侠”，以一个义务警察的身份保护了这个世界和平的故事</div>
+			<div>本名娜塔莎·罗曼诺夫，原是秘密组织神盾局的一名俄国籍女探员，体态婀娜面容姣好，头脑清晰行动敏捷，身手不凡强硬凶狠，是神盾局的精英特工。娜塔莎最初被安排在斯塔克工业内部作为卧底，负责监视钢铁侠托尼·斯塔克，后正式加入复仇者联盟。 </div>
+			<div>浩克（Hulk）是美国漫威漫画旗下超级英雄，初次登场于《不可思议的浩克》（The Incredible Hulk）第一期（1962年5月），由斯坦·李和杰克·科比联合创造。本名罗伯特·布鲁斯·班纳（Robert Bruce Banner），是世界著名的物理学家，在一次意外中被自己制造出的伽玛炸弹（Gamma Bomb）的放射线大量辐射，身体产生异变，后每当他情绪激动心跳加速的时候就会变成名为浩克的绿色怪物。由于变身后往往不受控制，所以为了不伤害身边的人，班纳游走于世界各地寻找控制愤怒的方法，即便如此班纳的浩克身份还是时常会造成毁灭性的破坏，因此常成为警方与有关单位追捕的对象。</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				match()
+				格式：字符串.match(正则)
+				功能：在字符串中匹配正则是否存在。
+				返回值：如果匹配成功，返回，匹配成功字符串的数组，
+						    如果匹配失败返回null。
+			*/
+
+			/*var str = 'This is a Box';
+			var box = /box/i;
+
+			alert(str.match(box));*/
+
+
+			/*
+				repalce  字符串替换
+
+				格式：str.replace(oldStr/正则, newStr);
+				返回值：替换完成的新字符串。
+			*/
+
+			/*var str = "how are are aRe you";
+			var box = /are/gi;
+
+			var newStr = str.replace(box, "old are");
+			alert(newStr)*/
+
+
+			/*
+				search
+				格式：字符串.search(正则);
+				返回值：查找到的下标
+					   -1 没有查找到
+			*/
+			/*var str = "how aRe are are aRe you";
+			var box = /are/i;
+			alert(str.search(box));*/
+
+
+			/*
+				split
+				功能：字符串.split(分割符/正则)
+				返回值：数组，放着用分割符分割完毕的子串。
+			*/
+			var str = "IAamABoy";
+			var arr = str.split(/A/i);
+			alert(arr);
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			.red{background-color: red}
+			.blue{background-color: blue}
+		</style>
+		<script src = 'tool.js'></script>
+		<script>
+			window.onload = function(){
+				var oUl = document.getElementById("ul1");
+
+				//忽略空白节点。
+				removeSpaceNode2(oUl);
+
+				for(var i = 0; i < oUl.childNodes.length; i++){
+					if(i % 2 == 0){
+						oUl.childNodes[i].className = "red";
+					}else{
+						oUl.childNodes[i].className = "blue";
+					}
+				}
+
+			}
+		</script>
+	</head>
+	<body>
+		<ul id = 'ul1'>
+			<li>111111111</li>
+			<div>22222222</div>
+			<li>111111111</li>
+			<div>22222222</div>
+			<li>111111111</li>
+			<div>22222222</div>
+			<li>111111111</li>
+			<div>22222222</div>
+			<li>111111111</li>
+			<div>22222222</div>
+			<li>111111111</li>
+		</ul>
+	</body>
+</html>

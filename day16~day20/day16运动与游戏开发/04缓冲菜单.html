@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			*{margin: 0px; padding: 0px}
+			#div1{width: 100px; height: 100px;  background-color: red; position: absolute; right: 0px}
+		</style>
+		<script>
+			/*
+				window.onload   window.onscroll
+
+				目的值必须整数
+			*/
+
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+
+				var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+				//目的值
+				var iH = (clientHeight - oDiv.offsetHeight) / 2;
+				
+				startMove(parseInt(iH));
+
+				window.onscroll = function(){
+					//滚动距离
+					var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+					startMove(parseInt(scrollTop + iH));
+				}
+
+			}
+
+			var timer = null;
+			function startMove(iTarget){
+				var oDiv = document.getElementById("div1");
+				clearInterval(timer);
+				timer = setInterval(function(){
+					//1、计算速度
+					var speed = (iTarget - oDiv.offsetTop) / 8;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+					if(oDiv.offsetTop == iTarget){
+						clearInterval(timer)
+					}else{
+						oDiv.style.top = oDiv.offsetTop + speed + 'px';
+					}
+				}, 30);
+			}
+		</script>
+	</head>
+	<body style = 'height: 3000px'>
+		<div id = 'div1'></div>
+	</body>
+</html>

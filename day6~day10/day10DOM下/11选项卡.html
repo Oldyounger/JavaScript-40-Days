@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+				var aBtns = oDiv1.getElementsByTagName("button");
+
+				for(var i = 0; i < aBtns.length; i++){
+					aBtns[i].onclick = function(){
+						alert(i);
+					}
+				}
+
+				alert("循环结束了" + i);
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<button>钢铁侠</button>
+			<button>黑寡妇</button>
+			<button>绿巨人</button>
+		</div>
+	</body>
+</html>

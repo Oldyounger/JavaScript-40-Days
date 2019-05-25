@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			var module1 = (function(){
+				var _count = 5;
+
+				function mm1(){
+					alert("mm1 " + (_count + 5));
+				}
+				function mm2(){
+					alert("mm2 " + (_count + 15));
+				}
+				return {
+					m1: mm1,
+					m2: mm2
+				}
+			})();
+
+			var module2 = (function(mod){
+				mod.m3 = function(){
+					alert("这是m3方法");
+				}
+				return mod;
+			})(module1);
+
+			/*
+				在不修改原来代码的基础上，进行拓展
+
+				上述写法还是有问题：上述代码必须自上而下顺序执行。
+			*/
+
+			module2.m1()
+			module2.m2()
+			module2.m3()
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- xml的版本号和编码格式 -->
+<!-- 我们xml中所有的节点也是具有层级关系的 -->
+<root> <!-- 根节点 -->
+    <books>
+        <book id="1" language="ch">
+			  <name>乔布斯传</name>
+            <auther>
+                <name>沃尔特·艾萨克森</name>
+            </auther>
+            <price>80.00</price>
+            <summary>一本介绍乔布斯传奇一生的图书。</summary>
+        </book>
+        <book id="2" language="ch">
+            <name>呐喊</name>
+            <auther>
+                <name>鲁迅</name>
+            </auther>
+            <price>12.00</price>
+            <summary>揭示了中国的社会面貌，控诉了封建制度的罪恶，喊出了“五四”时期革命者的心声。它反映了“五四”彻底不妥协地反封建主义的革命精神，适应了中国革命从旧民主主义向新民主主义转变的需要，在中国现代文化史和文学史上占有重要地位！</summary>
+        </book>
+        <book id="3" language="en">
+            <name>哈利波特</name>
+            <auther>
+                <name>JK罗琳</name>
+            </auther>
+            <price>365.00</price>
+            <summary>主人公哈利·波特在霍格沃茨魔法学校六年的学习生活和冒险故事。</summary>
+        </book>
+    </books>
+</root>
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				ev.data 
+				ev.target(兼容后触发对象) 
+				ev.type(输出事件类型)
+			*/
+			$(function(){
+				/*$(document).mousedown(function(ev){
+					alert(ev.type)
+				})*/
+
+				/*
+					不能够给事件绑定的函数传入参数。
+				*/
+				$(document).on("click", {name: "钢铁侠", sex: "男"}, function(ev){
+					alert(ev.data);
+					alert(ev.data.name)
+				})
+			})
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

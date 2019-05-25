@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 500px; height: 500px; border: 1px solid black; margin: 100px auto; position: relative;}
+			#ball{width: 20px; height: 20px; background-color: red; position: absolute; border-radius: 50%; left: 240px; bottom: 20px}
+			#bat{width: 100px; height: 20px; background-color: blue; position: absolute; bottom: 0px; left: 200px}
+		</style>
+		<script>
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+				var oBall = document.getElementById("ball");
+				var oBat = document.getElementById("bat");
+
+				//随机水平方向速度
+				var speedX = parseInt(Math.random() * 5) + 4;
+				var speedY = -(parseInt(Math.random() * 6) + 6);
+
+				setInterval(function(){
+					oBall.style.left = oBall.offsetLeft + speedX + 'px';
+					oBall.style.top = oBall.offsetTop + speedY + 'px';
+
+					if(oBall.offsetLeft >= 500 - 20 || oBall.offsetLeft <= 0){
+						speedX *= -1;
+					}
+
+					if(oBall.offsetTop >= 500 - 20 || oBall.offsetTop <= 0){
+						speedY *= -1;
+					}
+
+				}, 30);
+
+
+				//给拍子添加拖拽
+				dragX(oBat);
+			}
+
+			function dragX(node){
+				var offsetX = 0;
+				node.onmousedown = function(ev){
+					var e = ev || window.event;
+					offsetX = e.clientX - node.offsetLeft;
+
+					document.onmousemove = function(ev){
+						var e = ev || window.event;
+						var l = e.clientX - offsetX;
+						if(l <= 0){
+							l = 0;
+						}
+
+						if(l >= 400){
+							l = 400;
+						}
+						node.style.left = l + 'px';
+					}
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<div id = 'ball'></div>
+			<div id = 'bat'></div>
+		</div>
+	</body>
+</html>

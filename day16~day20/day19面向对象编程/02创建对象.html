@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				构造函数
+			*/
+
+			var person = new Object();
+			//添加属性
+			person.name = 'blue';
+			person.sex = '男';
+			//添加方法
+			person.showName = function(){
+				alert("我的名字叫" + this.name);
+			}
+			person.showSex = function(){
+				alert("我是" + this.sex + "的");
+			}
+
+			person.showName();
+			person.showSex();
+
+			var person2 = new Object();
+			//添加属性
+			person2.name = 'red';
+			person2.sex = '女';
+			//添加方法
+			person2.showName = function(){
+				alert("我的名字叫" + this.name);
+			}
+			person2.showSex = function(){
+				alert("我是" + this.sex + "的");
+			}
+
+			person2.showName();
+			person2.showSex();
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

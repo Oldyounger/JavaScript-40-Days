@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				对象写法
+			*/
+			var xiaoming = {
+				_count: 7,
+				m1: function(){
+					alert("m1 " + (this._count + 5));
+				},
+				m2: function(){
+					alert("m2 " + (this._count + 10));
+				}
+			}
+
+			var xiaohua = {
+				_count: 5,
+				m1: function(){
+					alert("m1 " + (this._count + 2));
+				},
+				m2: function(){
+					alert("m2 " + (this._count + 3));
+				}
+			}
+
+			//xiaoming._count  可以被外部所访问的
+
+			xiaoming._count = "hello";
+
+			xiaoming.m1();
+			xiaoming.m2();
+
+			xiaohua.m1();
+			xiaohua.m2();
+			/*
+				成员变量都是对外部暴露，不安全。
+			*/
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				concat 字符串里面拼接字符串  +
+			*/
+			// var str = "hello".concat("world");
+			/*var str = 'hello' + "world";
+			alert(str);*/
+
+
+			/*
+				<1>indexOf(“abc”, start);   查找字符串第一次出现的位置，可以传两个参数
+					格式：supStr.indexOf(subStr, start);
+					功能：从start这个位置开始，在supStr中查找subStr第一次出现的位置。
+						start不传，默认从0开始去查。
+					返回值： >= 0 查找到了
+							 -1 没有查找到
+
+			    <2>lastIndexOf("abc”);      查找字符串最后一次出现的位置  如果没有找到  返回-1
+
+
+			    <3>search()  正则匹配(返回出现的位置)
+			    	格式：supStr.search(subStr/正则表达式)
+			
+			*/
+			/*var supStr = "abcabcabc";
+			var subStr = 'abcd';
+			alert(supStr.indexOf(subStr, 1));*/
+
+
+			/*var supStr = "abcabcabc";
+			var subStr = 'abc';
+			alert(supStr.lastIndexOf(subStr));*/
+
+			var supStr = "Abcabcabc";
+			// var subStr = 'abc';
+			var subStr = /abc/i;
+			/*
+				正则表达式比作一个超级字符串。
+				修饰符
+				i  忽略大小写
+				g  全局匹配
+			*/
+
+			// alert(supStr.search(subStr));
+
+
+
+			/*
+				replace()  字符串替换
+				字符串.replace(oldStr/正则, newStr);
+				功能：用newStr,将字符串中的oldStr替换掉，返回一个替换完成的新字符串
+				返回值：新字符串
+			*/
+
+			var str = "how are Are are you";
+			/*var newStr = str.replace("are", "old are");
+			alert(newStr);
+			alert(str);*/
+			/*var newStr = str.replace(/are/gi, "old are");
+			alert(newStr);
+			alert(str);
+*/
+
+			/*
+				substring(start, end);
+				功能：提取制定范围内的字符，生成新的字符串
+			*/
+			/*var str = 'hello';
+			var newStr = str.substring(1, 4);
+			alert(newStr);
+			alert(str);*/
+
+
+
+			/*
+				spilt  字符串分割
+				格式：字符串.split(分割符);
+				功能：将字符串通过分割符分成小块，放在一个数组里
+				返回值：装有分割完毕的字符串的数组。
+			*/
+			/*var str = "hi=my==name=hello";
+			var arr = str.split("=");
+			alert(arr); //hi,my,name,hello*/
+
+			var str = "hi=my==name=hello";
+			var arr = str.split("");
+			// alert(arr); //如果分割符是空字符串，会把原字符串分割成单个字符，放在数组里。
+
+
+
+			/*
+				toLowerCase()
+				toUpperCase();
+			*/
+			var str = "helloWORLD";
+			alert(str.toLowerCase());
+			alert(str.toUpperCase())
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

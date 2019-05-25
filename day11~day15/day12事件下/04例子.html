@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			window.onload = function(){
+				var oUl = document.getElementById("ul1");
+				var aLis = oUl.getElementsByTagName("li");
+
+				for(var i = 0; i < aLis.length; i++){
+					aLis[i].onclick = function(){
+						this.style.backgroundColor = 'red';
+					}
+				}
+
+				/*
+					1、浪费资源
+				*/
+			}
+		</script>
+	</head>
+	<body>
+		<ul id = 'ul1'>
+			<li>11111</li>
+			<li>22222</li>
+			<li>33333</li>
+			<li>44444</li>
+			<li>55555</li>
+		</ul>
+	</body>
+</html>

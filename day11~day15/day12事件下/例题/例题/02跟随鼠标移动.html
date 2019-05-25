@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset = "utf-8" />
+		<style type="text/css">
+		#div_id{width: 200px; height: 200px; background: url("girl.gif"); position: absolute;}
+		body{background: black}
+		</style>
+		<script type="text/javascript">
+		window.onload = function(){
+			var oDiv = document.getElementById("div_id");
+			document.onmousemove = function(even){
+				var e = even || window.event;
+				oDiv.style.left = e.clientX - 70 + "px";
+				oDiv.style.top = e.clientY - 70 + "px";
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<div id = "div_id">
+			
+		</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+

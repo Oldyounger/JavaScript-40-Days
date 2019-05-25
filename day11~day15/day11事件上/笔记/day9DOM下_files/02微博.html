@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#issue{
+				width: 300px;
+				height: 200px;
+				border: 1px solid black;
+				position: absolute;
+				display: none;
+				left: 50px;
+				top: 100px
+			}
+			#issue button {
+				height: 30px;
+				background-color: orange;
+				font-size: 18px
+			}
+			#close{
+				position: absolute;
+				right: 0px;
+			}
+			#issue .title{
+				background-color: gray
+			}
+			#txt{
+				width: 296px;
+				height: 167px;
+			}
+			#div1{
+				width: 300px;
+				height: 500px;
+				border: 1px solid black;
+				margin: 100px auto;
+				position: relative;
+			}
+			#div1 div button{
+				position: absolute;
+				right: 0;
+			}
+			#div1 div{
+				border-bottom: 1px dotted black
+			}
+		</style>
+		<script src = "js/tool.js"></script>
+		<script>
+			window.onload = function(){
+				$("#btn").onclick = function(){
+					$("#issue").style.display = "block";
+				}
+
+				$("#close").onclick = function(){
+					$("#issue").style.display = "none";
+					$("#txt").value = "";
+				}
+
+				$("#submit").onclick = function(){
+					//创建节点，添加在微博发布页面，带一个关闭按钮的发布页面
+					var oDiv = document.createElement("div");
+					var oTxt = document.createTextNode($("#txt").value);
+					$("#txt").value = "";
+					var oClose = document.createElement("button");
+					oClose.innerHTML = "X";
+					oClose.onclick = function(){
+						//将当前这条微博删除
+						$("#div1").removeChild(this.parentNode);
+					}
+
+					oDiv.appendChild(oTxt);
+					oDiv.appendChild(oClose);
+
+					$("#div1").appendChild(oDiv);
+				}
+			}	
+		</script>
+	</head>
+	<body>
+		<input type="button" value = "发布" id = "btn" />
+		<div id = "issue">
+			<div class = "title">
+				<button id = "submit">提交</button>
+				<button id = "close">X</button>
+			</div>
+			<textarea id="txt" cols="30" rows="10"></textarea>
+		</div>
+		<div id = "div1">
+			<!-- <div>我是发布的内容<button>X</button></div> -->
+		</div>
+	</body>
+</html>

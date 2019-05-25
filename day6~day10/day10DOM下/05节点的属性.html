@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				DOM节点类型
+				1、元素节点
+				2、属性节点
+				3、文本节点
+
+				【注】有三个通用的属性。
+
+					nodeName    nodeType    nodeValue 
+
+			元素节点 标签名        1           null
+			属性节点 属性名        2           属性值
+			文本节点 #text         3           文本内容
+
+			*/
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+				alert(oDiv1.firstChild.nodeName);
+				alert(oDiv1.firstChild.nodeType);
+				alert(oDiv1.firstChild.nodeValue);
+
+				alert(oDiv1.lastChild.nodeName);
+				alert(oDiv1.lastChild.nodeType);
+				alert(oDiv1.lastChild.nodeValue);
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>div文本<em>em</em><strong>strong</strong></div>
+	</body>
+</html>

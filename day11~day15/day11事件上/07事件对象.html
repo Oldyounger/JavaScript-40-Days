@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*function show(){
+				// arguments  存储我们传入的实参
+			}
+			show();*/
+
+			window.onload = function(){
+				/*
+					事件绑定的时候
+					元素节点.on + 事件类型 = 处理事件的函数;
+
+					事件对象：一旦事件绑定完成，那么系统会根据，上述三者，生成一个新的对象，叫做事件对象。
+					
+
+					【注】当我们触发事件的时候，系统调用了这个函数，系统在调用函数的时候，将事件对象，当做第一个参数，传入了。
+				*/
+				var oBtn = document.getElementById("btn1");
+				/*oBtn.onclick = function(){
+
+					alert(arguments.length);
+					alert(arguments[0]);
+					alert("点击");
+				}*/
+
+				oBtn.onclick = function(even){
+					// alert(even); //object MouseEvent   IE8以后    IE8以前拿事件 window.event;
+					var e = even || window.event; //获取事件对象的固定写法
+					alert(e);
+				}
+
+			}
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>按钮</button>
+	</body>
+</html>

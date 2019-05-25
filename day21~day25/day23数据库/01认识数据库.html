@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			
+			/*
+				cmd  window控制台  输入命令，完成数据库的操作
+
+				shell  壳   cmd
+				core   核   mySQL
+			*/
+
+			/*
+				1、cmd输入命令mysql  找不到命令
+				原因虽然我们把mysql按照到你的电脑上了。并没有告诉控制台mysql安装到哪。
+
+				2、windows系统下，我们需要配置环境变量
+					找到C:\PHPnow\MySQL-5.1.50\bin
+			*/
+
+			/*
+				mysql(大型) nosql SQLserver  MongoDB(小型)  开源
+
+				Oracle  闭源
+			*/
+
+			/*
+				数据库 = 存储数据的文件 + 数据库管理系统
+				图书馆 = 存放书籍仓库 + 图书馆管理系统
+			*/
+
+			/*
+				数据库数据类型设置的时候(铁公鸡)
+				int 整形
+				float  浮点型
+				char(10)  这个字段最多可以存储10个字符   
+				varchar(n)
+
+				text  文本类型(理论上没有上限)
+
+				date  "2000-01-01"
+			*/
+
+			/*
+				mysql的命令，
+				1、mysql -u root -p  登录  输入密码
+
+				后面必须加分号
+				2、show databases;   显示所有的数据库
+				3、create database qd1807 character set utf8; 创建一个uft8编码的数据库
+				4、use qd1807;  选择要使用的数据库
+				5、show tables;
+				6、创建一个表  create table 表名(字段) character set utf8;
+				7、desc 表名;  查看表中的具体结构
+					8、AND    与
+					OR    或
+					IS NOT非
+
+				【注】
+					数据库基本操作
+
+					增
+					删
+					改
+					查
+
+
+				【注】在任何一个表里面，必须有一个主键 PrimaryKey，如果你不想每次输入数据的时候，自己去插入id，那么你可以设置id自动去增长
+
+
+				【注】html代码是没有办法操作数据库。
+					html => php => 数据库
+			*/
+		</script>
+	</head>
+	<body>
+		<table border=1>
+			<tr><th>学号</th><th>姓名</th><th>英语</th><th>数学</th><th>语文</th></tr>
+		</table>
+	</body>
+</html>

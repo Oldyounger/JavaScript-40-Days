@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				1、构造函数首字母大写
+				2、构造函数中的this，指向当前的新创建的对象
+				3、自动完成 1原料  3出厂操作
+			*/
+
+			function Person(name, sex){
+				//添加属性
+				this.name = name;
+				this.sex = sex;
+			}
+			//通过原型添加方法
+			Person.prototype.showName = function(){
+				alert("我的名字叫" + this.name);
+			}
+			Person.prototype.showSex = function(){
+				alert("我是" + this.sex);
+			}
+
+			var p1 = new Person("blue", '男');
+			p1.showName();
+			p1.showSex();
+
+			var p2 = new Person("red", '女');
+			p2.showName();
+			p2.showSex();
+
+			alert(p1.showName == p2.showName);
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

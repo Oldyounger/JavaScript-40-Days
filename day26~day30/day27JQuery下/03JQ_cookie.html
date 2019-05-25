@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.11.3.js'></script>
+		<script src = 'jquery.cookie.js'></script>
+		<script>
+			/*
+				$.cookie(name)  取值
+				$.cookie(name, value)  设置cookie
+
+
+				设置cookie的时候，设置可选项
+				option 对象  写入可选项
+				expires
+				path
+				domain
+				secure
+				raw  设置value是否编码  默认是false，如果设置成true，不编码
+
+
+				$.cookie(name, value, option)
+
+
+				$.cookie(name, null)  删除cookie
+			*/
+			$(function(){
+				$("button").eq(0).click(function(){
+					$.cookie("英雄", "钢铁侠", {
+						expires: 7,
+						raw: true
+					})
+
+					// alert($.cookie("英雄"));
+				})
+
+				$("button").eq(1).click(function(){
+					$.cookie("英雄", null)
+				});
+			})
+
+		</script>
+	</head>
+	<body>
+		<button>设置cookie</button>
+		<button>删除cookie</button>
+	</body>
+</html>

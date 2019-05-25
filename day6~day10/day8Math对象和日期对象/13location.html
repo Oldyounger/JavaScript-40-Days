@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				location 对象是，浏览器上面的地址栏部分
+	
+
+				url 统一资源定位符  查一下，下次提问。
+			*/
+			// alert(window.location === window.document.location); //true
+
+			/*
+				location 下面的函数
+
+				assign   跳转到指定的url  在当前窗口跳转到指定的url 产生历史记录
+
+				replace  替换  不产生历史记录的
+
+				reload  重载
+				reload(true)  强制重载  不经过浏览器缓存，直接从服务器加载
+			*/
+			function btnClick(){
+				// location.assign("https://www.baidu.com");
+				// location.replace("https://www.baidu.com");
+
+
+				location.reload()
+			}
+
+		</script>
+	</head>
+	<body>
+		<button onclick = 'btnClick();'>按钮</button>	
+	</body>
+</html>

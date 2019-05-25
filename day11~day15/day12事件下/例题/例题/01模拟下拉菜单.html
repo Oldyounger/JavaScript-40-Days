@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset = "utf-8"/>
+		<style type="text/css">
+		#ol1{display: none}
+		</style>
+		<script type="text/javascript">
+		window.onload = function(){
+			var oUl = document.getElementById("ul1");
+			var oOl = document.getElementById("ol1");
+			oUl.onmouseover = function(){
+				oOl.style.display = "block";
+			}
+			oUl.onmouseout = function(){
+				oOl.style.display = "none";
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<ul id = "ul1">
+			<li>菜单
+				<ol id = "ol1">
+					<li>选项1</li>
+					<li>选项2</li>
+					<li>选项3</li>
+				</ol>
+			</li>
+		</ul>
+	</body>
+</html>
+
+
+
+
+

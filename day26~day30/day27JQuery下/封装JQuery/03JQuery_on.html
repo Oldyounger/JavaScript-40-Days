@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			div{width: 100px; height: 100px; background-color: red; margin: 20px}
+		</style>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			$(function(){
+
+				//参数 两个
+				/*$("div").on("click", function(){
+					alert(123);
+				})*/
+
+				/*var i = 0;
+				$("div").on("click mouseover", function(){
+					this.innerHTML = i++;
+				})*/
+
+
+
+				//参数是一个
+				/*$("div").on({
+					click: function(){
+						alert("点击");
+					},
+					mouseover: function(){
+						$(this).css("backgroundColor", 'blue');
+					},
+					mouseout: function(){
+						$(this).css("backgroundColor", 'yellow');
+					}
+				})*/
+
+
+				//参数是三个
+				$("ul").on("click", "li", function(){
+					$(this).css("backgroundColor", 'red');
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<ul>
+			<li>111</li>
+			<li>111</li>
+			<li>111</li>
+			<li>111</li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+
+		/*
+				事件对象
+					【注】都是获取鼠标坐标的，但是原点位置不同。
+					clientX  clientY  原点：整个窗口可视区域的左上角。
+					pageX    pageY    原点：整个页面/文档的左上角，包含滚动距离
+					screenX  screenY  原点：电脑屏幕左上角，为原点
+		*/
+			window.onload = function(){
+				document.onclick = function(ev){
+					var e = ev || window.event;
+
+					alert(e.clientX + ", " + e.clientY);
+					// alert(e.pageX + "," + e.pageY);
+
+					alert(e.screenX + ", " + e.screenY);
+				} 
+			}
+		</script>
+	</head>
+	<body style = 'height: 3000px;'>
+		
+	</body>
+</html>

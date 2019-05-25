@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			window.onload = function(){
+				var oBtn = document.getElementById("btn1");
+
+				/*
+					获取当前事件里面的触发对象
+				*/
+				oBtn.onclick = function(ev){
+					var e = ev || window.event;
+					// alert(e.target.innerHTML);
+
+					// 1、IE8以下不支持这么获取触发对象 window.event.srcElement;
+
+					// 2、target和this没有任何关系。
+
+					var target = e.target || window.event.srcElement;
+					alert(target);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>按钮</button>
+	</body>
+</html>

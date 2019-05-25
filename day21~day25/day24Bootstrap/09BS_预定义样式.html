@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- 如果你要用bs.js  先引入jquery.js 在引入bs.js -->
+		<style>
+			div[class*="col-"]{border: 1px solid black; height: 50px; color: white; background-color: gray}
+		</style>
+	</head>
+	<body>
+		<!-- 
+			预定义样式
+
+			primary  首先项
+			success   成功
+			info      一般信息
+			warning   警告
+			danger    危险
+
+		 -->
+
+		<div class = 'container'>
+			<br><br>
+			<button class = 'btn btn-default'>默认样式</button>
+			<button class = 'btn btn-primary'>首选项</button>
+			<button class = 'btn btn-success'>成功</button>
+			<button class = 'btn btn-info'>一般信息</button>
+			<button class = 'btn btn-warning'>警告</button>
+			<button class = 'btn btn-danger'>危险</button>
+			<br><br>
+			<span>默认文本</span>
+			<span class = 'text-primary'>首选项</span>
+			<span class = 'text-success'>成功</span>
+			<span class = 'text-info'>一般信息</span>
+			<span class = 'text-warning'>警告</span>
+			<span class = 'text-danger'>危险</span>
+			<br><br>
+			<p>默认段落</p>
+			<p class = 'bg-primary'>首选项</p>
+			<p class = 'bg-success'>成功</p>
+			<p class = 'bg-info'>一般信息</p>
+			<p class = 'bg-warning'>警告</p>
+			<p class = 'text-danger'>危险</p>
+			<br><br>
+			<a href="#" class = 'btn btn-primary'>按钮1</a>
+			<a href="#" class = 'text-warning'>按钮2</a>
+			<a href="#" class = 'bg-warning'>按钮3</a>
+			<br><br>
+			<div class = 'panel panel-primary'>
+				<div class = 'panel-heading'>
+					我是标题
+				</div>
+				<div class = 'panel-body'>
+					<h1>我是内容</h1>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

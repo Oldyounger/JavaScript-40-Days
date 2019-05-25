@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 200px; height: 200px; background-color: orange; padding: 50px; margin: 100px auto; border: 1px solid black}
+			#input1{width: 200px; height: 30px; font-size: 18px}
+			#div1 div{width: 60px; height: 30px; background-color: yellow; float: left; margin-left: 5px; margin-top: 10px; text-align: center; line-height: 30px; color: blue}
+			#div1 .active{background-color: green}
+		</style>
+		<script>
+			window.onload = function(){
+				var oInput = document.getElementById("input1");
+				var oDiv = document.getElementById("div1");
+				var aDivs = oDiv.getElementsByTagName("div");
+				
+
+				/*
+					密码强度  数字 小写字母 大写字母
+				*/
+				oInput.onkeyup = function(){
+					//按下键盘以后，才能获取输入框的内容
+					var oValue = oInput.value;
+					if(!oValue){
+						//谁都不变色
+						for(var i = 0; i < aDivs.length; i++){
+							aDivs[i].className = '';
+						}
+
+					}else{
+						//谁都不变色
+						for(var i = 0; i < aDivs.length; i++){
+							aDivs[i].className = '';
+						}
+						
+
+						if(/^\d+$/.test(oValue) || /^[a-z]+$/.test(oValue) || /^[A-Z]+$/.test(oValue)){
+							aDivs[0].className = "active";
+						}else if(/\d/.test(oValue) && /[a-z]/.test(oValue) && /[A-Z]/.test(oValue)){
+							aDivs[2].className = "active";
+						}else{
+							aDivs[1].className = "active";
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<input type="text" placeholder="输入密码" id = 'input1'/><br>
+			<div>弱</div>
+			<div>中</div>
+			<div>强</div>
+		</div>
+	</body>
+</html>

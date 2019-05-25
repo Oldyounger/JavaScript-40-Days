@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				【注】继承和多态是同一件事情的两种侧重。
+				继承 侧重于从父级继承到的属性和方法。
+				多态 侧重于重写或者拓展子一级的属性和方法。
+				【注】龙生九子，各有不同。
+			*/
+
+
+			function Person(name, sex){
+				this.name = name;
+				this.sex = sex;
+			}
+
+			Person.prototype.showName = function(){
+				alert("我的名字叫" + this.name);
+			}
+			Person.prototype.showSex = function(){
+				alert("我是" + this.sex + "的");
+			}
+
+
+
+			//继承于Person，创建一个Worker构造函数
+			function Worker(name, sex, job){
+				Person.call(this, name, sex);
+				this.job = job;
+			}
+
+			//继承Person方法
+			//原型链
+			for(var funcName in Person.prototype){
+				Worker.prototype[funcName] = Person.prototype[funcName];
+			}
+
+			//【注】重写从父一级继承的函数，那么在子一级上，重写的函数会覆盖继承的函数，不会影响父一级的函数。这叫做多态。
+			Worker.prototype.showName = function(){
+				alert("大家好，Worker的介绍自己的名字是" + this.name);
+			}
+
+			//添加自己的方法
+			Worker.prototype.showJob = function(){
+				alert("我的工作是" + this.job);
+			} 
+
+			var p1 = new Person("blue", "男");
+			var w1 = new Worker("red", "女", "会计");
+
+			p1.showName();
+			w1.showName();
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

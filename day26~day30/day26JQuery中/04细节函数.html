@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				• val()  value  取值赋值一体化
+
+				• size()  获取到的元素节点的个数
+				• each()  JQ的遍历，遍历我们获取到的所有的元素。
+			*/
+			$(function(){
+				// alert($("li").size())
+
+				// alert($("li").length)
+
+				$("li").each(function(index, item){
+					// alert(index + ", " + item);
+
+					$(item).html(index);
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+</html>

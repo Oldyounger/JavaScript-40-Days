@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			div{width: 200px; height: 200px; background-color: orange; border: 1px solid black}
+		</style>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				load
+
+				下载完数据以后，将数据填充在前面的元素中
+			*/
+			$(function(){
+				$("button").click(function(){
+					$("div").load("1.txt h2", function(data){
+						alert("数据下载完成执行");
+						alert(data);
+					});
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<button>下载</button>
+		<div></div>
+	</body>
+</html>

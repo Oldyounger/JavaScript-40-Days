@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 500px; height: 500px; border: 1px solid black; margin: 100px auto; position: relative;}
+			#ball{width: 20px; height: 20px; background-color: red; position: absolute;border-radius: 50%; bottom: 20px; left: 240px}
+			#bat{width: 100px; height: 20px; background-color: blue; position: absolute; bottom: 0px; left: 200px}
+			#brick div{float: left; border: 1px solid black}
+		</style>
+		<script src = 'tool.js'></script>
+		<script>
+
+			window.onload = function(){
+				var g1 = new Game({
+					speedX: 6,
+					speedY: 9,
+					batWidth: 150,
+					row: 8,
+					col: 5
+				});
+				$("start").onclick = function(){
+					g1.init()
+				}
+				$("stop").onclick = function(){
+					g1.stop();
+				}
+
+			}
+
+			function $(id){
+				return document.getElementById(id);
+			}
+
+			
+
+			function Game(obj){
+				//添加属性
+				this.oDiv = document.getElementById("div1");
+				this.oBall = document.getElementById("ball");
+				for(var i in obj){
+					this[i] = obj[i];
+				}
+				this.speedY = -Math.abs(this.speedY);
+
+				this.timer = null;
+
+				this.bat = document.getElementById("bat");
+
+				//专门用来存储所有的砖块
+				this.brick = document.getElementById("brick");
+			}
+			Game.prototype.init = function(){
+				this.start();
+				this.drag();
+				this.createBrick();
+			}
+
+			//添加创建砖块的方法
+			Game.prototype.createBrick = function(){
+				var width = 500 / this.col;
+				var height = 250 / this.row;
+				var n = this.row * this.col;
+				for(var i = 0; i < n; i++){
+					var node = document.createElement("div");
+					node.style.width = width - 2 + 'px';
+					node.style.height = height - 2 + 'px';
+					node.style.backgroundColor = randomColor();
+
+					this.brick.appendChild(node);
+				}
+
+				//相对定位 => 绝对定位
+				var nodes = this.brick.getElementsByTagName("div");
+
+				for(var i = 0; i < nodes.length; i++){
+					nodes[i].style.left = nodes[i].offsetLeft + 'px';
+					nodes[i].style.top = nodes[i].offsetTop + 'px';
+				}
+				//必须等所有的div将坐标设置成功以后才能设置
+				for(var i = 0; i < nodes.length; i++){
+					nodes[i].style.position = 'absolute'
+				}
+			}
+
+
+			//1、让小球动起来
+			Game.prototype.start = function(){
+				
+
+				var _this = this;
+
+				this.timer = setInterval(function(){
+					var l = _this.oBall.offsetLeft + _this.speedX;
+					_this.oBall.style.left = l + 'px';
+					if(l <= 0 || l >= _this.oDiv.offsetWidth - _this.oBall.offsetWidth){
+						_this.speedX *= -1;
+					}
+					var t = _this.oBall.offsetTop + _this.speedY;
+					_this.oBall.style.top = t + 'px';
+					if(t <= 0){
+						_this.speedY *= -1;
+					}
+					if(t >= _this.oDiv.offsetHeight - _this.oBall.offsetHeight){
+						alert("GAME OVER");
+						location.reload();
+					}
+
+					//拍子和小球的碰撞
+					if(knock(_this.oBall, _this.bat)){
+						//需要让小球弹回去
+						_this.speedY *= -1;
+					}
+
+					//砖块和小球的碰撞
+					
+					var nodes = _this.brick.getElementsByTagName("div");
+					for(var i = 0; i < nodes.length; i++){
+						if(knock(nodes[i], _this.oBall)){
+							_this.speedY *= -1;
+							//碰撞的砖块应该被销毁
+							_this.brick.removeChild(nodes[i]);
+						}
+					}
+
+
+
+				}, 30);
+			}
+			//暂停方法
+			Game.prototype.stop = function(){
+				clearInterval(this.timer);
+			}
+
+			//添加拍子拖拽的方法
+			Game.prototype.drag = function(){
+				//设置拍子的宽
+				this.bat.style.width = this.batWidth + 'px';
+				this.bat.style.left = (500 - this.batWidth) / 2 + 'px';
+
+				var _this = this;
+
+				var offsetX = 0;
+				this.bat.onmousedown = function(ev){
+					var e = ev || window.event;
+					offsetX = e.clientX - _this.bat.offsetLeft;
+					document.onmousemove = function(ev){
+						var e = ev || window.event;
+						var l = e.clientX - offsetX;
+						//限制出界
+						if(l <= 0){
+							l = 0;
+						}
+						if(l >= 500 - _this.bat.offsetWidth){
+							l = 500 - _this.bat.offsetWidth;
+						}
+						_this.bat.style.left = l + 'px';
+					}	
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+				}
+			}
+			function knock(node1, node2){
+				var l1 = node1.offsetLeft;
+				var r1 = node1.offsetLeft + node1.offsetWidth;
+				var t1 = node1.offsetTop;
+				var b1 = node1.offsetTop + node1.offsetHeight;
+
+				var l2 = node2.offsetLeft;
+				var r2 = node2.offsetLeft + node2.offsetWidth;
+				var t2 = node2.offsetTop;
+				var b2 = node2.offsetTop + node2.offsetHeight;
+
+				if(l2 > r1 || r2 < l1 || t2 > b1 || b2 < t1){
+					return false;
+				}else{
+					return true;
+				}
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<div id = 'ball'></div>
+			<div id = 'bat'></div>
+			<div id = 'brick'></div>
+		</div>
+		<button id = 'start'>开始</button>
+		<button id = 'stop'>暂停</button>
+	</body>
+</html>

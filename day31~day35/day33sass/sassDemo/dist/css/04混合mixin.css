@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* 
+	@mixin 声明代码块
+	@include 引用代码块
+ */
+.box {
+  margin-left: auto;
+  margin-right: auto; }
+
+.box2 {
+  padding-left: 20px;
+  padding-right: 20px;
+  border-bottom: 2px solid black; }
+
+.box3 {
+  padding-left: 30px;
+  padding-right: 30px;
+  border-bottom: 2px solid black; }
+
+.box4 {
+  padding-left: 20px;
+  padding-right: 20px;
+  border-bottom: 1px dashed red; }
+
+.box5 {
+  padding-left: 50px;
+  padding-right: 50px;
+  border-bottom: 1px dashed red; }

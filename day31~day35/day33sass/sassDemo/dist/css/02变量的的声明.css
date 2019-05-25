@@ -1,0 +1,33 @@
+@charset "UTF-8";
+/* 
+	声明普通变量
+ */
+/* 
+	默认变量
+ */
+.box {
+  background-color: red;
+  width: 500px; }
+
+/* 
+	全局变量 !global
+  */
+body {
+  background-color: orange; }
+  body .box {
+    background-color: red; }
+  body a {
+    background-color: orange; }
+
+body {
+  background-color: orange; }
+  body .box {
+    background-color: red; }
+  body a {
+    background-color: red; }
+
+/* 
+	特殊变量
+ */
+#div2 {
+  border-top: 1px solid black; }

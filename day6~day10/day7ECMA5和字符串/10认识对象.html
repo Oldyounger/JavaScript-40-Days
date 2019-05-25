@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+
+			一、历史
+				面向过程编程语句
+					汇编、C语言
+
+				面向对象编程语句
+					java、object-c、swift、javascript、python、php
+
+				编程思想：
+					面向过程的编程思想 -》 面向对象的编程思想
+
+
+			二、思想
+
+				应用题：有一辆车60km/h，有一条路1000km，问车跑完这条路多长时间？
+
+				车	
+					speed: 60km/h
+					跑在路上
+				路
+					length:长度
+
+			*/
+			/*
+				面向过程的思想：只关心数学逻辑。
+				面向对象的思想：直接将生活逻辑映射到我们的程序里。
+					<1>先去找应用题中的实体
+					<2>分析实体的属性和功能
+					<3>让实体之间相互作用得出结果
+
+			*/
+
+			/*
+				编写贪吃蛇游戏：
+				蛇
+					length
+					speed
+					功能：
+					吃 变长
+					死
+				食物
+					坐标
+					种类
+
+					被吃
+
+				墙
+			*/
+
+			/*var hours = 1000 / 60;
+			alert(hours);*/
+
+			/*
+				三、概念
+				类：一类具有相同特征事物的抽象概念。
+				对象：具体的某一个实例，唯一的个体。
+
+				 类       对象
+				熊猫      团团  圆圆
+				程序员    黄晓明
+
+				【注】在JS中没有类这个概念。ECMA6又将类这个概念加进来了。
+			*/
+
+			/*
+				四、代码
+			*/
+			/*var obj = new Object();
+			var obj = Object();
+			var obj = {};
+			//添加属性 (变量)
+			obj.name = '小明';
+			obj["sex"] = "男";
+			obj.age = 18;
+
+
+			//添加方法（函数）
+			obj.showName = function(){
+				alert(obj.name);
+			}
+			obj["showAge"] = function(){
+				alert(obj.age);
+			}
+
+
+			//使用属性
+			alert(obj['name']);
+			alert(obj.sex);
+			delete obj.sex; //删除属性/方法
+			alert(obj.sex);*/
+
+			//使用方法
+			/*obj["showName"]();
+			obj.showAge();*/
+
+
+			//对象常量
+			var obj = {
+				name: "小明",
+				"sex": "男",
+				showName: function(){
+					alert(obj.name);
+				},
+				showSex: function(){
+					alert(obj.sex);
+				}
+			}
+
+			alert(obj['name']);
+			alert(obj.sex);
+			delete obj.sex; //删除属性/方法
+			alert(obj.sex);
+
+
+			/*
+				五、数据结构：
+					基本数据类型（存储单个的值） =>  数组（处理批量数据） =>  对象（既能够存储数据又能够存储函数）
+			*/
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

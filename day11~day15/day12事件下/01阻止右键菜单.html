@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 500px; height: 500px; background-color: red}
+			#menu{width: 100px; height: 100px; background-color: gray; position: absolute; display: none}
+		</style>
+		<script>
+			window.onload = function(){
+				/*
+					固定阻止右键菜单
+				*/
+				document.oncontextmenu = function(){
+					return false;
+				}
+
+				/*
+					mousedown
+				*/
+				var oDiv1 = document.getElementById("div1");
+				var oMenu = document.getElementById("menu");
+
+				oDiv1.onmousedown = function(ev){
+					var e = ev || window.event;
+					if(e.button == 2){
+						oMenu.style.display = "block";
+						//挪动到鼠标按下的位置
+						oMenu.style.left = e.clientX + 'px';
+						oMenu.style.top = e.clientY + 'px';
+					}else{
+						oMenu.style.display = "none";
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<div id = 'menu'>
+				<ul>
+					<li>选项1</li>
+					<li>选项2</li>
+					<li>选项3</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

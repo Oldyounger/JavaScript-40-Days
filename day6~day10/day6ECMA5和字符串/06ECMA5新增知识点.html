@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				严格模式
+				【注】在严格模式下，代码的语法要求更加严格。
+
+				使用严格模式：
+				你想在哪个作用域下使用严格模式，那么你就直接这个作用域下写一句话：
+				"use strict";
+				【注】一般情况不要写在全局。
+			*/
+
+			/*
+				1、声明变量
+			*/
+			/*function show(){
+				a = 10; //如果不写var声明变量，这个变量会直接提升成全局变量。
+			}
+
+			show();
+			alert(a);*/
+
+			/*function show(){
+				"use strict";
+				var a = 10; 
+			}
+
+			show();
+			alert(a);*/
+
+
+
+			/*
+				2、声明形参的时候，函数内的形参可以重名
+			*/
+
+			/*"use strict";
+			function show(b, b, a){
+				alert(b + ", " + a);
+			}
+
+			show(10, 20, 30);*/
+
+
+			/*
+				3、 arguments对象;
+  				    arguments对象不允许被动态改变：
+  				    arguments 用了严格模式，永远只存储传入参数的时候的值。
+			*/
+
+			/*function show(a, b){
+				b = "hello";
+
+				alert(a + ', ' + b);
+				alert(arguments[0] + ", " + arguments[1]);
+			}
+
+			show(10, 20);*/
+
+			/*function show(a, b){
+				"use strict";
+				b = "hello";
+
+				alert(a + ', ' + b);
+				alert(arguments[0] + ", " + arguments[1]);
+			}*/
+
+			// show(10, 20);
+
+			/*
+				4.新增保留字：implements, interface, let, package, private, protected, public, static, yield。
+			*/
+			"use strict";
+			var implements = 5;
+			alert(implements)
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

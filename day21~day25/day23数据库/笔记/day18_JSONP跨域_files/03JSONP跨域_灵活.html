@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset = "utf-8" />
+		<script type="text/javascript">
+		function fn(data){
+			alert("这是下载到的数据:" + data);
+		}
+		window.onload = function(){
+			var oBtn = document.getElementById("btn_id");
+			oBtn.onclick = function(){
+				//1、创建script标签
+				var oScript = document.createElement("script");
+				oScript.src = "2.txt";
+				document.body.appendChild(oScript);
+			}
+		}
+		</script>
+
+	</head>
+	<body>
+		<input type = "button" value = "按钮" id = "btn_id" />
+	</body>
+
+</html>

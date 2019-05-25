@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type = "text/javascript" src="jquery-1.11.3.js"></script>
+	<script type = "text/javascript" src="jquery.cookie.js"></script>
+	<script>
+		/*
+			$()
+			html部分如何写标签，在括号里也如何写标签。
+		*/
+
+		$(function(){
+
+			sc_num();
+
+			//1、通过ajax来进行请求
+			$.ajax({
+				url: "data.json",
+				success: function(arr){
+					//jq在下载数据的时候，根据下载的数据，自动进行数据类型转换
+					//加入购物车设置id，id和当前按钮所在的【商品的id】相同。
+					//【注】一定要记着JQ都是批量操作。
+					
+					for(var i = 0; i < arr.length; i++){
+						$(`<li class = 'goods_item'>
+								<div class = 'goods_pic'>
+									<img src="${arr[i].img}" alt="">
+								</div>
+								<div class = 'goods_title'>
+									<p>【京东超市】奥利奥软点小草莓</p>
+								</div>
+								<div class = 'sc'>
+									<div id = '${arr[i].id}' class = 'sc_btn'>加入购物车</div>
+								</div>
+							</li>`).appendTo($(".goods_box ul"));
+					}
+
+					
+				},
+				error: function(error){
+					alert("请求错误：" + error);
+				}
+			})
+
+
+			//这里写，是找不到按钮的，但是，我们还想给按钮添加点击事件
+			//事件委托
+			$(".goods_box ul").on("click", ".sc_btn", function(){
+				//点击按钮，通过this.id拿到当前购物车按钮对应商品的id
+				// alert(this.id);
+				/*
+					加入cookie的数据
+					1、哪个商品加入购物车？这个商品的数量是多少？ {id:id,num:1}
+					2、购物车里面可以添加多个商品 [{id:id,num:1},{id:id,num:1}]
+					3、cookie只能存储纯字符串，只能存储json格式的字符串。
+					键： goods
+					值： [{id:id,num:1},{id:id,num:1}]
+					过期时间：7
+				*/
+
+				var id = this.id;
+
+				//1、判断是否是第一次添加商品
+				var first = $.cookie("goods") == null ? true : false;
+				if(first){
+					$.cookie("goods", `[{id:${id},num:1}]`, {
+						expires: 7
+					})
+				}else{
+					//2、判断之前是否添加过
+					var cookieStr = $.cookie("goods");
+
+					var cookieArr = eval(cookieStr);
+
+					var same = false; 
+					for(var i = 0; i < cookieArr.length; i++){
+						if(cookieArr[i].id == id){
+							cookieArr[i].num++;
+							same = true;
+							break;
+						}
+					}
+					//3、之前没有添加过
+					if(!same){
+						var obj = {id: id, num: 1};
+						cookieArr.push(obj);
+					}
+
+					$.cookie("goods", JSON.stringify(cookieArr), {
+						expires: 7
+					})
+
+				}
+
+				sc_num();
+
+			})
+
+
+			$(".sc_right").mouseenter(function(){
+				sc_msg();
+				$(this).stop().animate({
+					right: 0
+				})
+			})
+
+			$(".sc_right").mouseleave(function(){
+				$(this).stop().animate({
+					right: -270
+				})
+			})
+
+			//查看添加到购物车的商品
+			function sc_msg(){
+				/*
+					1、cookies  {id:id,num:1}
+					2、加载购物车时候，需要该商品的所有信息
+				*/
+
+				//清除该节点下所有的子辈节点
+				$(".sc_right ul").empty()
+
+				$.ajax({
+					url: "data.json",
+					success: function(arr){
+						/*
+							需要在所有商品中，将加入购物车的商品取出
+						*/
+						if($.cookie("goods")){
+							var cookieArr = eval($.cookie("goods"));
+							var goodsArr = []; 
+
+							for(var i = 0; i < arr.length; i++){
+								for(var j = 0; j < cookieArr.length; j++){
+									if(arr[i].id == cookieArr[j].id){
+										//添加商品的数量上去
+										arr[i].num = cookieArr[j].num;
+										goodsArr.push(arr[i]);
+									}
+								}
+							}
+
+							//添加到购物车里面的所有的商品信息和商品数量全部拿到了
+							for(var i = 0; i < goodsArr.length; i++){
+								$(`<li>
+									<div class = 'sc_goodsPic'>
+										<img src="${goodsArr[i].img}" alt="">
+									</div>
+									<div class = 'sc_goodsTitle'>
+										<p>这是商品曲奇饼干</p>
+									</div>
+									<div class = 'sc_goodsBtn' id = '${goodsArr[i].id}'>购买</div>
+									<div class = 'sc_goodsNum'>商品数量：${goodsArr[i].num}</div>
+								</li>`).appendTo($(".sc_right ul"));
+							}
+						}
+
+					},
+					error: function(error){
+						console.log("请求错误：" + error);
+					}
+				})
+			}
+
+			//计算购物车里商品的数量
+			function sc_num(){
+				if($.cookie("goods")){
+					var cookieArr = eval($.cookie("goods"));
+					var sum = 0;
+					//求和
+					for(var i = 0; i < cookieArr.length; i++){
+						sum += cookieArr[i].num;
+					}
+
+					$(".sc_right .sc_num").html(sum);
+				}			
+			}
+
+			
+		})
+	</script>
+	<style>
+		
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			overflow: hidden;
+		}
+		li{
+			list-style-type: none;
+		}
+		.goods_box ul:after{
+			content: "",
+			display:block;
+			clear: both;
+		}
+		.goods_box ul{
+			width: 1100px;
+			margin:0 auto;
+		}
+		.goods_item{
+			padding: 10px 6px;
+			border-right: 1px solid #b6b6b6;
+			float: left;
+			position: relative;
+			margin-bottom: 20px;
+		}
+		.goods_pic{
+			padding: 2px 15px;
+			margin: 0 auto;
+			width: 160px;
+			height: 160px;
+			-webkit-transition:all 0.5s ease-in-out;
+			-moz-transition:all 1s ease-in-out;
+		}
+		.goods_pic:hover{
+			transform:rotate(180deg);
+			box-shadow: 2px 2px 5px #b6b6b6;
+		}
+		.goods_title{
+			font-size: 12px;
+		    text-align: left;
+		    color: #999;
+		    padding: 13px 0 7px;
+		    display: block;
+		    max-width: 100%;
+		    _width: 100%;
+		    white-space: nowrap;
+		    text-overflow: ellipsis;
+		    overflow: hidden;
+		}
+		.sc{
+			padding: 10px 5px;
+		}
+		.sc_btn{
+			width: 100px;
+			margin: 0 auto;
+			text-align: center;
+			padding: 5px 10px;
+			border-radius: 2px;
+			box-shadow: 0 0 2px #f10;
+			height: 20px;
+			background: #fc1934;
+			color: #fff;
+			font-weight: bold;
+			font-size: 18px;
+			cursor:pointer;
+
+		}
+		.sc_right{
+			position: absolute;
+			width: 270px;
+			border-left: 2px solid #b6b6b6;
+			right: -270px;
+			top: 0;
+			height: 100%;
+
+		}
+		.sc_pic{
+			width: 40px;
+			height: 40px;
+			padding: 4px 6px;
+			background: url(toolbars.png) #999 15px 15px no-repeat;
+			position: relative;
+			left: -52px;
+			top: 50%;
+			margin-top: -24px;
+
+		}
+		.sc_num{
+			position: absolute;
+			padding: 2px 8px;
+			border-radius: 50%;
+			background: red;
+			color: #fff;
+			top: -8px;
+			left: 20px;
+			z-index: 1;
+		}
+		.sc_goodsPic{
+			
+			width: 80px;
+			height: 80px;
+			border: 1px solid #b6b6b6;
+			float: left;
+
+		}
+		.sc_goodsPic img{
+			width: 100%;
+			height: 100%;
+		}
+		.sc_goodsTitle{
+			line-height: 40px;
+			color: #999;
+			margin-left: 20px;
+			float: left;
+		}
+		.sc_goodsBtn{
+			
+			background: #fc1934;
+			color: #fff;
+			text-align: center;
+			float: left;
+			line-height: 30px;
+			width: 60px;
+			height: 30px;
+			margin-left: 20px;
+			cursor: pointer;
+
+		}
+		.sc_goodsNum{
+			float: left;
+			line-height: 30px;
+			font-size: 10px;
+			margin-left: 5px;
+
+		}
+		.sc_right li{
+			height: 100px;
+		}
+
+
+	</style>
+
+	<script>
+		
+
+	</script>
+</head>
+<body>
+<!-- 商品列表 -->
+	<div class="goods_box">
+		
+		<ul>
+			
+			
+		</ul>
+
+	</div>
+
+<!-- 右边购物车 -->
+	<div class="sc_right">
+		<div class="sc_pic">
+			<!-- 购物车内商品的数量 -->
+			<div class="sc_num">
+				0
+			</div>
+		</div>
+
+		<ul>
+			
+		</ul>
+	</div>
+	
+</body>
+</html
+
+
+
+
+
+
+

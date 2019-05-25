@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 600px; height: 30px;border: 1px solid black; margin: 100px auto; position: relative;}
+			#fill{height: 30px; width: 0px; background-color: orange}
+			#block{height: 30px; width: 30px; background-color: blue; position: absolute; top: 0px; left: 0px}
+		</style>
+		<script src = 'cookie.js'></script>
+		<script>
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+				var oFill = document.getElementById("fill");
+				var oBlock = document.getElementById("block");
+				var oScore = document.getElementById("score");
+
+				//页面加载完成的时候，上次记录的设置在这
+				if(getCookie("score")){
+					var l = getCookie("score");
+					oBlock.style.left = l + 'px';
+					//填充部分的宽
+					oFill.style.width = l + 'px';
+
+					oScore.innerHTML = parseInt(l / 570 * 100) + "%";
+				}
+
+				var offsetX = 0;
+				oBlock.onmousedown = function(ev){
+					var e = ev || window.event;
+					offsetX = e.clientX - oBlock.offsetLeft;
+
+					document.onmousemove = function(ev){
+						var e = ev || window.event;
+						var l = e.clientX - offsetX;
+						if(l <= 0){
+							l = 0;
+						}
+						if(l >= 570){
+							l = 570;
+						}
+						oBlock.style.left = l + 'px';
+						//填充部分的宽
+						oFill.style.width = l + 'px';
+
+						oScore.innerHTML = parseInt(l / 570 * 100) + "%";
+						//记录拖动的进度
+						setCookie("score", l, {
+							expires: 30
+						});
+					}
+				}
+
+				document.onmouseup = function(){
+					document.onmousemove = null;
+				}
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<div id = 'fill'></div>
+			<div id = 'block'></div>
+			<span id = 'score'>0%</span>
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				$  是一个function的名字
+				$  就是一个构造函数
+				$() 相当于 调用  new JQuery();
+				【注】构造函数可以封装大型的JS库。
+
+			*/
+
+			/*alert(typeof $);*/
+
+
+			/*
+				一、JQ选择网页元素
+					1、模拟css选择器的格式
+						基本上在jq中不用循环，所有的操作都是批量操作。
+					2、独有的表达式的写法
+			*/
+			window.onload = function(){
+				// $("div").css("backgroundColor", 'red');
+
+				//第一个
+				// $("div:first").css("backgroundColor", 'red');
+				// $("div:last").css("backgroundColor", 'red');
+
+				//更加厉害的操作
+				// $("div:even").css("backgroundColor", 'red');
+				// $("div:odd").css("backgroundColor", 'red');
+
+				//下标2的元素
+				// $("div:eq(2)").css("backgroundColor", 'red');
+				// $("div[name=hello]").css("backgroundColor", 'yellow');
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>div</div>
+		<div>div</div>
+		<div name = 'hello'>div</div>
+		<div>div</div>
+		<div class = 'box'>div</div>
+		<div class = 'box'>div</div>
+	</body>
+</html>

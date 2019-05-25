@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*	
+				事件绑定的格式：
+					元素节点.on + 事件类型 = 函数;
+
+				事件类型
+
+				鼠标事件(可以添加到任何元素节点上)
+					click     单击
+					dblclick  双击
+					mousedown 鼠标按下
+					mouseup   鼠标抬起
+					mouseover 鼠标移入
+					mouseout  鼠标移出
+					mousemove 鼠标移动  只要不停的移动，重复不停的被触发
+
+				键盘事件(window，表单输入框)
+					keydown   键盘按下(支持全键位) 如果按下不放，重复触发
+					keyup     键盘抬起
+					keypress  键盘按下(只支持字符键)  如果按下不放，重复触发
+
+				HTML事件
+					window事件
+						load     当页面加载完成以后触发
+						unload   当页面解构的时候触发(只有IE浏览器支持)
+						scroll   当页面滚动的时候调用
+						resize   当窗口大小发生变化的时候触发
+
+					表单事件(input，textarea)
+						blur     失去焦点的时候触发
+						focus    获取焦点的时候触发
+						select   当用户选择文本框(input 或 textarea)中的一个或多个字符触发。
+						change   当文本框(input 或 textarea)内容改变且失去焦点后触发。
+
+					必须添加在form元素节点上
+						submit   当用户点击提交按钮在<form>元素上触发。
+						reset    当用户点击重置按钮在<form>元素上触发。
+			*/
+			window.onload = function(){
+				var oInput = document.getElementById("input1");
+				/*oInput.onblur = function(){
+					this.value = '失去焦点';
+				}
+
+				oInput.onfocus = function(){
+					this.value = '获取焦点';
+				}*/
+
+
+				/*oInput.onselect = function(){
+					alert(1);
+				}*/
+
+				/*oInput.onchange = function(){
+					alert(1);
+				}*/
+
+				var oF = document.getElementById("f1");
+				oF.onsubmit = function(){
+					alert("提交");
+				}
+				oF.onreset = function(){
+					alert("重置");
+				}
+			}
+			/*
+				5G时代 网速 1.5G/s
+			*/
+		</script>
+	</head>
+	<body style = "width: 3000px; height: 3000px">
+		<button id = 'btn1'>鼠标事件</button>
+		<input type="text" value = 'xxxx' id = 'input1'>
+		<form id = 'f1' action="#">
+			<input type="text">
+			<input type="submit">
+			<input type="reset">
+		</form>
+	</body>
+</html>

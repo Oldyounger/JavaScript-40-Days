@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			function btnClick(){
+				//1、拿到整个input标签
+				var oInput = document.getElementById("input1");
+
+				//oInput.value 都是字符串
+				alert(oInput.value); //获取输入的内容
+
+				//设置输入的内容
+				oInput.value = "设置的内容";
+			}
+		</script>
+	</head>
+	<body>
+		<!-- 执行onclick 后面字符串中的代码 -->
+		<button onclick = "btnClick();">按钮</button>
+		<input type="text" value = ''  id = 'input1'/>
+	</body>
+</html>

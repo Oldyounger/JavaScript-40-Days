@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<!-- 
+			通过src属性引入了1.txt，最终1.txt里面所有的数据，就相当于写在了这个页面上
+
+			【注】文件后缀是干啥的？
+				作用就一个,告诉操作系统，用什么软件打开这个文件。
+			
+
+			【注】
+				普通ajax下载的数据  data
+				JSONP引入的数据    函数名(data);
+		 -->
+		<script>
+			function func(data){
+				alert("下载的数据:" + data);
+			}
+		</script>
+		<script src = '1.txt'></script>
+		<!-- <script src = 'demo.png'></script> -->
+		
+	</head>
+	<body>
+		<!-- 
+				JSONP跨域就是通过src这个属性实现的跨源。
+				src这个属性没有同源限制。
+	
+		 -->
+		<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548320998072&di=22c0ebd063cda24b90c176f644b73288&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201803%2F28%2F20180328230600_cS38m.thumb.700_0.jpeg" alt="">
+	</body>
+</html>

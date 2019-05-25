@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*function Phone(size, color){
+				//构造函数属性
+				this.size = size;
+				this.color = color;
+			}
+			//构造函数函数
+			Phone.prototype.show = function(){
+				alert(`您选择了${this.color}颜色的，${this.size}GB的手机`);
+			}
+
+			// var iphone = new Phone(256, "玫瑰金");
+			// iphone.show();
+
+			//继承Phone生成一个子类PhoneX
+			function PhoneX(size, color, type){
+				//继承父一级的属性
+				//构造函数的伪装
+				Phone.call(this, size, color);
+				this.type = type;
+			}
+
+			//继承方法  原型链 (三种继承方式)
+			for(var funcName in Phone.prototype){
+				PhoneX.prototype[funcName] = Phone.prototype[funcName];
+			}
+			PhoneX.prototype.showSelf = function(){
+				alert(`您选择了型号为${this.type}的手机`);
+				this.show();
+			}
+
+			var iphoneX = new PhoneX(256, "黑色", "xsMax");
+			iphoneX.showSelf()*/
+
+			class Phone{
+				constructor(size, color){
+					this.size = size;
+					this.color = color;
+				}
+				show(){
+					alert(`您选择了${this.color}颜色的，${this.size}GB的手机`);
+				}
+			}
+
+			class PhoneX extends Phone{
+				constructor(size, color, type){
+					//继承父一级的属性
+					super(size, color);
+					this.type = type;
+				}
+				showSelf(){
+					alert(`您选择了型号为${this.type}的手机`);
+					this.show();
+				}
+			}
+			var iphoneX = new PhoneX(256, "黑色", "xsMax");
+			iphoneX.showSelf()
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

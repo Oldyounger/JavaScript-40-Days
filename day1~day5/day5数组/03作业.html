@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			// 找出0-100之间7的倍数，和包含7的数，封装函数
+
+			function print7(){
+				for(var i = 0; i <= 100; i++){
+					if(i % 7 == 0 && i != 0){
+						document.write(i + "<br/>");
+					}else{
+						//判断是否是包含7的数
+						var a = i % 10;
+						var b = parseInt(i / 10) % 10;
+						if(a == 7 || b == 7){
+							document.write(i + "<br/>");
+						}
+					}
+				}
+			}
+
+			// print7();
+
+
+			/*
+				有一堆桃子不知数目，猴子第一天吃掉一半，觉得不过瘾，又多吃了一只，第二天照此办法，吃掉剩下桃子的一半另加一只，天天如此，到第num(num <= 10)天早上，猴子发现只剩一只桃子了，问这堆桃子原来有多少只？ （思路：n为还剩n天吃完的桃子数）
+			*/
+			/*
+				还剩n天吃完
+				peach(10) = (peach(9) + 1) * 2;
+				peach(n) = (peach(n - 1) + 1) * 2;
+			*/
+			function peach(n){
+				if(n == 1){
+					return 1;
+				}
+				return (peach(n - 1) + 1) * 2;
+			}
+
+			alert(peach(5));
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

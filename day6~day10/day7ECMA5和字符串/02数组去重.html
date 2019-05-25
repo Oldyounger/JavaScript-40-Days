@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				编写函数norepeat(arr) 将数组的重复元素去掉，并返回新的数组（拓展）
+			*/
+			var arr = [10, 20, 30, 40, 50, 40, 30, 20, 20, 20, 10];
+			                                      //7
+
+		    //数组去重的简便方式
+		    arr = [...new Set(arr)];
+		    alert(arr);	                                      
+
+
+
+			/*norepeat(arr);
+			alert(arr);*/
+
+
+			//第一种
+			/*function norepeat(arr){
+				for(var i = 0; i < arr.length - 1; i++){
+					for(var j = i + 1; j < arr.length; j++){
+						if(arr[i] === arr[j]){
+							arr.splice(j, 1);
+							j--;
+						}
+					}
+				}
+			}*/
+
+			//第二种
+			function norepeat(arr){
+				for(var i = arr.length - 1; i > 0; i--){
+					for(var j = i - 1; j >= 0; j--){
+						if(arr[i] === arr[j]){
+							arr.splice(j, 1);
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

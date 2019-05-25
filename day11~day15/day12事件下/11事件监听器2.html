@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				最新的事件绑定的方法：
+					addEventListener     添加事件
+						格式：
+							node.addEventListener(事件类型, 函数, false);
+
+							第三个参数： false 事件冒泡   true 事件捕获
+
+					removeEventListener  删除事件
+						格式：
+							node.removeEventListener(事件类型, 函数名);
+
+						【注】删除某个元素节点上，某个事件类型下的某个函数。
+
+					IE8以下不兼容
+
+
+
+				传统事件绑定：
+					元素节点.on+事件类型 = 匿名函数/函数名
+					1、重复去绑定事件会覆盖
+					2、不能真正意义上的删除一个函数。
+			*/
+			window.onload = function(){
+				var aBtns = document.getElementsByTagName("button");
+				aBtns[1].addEventListener("click", function(){
+					alert("hello");
+				}, false);
+
+
+				function show(){
+					alert("我是添加的函数");
+				}
+				aBtns[0].onclick = function(){
+					aBtns[1].addEventListener("click", show, false);
+				}
+
+				aBtns[2].onclick = function(){
+					//删除的话，必须传入函数的名字
+					aBtns[1].removeEventListener("click", show);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button>增加事件</button>
+		<button>按钮</button>
+		<button>删除事件</button>
+	</body>
+</html>

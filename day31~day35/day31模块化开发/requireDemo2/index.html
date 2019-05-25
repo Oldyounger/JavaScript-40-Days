@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			*{margin: 0px; padding: 0px;}
+			#div3{width: 100px; height: 100px; background-color: blue; position: absolute; right: 0px; top: 0px}
+			#div1{width: 200px; height: 200px; background-color: red; position: relative; display: none}
+			#div2{width: 50px; height: 50px; position: absolute; right: 0px; bottom: 0px; background-color: yellow}
+		</style>
+		<!-- 
+			data-main = "入口的js文件"
+			管理我们当前页面使用的所有js文件的
+
+			【注】可以省略.js的后缀
+		 -->
+		<script src = 'js/require.js' async="true" defer data-main = "js/main"></script>
+	</head>
+	<body>
+		<!-- 
+			1、点击按钮，显示div1
+			2、拖拽div3，可以实现拖拽
+			3、拖拽div2，可以实现div1的缩放
+		 -->
+		<button id = 'btn1'>显示</button>
+		<div id = 'div1'>
+			<div id = 'div2'></div>
+		</div>
+		<div id = 'div3'></div>
+	</body>
+</html>
+
+
+
+

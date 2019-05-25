@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset = "utf-8" />
+		<style type="text/css">
+		#q{width: 300px; height: 30px; padding: 5px; border: 1px solid #f90; font-size: 16px}
+		#ul1{border: 1px solid #f90; width: 310px; margin: 0; padding: 0; display: none}
+		#ul1 li{list-style: none}
+		li a{line-height: 30px; padding: 5px; text-decoration: none; color: black; display: block;}
+		li a:hover{background: #f60; color: white}
+		</style>
+		<script type="text/javascript">
+		//1、封装函数
+		function func(data){
+			var oUl = document.getElementById("ul1");
+			if(data.s.length){
+				//解析,并加载
+				oUl.style.display = "block";
+				for(var i = 0; i < data.s.length; i++){
+					var aLi = document.createElement("li");
+					var oA = document.createElement("a");
+					oA.href = "http://www.baidu.com/s?wd=" + data.s[i];
+					oA.innerHTML = data.s[i];
+					oA.target = "_blank";
+					aLi.appendChild(oA);
+					oUl.appendChild(aLi);
+				}
+			}else{
+				oUl.style.display = "none"
+			}
+		}	
+
+		window.onload = function(){
+			var oQ = document.getElementById("q");
+			var oUl = document.getElementById("ul1");
+
+			oQ.onkeyup = function(){
+				oUl.innerHTML = "";
+				if(this.value != ""){
+					//动态创建script,加载数据
+					var oScript = document.createElement("script");
+					oScript.src = 'http://suggestion.baidu.com/su?wd=' + this.value + '&cb=func';
+					document.body.appendChild(oScript);
+				}else{
+					oUl.style.display = "none";
+				}
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<input type = "text" id = "q" />
+		<ul id = "ul1">
+			<!-- <li><a href = "#">百度</a></li>
+			<li><a href = "#">百度</a></li>
+			<li><a href = "#">百度</a></li> -->
+		</ul>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				系统提供了大量的数组的函数
+			*/
+
+			/*
+				栈结构  通过数组的方法模拟一个栈结构。
+
+				栈结构：先进后出  push  pop
+
+				通过数组的方法：元素只能从同一头出，同一头进。
+			*/
+
+			/*
+				push
+				格式：数组.push(参数1, 参数2...);
+				功能：给数组的末尾添加元素。
+				返回值：添加完元素以后，数组的长度
+			*/
+			/*var arr = ["超人", "海王", "蝙蝠侠"];
+			var res = arr.push("神奇女侠", "闪电侠");
+			alert(arr);
+			alert(res)*/
+
+			/*
+				pop
+				格式：数组.pop()
+				功能：从数组的末尾取一个元素下来
+				返回值：取下的元素
+			*/
+
+			/*var arr = ["超人", "海王", "蝙蝠侠"];
+			var res = arr.pop();
+			alert(res);
+			alert(arr);*/
+
+
+
+
+			/*
+				队列结构
+				特点：先进先出
+				通过数组的方法：从尾部插入元素，从头部取下元素。
+				push  shift
+			*/
+
+			/*
+				shift()
+				格式：数组.shift()
+				功能：从数组头部取元素下来。
+				返回值：从数组头部取下的元素。
+			*/
+			/*var arr = ["钢铁侠", "雷神", "绿巨人"];
+			var res = arr.shift();
+			alert(res);
+			alert(arr);*/
+
+
+			/*
+				unshift 从数组的头部插入元素
+				格式：数组.unshift(元素...);
+				功能：从数组头部插入元素
+				返回值：插完元素以后数组的长度。
+			*/
+
+			var arr = ['李安', "温子仁", "卢卡斯"];
+			var res = arr.unshift("斯皮尔伯格", "卡梅隆");
+			alert(arr);
+
+			alert(res);
+
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

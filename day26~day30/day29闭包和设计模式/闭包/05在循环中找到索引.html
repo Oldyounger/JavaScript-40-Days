@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*window.onload = function(){
+				var aBtn = document.getElementsByTagName("button");
+				for(var i = 0; i < aBtn.length; i++){
+					aBtn[i].index = i;
+
+					aBtn[i].onclick = function(){
+						alert(this.index);
+					}
+				}
+			}*/
+
+
+			window.onload = function(){
+				var aBtn = document.getElementsByTagName("button");
+				for(var i = 0; i < aBtn.length; i++){
+
+					/*aBtn[i].onclick = (function(index){
+						return function(){
+							alert(index)
+						}
+					})(i)*/
+
+					aBtn[i].onclick = show(i);
+
+					/*show(0)
+					show(1)
+					show(2)*/
+				}
+
+				function show(index){
+					return function(){
+						alert(index);
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button>按钮1</button>
+		<button>按钮2</button>
+		<button>按钮3</button>
+	</body>
+</html>

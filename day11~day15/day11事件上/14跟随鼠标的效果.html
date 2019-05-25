@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			*{margin: 0px; padding: 0px}
+			#div1{width: 208px; height: 208px;position: absolute; background: url(girl.gif) no-repeat;}
+			body{background-color: black}
+		</style>
+		<script>
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+				document.onmousemove = function(ev){
+					var e = ev || window.event;
+					oDiv1.style.left = e.clientX - 60 + 'px';
+					oDiv1.style.top = e.clientY - 60 + 'px';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+	</body>
+</html>

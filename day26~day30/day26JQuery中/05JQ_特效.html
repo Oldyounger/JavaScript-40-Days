@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			div{width: 100px; height: 100px}
+			#div1{background-color: red}
+			#div2{background-color: blue}
+		</style>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				hover  函数
+				hover(funOver, funOut)
+				
+
+				可以传入参数，
+					第一个参数 毫秒数 动画持续的事件
+					第二个参数 回调函数 动画执行完毕以后执行的代码
+				show()   显示 
+				hide()   隐藏
+
+				fadeIn()   淡入  
+				fadeOut()  淡出  透明度发生变化  0-1
+				fadeTo()
+
+				
+				【注】卷闸
+				slideDown() 
+				slideUp()
+			*/
+			$(function(){
+				$("#div1").hover(function(){
+					// this.innerHTML = "移入";
+					/*$("#div2").hide(2000, function(){
+						$("#div1").html("动画移入完成")
+					});*/
+
+					/*$("#div2").fadeOut(2000, function(){
+						$("#div1").html("动画淡出完成")
+					})*/
+
+					/*$("#div2").fadeTo(2000, 0.5, function(){
+						$("#div1").html("动画淡出完成")
+					})*/
+
+					$("#div2").slideUp(2000)
+
+				}, function(){
+					// this.innerHTML = "移出";
+					/*$("#div2").show(2000, function(){
+						$("#div1").html("动画移出完成")
+					});*/
+
+					/*$("#div2").fadeIn(2000, function(){
+						$("#div1").html("动画淡入完成")
+					})*/
+					/*$("#div2").fadeTo(2000, 1, function(){
+						$("#div1").html("动画淡入完成")
+					})*/
+
+					$("#div2").slideDown(2000)
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+		<div id = 'div2'></div>
+	</body>
+</html>

@@ -1,0 +1,15 @@
+.alert{
+	background-color: red;
+	a{
+		color: orange;
+		&:hover{
+			font-size: 30px
+		};
+	}
+
+}
+
+.alert_info{
+	@extend .alert;
+	text-align: center;
+}

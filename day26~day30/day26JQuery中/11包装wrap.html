@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				包装
+				wrap() wrapAll() wrapInner() unwrap()  了解
+			*/
+
+			$(function(){
+				// $("span").wrap("<em>");
+
+
+				//整体打包
+				// $("span").wrapAll("<em>");
+
+				// 内部包装
+				// $("span").wrapInner("<em>");
+
+				//删除
+				$("span").unwrap("<div>");
+			})
+		</script>
+	</head>
+	<body>
+		<div>
+			<span>span</span>
+		</div>
+		<span>span</span>
+		<span>span</span>
+		<span>span</span>
+		<span>span</span>
+	</body>
+</html>

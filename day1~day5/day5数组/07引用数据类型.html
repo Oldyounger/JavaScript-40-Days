@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				基本数据类型
+					number  string  boolean
+				复合数据类型/引用数据类型
+					函数Function(function)   数组Array(object)
+					复合/引用数据类型中 变量里面只存储地址。
+				特殊数据类型
+					undefined NaN null
+			*/
+
+			/*var num1 = 10;
+			var num2 = num1;
+			num2 = 30;
+			alert(num1 + ', ' + num2);*/
+
+			var arr1 = [10, 20, 30];
+			var arr2 = arr1;
+			arr2[1] = "hello";
+			alert(arr1); //10,hello,30
+			alert(arr2); //10,hello,30
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				tool.js
+
+				JQ提供一系列工具方法，而这些工具方法和普通封装的JS方法没有什么区别。
+					
+					$()  new JQuery()
+				【注】JQ的方法   $().xxx() $().yyy()
+					  工具方法   $.xxx() $.yyy()
+			*/
+
+			/*
+				$.type()  输出数据的数据类型
+
+				typeof 判断复合数据类型的时候，统一返回的都是object
+				instanceof  判断是属于哪个构造函数构造出来的对象
+			*/
+			/*var d = new Date();
+			var arr = [1, 2, 3];
+			var str = new String();
+*/
+			/*alert(d instanceof Date);
+
+			alert(typeof d);
+			alert(typeof arr);
+			alert(typeof str);*/
+
+			/*alert($.type(d));
+			alert($.type(arr));
+			alert($.type(str))*/
+
+
+			/*
+				$.trim()  删除字符串首尾的空格
+				ECMA6 新增了一个函数 trim  字符串.trim()
+			*/
+			/*var str = "   he l l o   ";
+			alert("|" + str + "|");
+			// alert("|" + $.trim(str) + "|");
+			alert("|" + str.trim() + "|");*/
+
+
+			/*
+				$.inArray()  查找某个元素在数组中的下标
+				$.inArray(30, arr)
+			*/
+
+			/*var arr = [10, 20, 30, 40, 50];
+
+			alert($.inArray(30, arr));*/
+
+
+			/*
+				$.proxy()  预设this的指向
+				第一个参数  调用函数
+				第二个参数  这个函数里面this的指向，数据类型必须是对象类型
+			*/
+			/*function show(){
+				alert(this);
+			}
+*/
+			// show();
+
+			/*var res = $.proxy(show, document);
+			res();*/
+
+			// $.proxy(show, document)();
+
+
+
+
+			/*
+				$.noConflict()  调用该函数给$函数起一个别名
+			*/
+			/*var Tian = $.noConflict();
+
+			var $ = 10;
+
+			alert(typeof $);
+
+			Tian(function(){
+				Tian(document).click(function(){
+					alert(123);
+				})
+			})*/
+
+			/*
+				$.parseJSON()  将JSON格式的字符串，转成对应的数据结构
+
+				eval()  格式要求 最外层必须是数组，元素必须是对象。
+
+				JSON.parse()
+				JSON.stringify()   ECMA5以后新增的方法
+			*/
+
+
+			/*
+				$.makeArray()
+				将伪数组转成数组
+
+				ECMA6也新增这样的函数。
+			*/
+			window.onload = function(){
+				var aDivs = document.getElementsByTagName("div");
+
+				alert(aDivs.length);
+				alert(aDivs[0].innerHTML);
+
+
+				// aDivs.push("hello");
+
+				aDivs = $.makeArray(aDivs);
+				aDivs.push("hello");
+				alert(aDivs)
+			}
+		</script>
+	</head>
+	<body>
+		<div>div</div>
+		<div>div</div>
+		<div>div</div>
+		<div>div</div>
+		<div>div</div>
+	</body>
+</html>

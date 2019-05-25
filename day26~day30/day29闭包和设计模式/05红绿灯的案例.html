@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				实现：
+				1、绿灯亮  亮2秒
+				2、黄灯亮  亮3秒
+				3、红灯亮  亮5秒
+
+				Promise  承诺异步程序串行
+			*/
+
+			console.time("test");
+			var stauts = 1;
+			new Promise(function(resolve, reject){
+				console.log("1、绿灯亮");
+				setTimeout(function(){
+					if(stauts == 1){
+						resolve("1、绿灯熄灭成功");
+					}else{
+						reject("2、绿灯熄灭失败");
+					}
+				}, 2000);
+			}).then(function(value){
+				console.log(value);
+				return new Promise(function(resolve, reject){
+					console.log("2、黄灯亮");
+					setTimeout(function(){
+						if(stauts == 1){
+							resolve("2、黄灯熄灭成功");
+						}else{
+							reject("2、黄灯熄灭失败")
+						}
+					}, 3000);
+				})
+			}).then(function(value){
+				console.log(value);
+
+				console.timeEnd("test");
+			}).catch(function(value){
+				console.log(value + ".catch");
+			})
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

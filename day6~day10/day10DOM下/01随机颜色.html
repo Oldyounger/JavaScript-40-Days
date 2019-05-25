@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 400px; height: 400px; background-color: orange; text-align: center; line-height: 400px; font-size: 30px}
+		</style>
+		<script src = 'tool.js'></script>
+		<script>
+			/*
+				rgba(255,255,255,1)
+			*/
+
+			/*
+				随机0~255的整数
+				parseInt(Math.random() * 256);
+ 			*/
+
+ 			/*
+				写一个定时器,每个一秒修改一次div内文本颜色和文字大小.
+				最开始这个文字是默认大小,大小开始增大,当增大了6次以后,
+				文字大小开始缩小,缩小6次,文字再开始增大。
+ 			*/
+ 			
+ 			function randomColor(){
+ 				var str = "rgba(" + parseInt(Math.random() * 256) + "," + parseInt(Math.random() * 256) + "," + parseInt(Math.random() * 256) + ",1)";
+ 				return str;
+ 			}
+
+
+ 			window.onload = function(){
+ 				var oDiv = document.getElementById("div1");
+
+ 				var speed = 5;
+ 				var count = 0; //用于记录变化的次数
+
+ 				setInterval(function(){
+ 					oDiv.style.backgroundColor = randomColor();
+ 					//改变字体的大小
+
+ 					//1、获取当前的字体大小
+ 					var iCur = parseInt(getStyle(oDiv, "fontSize"));
+ 					oDiv.style.fontSize = iCur + speed + 'px';
+ 					count++;
+ 					if(count % 6 == 0){
+ 						speed *= -1;
+ 					}
+
+ 				}, 1000);
+ 			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			div文本
+		</div>
+	</body>
+</html>

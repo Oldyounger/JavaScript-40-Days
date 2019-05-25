@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				A同学想吃饭
+				委托B同学带份饭
+
+				A同学  委托方
+				B同学  代理方
+			*/
+			/*
+				事件委托实现的流程：
+					1、找到当前节点的父节点或者祖先节点
+					2、将要添加事件，添加在找到的节点上
+					3、找出触发对象，如果触发对象符合条件，进行后续操作。
+				【注】事件委托不是用来解决问题的，用来提高程序运行效率。
+			*/
+
+			window.onload = function(){
+				var oUl = document.getElementById("ul1");
+				var oBtn = document.getElementById("btn1");
+
+				oUl.onclick = function(ev){
+					var e = ev || window.event;
+					var target = e.target || window.event.srcElement;
+
+					if(target.tagName.toLowerCase() == "li"){
+						target.style.backgroundColor = 'red';
+					}
+				}
+				var i = 6;
+				oBtn.onclick = function(){
+					//给ul中插入标签
+					var node = document.createElement("li");
+					node.innerHTML = 11111 * i++;
+					oUl.appendChild(node);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul id = 'ul1'>
+			<li>11111</li>
+			<li>22222</li>
+			<li>33333</li>
+			<li>44444</li>
+			<li>55555</li>
+		</ul>
+		<button id = 'btn1'>按钮</button>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				try...catch  抛出异常，捕获异常
+
+				格式：
+				try{
+					要去执行的代码;
+				}catch(error){
+					补救的代码;
+				}
+				【注】先去去尝试执行try中的代码，当try中的代码执行异常，就直接去执行catch中的代码进行补救，其中error错误对象，包含着我们try中代码执行的异常信息。
+
+				【功能】是用来进行代码调试的。
+			*/
+
+			try{
+				alert("执行代码1");
+				alert(a);
+				alert("执行代码2");
+			}catch(error){
+				alert("补救代码，错误：" + error);
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

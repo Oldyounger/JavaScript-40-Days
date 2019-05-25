@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				keydown
+				keyup
+
+					keyCode(键码)  特点不区分大小写，统一返回大写字母的ASCII码值。
+							 支持所有的键位  【注】一般情况下，和修改键组合成快捷键
+
+				keypress(只支持字符键)
+					charCode(字符码) 区分大小写，返回当前按下字符的ASCII码值
+			*/
+
+			window.onload = function(){
+				/*window.onkeydown = function(ev){
+					var e = ev || window.event;
+					var which = e.keyCode || e.which;
+					alert(which);   //IE8以下不兼容
+				}*/
+
+				window.onkeypress = function(ev){
+					var e = ev || window.event;
+					// alert(e.charCode)
+					// alert(String.fromCharCode(e.charCode));
+					// alert(e.which);
+					var which = e.charCode || e.which;
+					alert(which)
+				}
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				DOM节点类型
+				1、元素节点
+				2、属性节点
+				3、文本节点
+
+				别把空格不当字符，凡是你键盘上有的都叫做字符。
+
+
+				正则，可以匹配是否是纯空白的文本节点，如果是返回true，否则返回false。
+
+				/^\s+$/.test()
+
+				\n 是换行
+			*/
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+
+				// alert(oDiv1.childNodes.length);
+
+				/*忽略空白的文本节点*/
+
+				// var nodes = removeSpaceNode(oDiv1.childNodes);
+				/*alert(nodes.length);
+				alert(nodes[1].nodeValue);*/
+
+				// alert(oDiv1.firstChild.nodeValue);
+
+
+				removeSpaceNode2(oDiv1);
+				alert(oDiv1.childNodes.length);
+				alert(oDiv1.firstChild.nodeName)
+				
+			}
+
+			function removeSpaceNode(nodes){
+				var arr = [];//把不是空白的节点装起来
+				for(var i = 0; i < nodes.length; i++){
+					if(!(nodes[i].nodeType == 3 && /^\s+$/.test(nodes[i].nodeValue))){
+						arr.push(nodes[i]);
+					}
+				}
+				return arr;
+			}
+
+			//从父节点上，将空白节点直接删除掉
+			function removeSpaceNode2(parentNode){
+				var nodes = parentNode.childNodes;
+				for(var i = 0; i < nodes.length; i++){
+					if(nodes[i].nodeType == 3 && /^\s+$/.test(nodes[i].nodeValue)){
+						//将这个空白节点删除
+						parentNode.removeChild(nodes[i]);
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<em id = 'em'>em</em>
+			div文本
+			<strong>strong</strong>
+		</div>
+	</body>
+</html>

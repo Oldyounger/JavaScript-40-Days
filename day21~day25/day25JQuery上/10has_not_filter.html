@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			$(function(){
+				// $("div").css("backgroundColor", 'red');
+
+				//div标签中class=box
+				// $("div.box").css("backgroundColor", 'red');		
+				
+				/*
+					filter 过滤，已经获取到的元素节点中过滤
+					not    和filter是反义词
+				*/
+				// $("div").filter(".box").css("backgroundColor", "red");
+				// $("div").not(".box").css("backgroundColor", "red");
+
+
+				/*
+					has  拥有
+					筛选的是div节点，但是看的子节点中是否有符合条件的。
+				*/
+				$("div").has(".box").css("backgroundColor", "red");
+
+			})
+		</script>
+	</head>
+	<body>
+		<div>div1
+			<span class = 'box'></span>
+		</div>
+		<div class = 'box'>div2</div>
+	</body>
+</html>

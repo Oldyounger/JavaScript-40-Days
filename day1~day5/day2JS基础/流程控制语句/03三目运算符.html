@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				三目运算符：
+					表达式1 ? 表达式2 : 表达式3;
+				【注】将双分支语句进行简化的操作。
+
+				规律：
+					1、判断表达式1是否为真
+					2、如果判断为真，直接去执行表达式2
+					3、否则执行表达式3
+			*/
+			var num1 = 10;
+			var num2 = 20;
+			/*var max = null;
+			if(num1 > num2){
+				max = num1;
+			}else{
+				max = num2;
+			}
+			alert("最大数是：" + max);*/
+
+			//上述写法我们可以进行简化，简化成三目运算符的写法：
+
+			var max = num1 > num2 ? num1 : num2;
+			alert("最大数是：" + max);
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

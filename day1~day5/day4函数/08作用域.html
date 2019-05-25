@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				所有的程序都是在内存中运行的。
+				内存的垃圾回收机制：运行程序的时候需要占用内存去执行，运行完毕以后要将内存还给系统。
+
+				【注】函数调用 == 运行程序
+						函数调用的时候，系统必须开辟内存，给这个函数去运行，
+						当这个函数调用结束以后，将这部分内存销毁掉，还给系统。
+				【注】一般情况下某个函数运行的空间是由这个函数中声明的变量和形参决定的。
+						执行的函数的时候，形参使用起来和某同的变量没有任何区别。
+
+				【注】运行之前，看整个程序中有多少个变量和形参，先将这些变量和形参的空间准备好。造成声明提升。
+			*/
+
+
+			var a = 10;
+			function show(){
+				a = 20;
+				alert(a);
+			}
+			alert(a); //10
+			show();   //20
+			alert(a); //20
+
+
+			var a = 10;
+			function show(){
+				var a = 20;
+				alert(a);
+			}
+			alert(a); //10
+			show();   //20
+			alert(a); //10
+
+			var num = 10;
+			function show(num){
+				num = 30;
+				alert(num);
+			}
+			alert(num); //10
+			show(10);   //30
+			alert(num); //10
+
+			/*
+				全局作用域
+					声明在全局的变量，作用域是全局的，全局变量。
+				局部作用域
+					声明函数的大括号，凡是这个函数大括号内声明的变量和形参，只在这个大括号生效，出了大括号就销毁了。
+				【注】使用变量和形参的时候原则：就近原则，哪个作用域近，用哪个变量。
+			*/
+
+
+			/*var num = "全局变量";
+
+			function show(num){
+				var num2 = "局部变量";
+				num = "这个函数的大括号";
+			}
+
+			show();
+			alert(num);
+			alert(num2);*/
+
+			/*if(1){
+				var xxx = 10;
+			}
+			alert(xxx);*/
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

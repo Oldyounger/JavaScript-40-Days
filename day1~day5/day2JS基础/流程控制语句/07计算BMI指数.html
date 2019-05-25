@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+		/*
+			Math.pow(x, y)
+
+			x 的 y 次方
+		*/
+
+
+
+			var height = 1.68;
+			var weight = 50;
+			var BMI = weight / Math.pow(height, 2);
+			alert(BMI);
+			if(BMI < 18.5){
+				alert("体重过轻");
+			}else if(BMI >= 18.5 && BMI <= 24.99){
+				alert("正常");
+			}else if(BMI >= 25 && BMI <= 28){
+				alert("过重");
+			}else if(BMI >= 28 && BMI <= 32){
+				alert("肥胖");
+			}else{
+				alert("非常肥胖");
+			}
+
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

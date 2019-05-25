@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				DOM节点类型
+				1、元素节点
+				2、属性节点
+				3、文本节点
+
+				别把空格不当字符，凡是你键盘上有的都叫做字符。
+			*/
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+
+				//获取oDiv1的子节点
+				/*
+					childNodes  伪数组
+
+					firstChild
+					lastChild
+					【注】上述几个属性，可以获取到空白文本节点的，但是开发的时候是不要。
+
+					children  
+					firstElementChild
+					lastElementChild
+					【注】上述几个属性，只获取子节点中的元素节点。IE8以上兼容。
+
+
+					【注】考虑文本节点
+					nextSibling
+					previousSibling
+
+					【注】不考虑文本节点
+					nextElementSibling
+					previousElementSibling
+				*/
+				/*alert(oDiv1.children.length);//2
+				alert(oDiv1.firstElementChild.tagName);
+				alert(oDiv1.lastElementChild.tagName);*/
+
+				var oEm = document.getElementById("em");
+				alert(oEm.nextSibling);
+				alert(oEm.nextElementSibling.tagName)
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<em id = 'em'>em</em>
+			div文本
+			<strong>strong</strong>
+		</div>
+	</body>
+</html>

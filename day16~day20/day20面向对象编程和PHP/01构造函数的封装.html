@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				可以通过类构造对象
+				但是JS中没有类这个概念，可以构造函数充当类的存在，通过构造函数构造对象。
+				但是ECMA6把类的概念新增
+			*/
+
+			/*
+				封装一个构造函数
+				添加属性
+				添加方法
+					通过prototype原型(每一个函数都拥有一个prototype原型)
+				【注】混合法
+			*/
+			function Person(name, sex){
+				//this = new Object(); 原料操作
+				//添加属性
+				this.name = name;
+				this.sex = sex;
+				//return this;  出厂操作
+			}
+
+			//通过原型给该构造函数添加方法
+			Person.prototype.showName = function(){
+				alert("我的名字叫" + this.name);
+			}
+			Person.prototype.showSex = function(){
+				alert("我是" + this.sex + "的");
+			}
+
+			var p1 = new Person("blue", "男");
+			p1.showName();
+			p1.showSex();
+
+			var p2 = new Person("red", "女");
+			p2.showName();
+			p2.showSex();
+
+			alert(p1.showName == p2.showName); //true
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			var arr1 = [10, 20, 30, 40, 50];
+			var arr2 = [1, 2, 3, 4, 5, 6];
+
+			/*
+				给数组添加一个方法，可以计算所有元素的和。
+			*/
+			/*arr1.sum = function(){
+				var num = 0;
+				for(var i = 0; i < this.length; i++){
+					num += this[i];
+				}
+				return num;
+			}*/
+			/*
+				如果你想让所有的数组对象，都拥有求和函数。
+				那么我们的函数需要添加到构造函数的原型上。
+				Array.prototype（原型对象）
+			*/
+			Array.prototype.sum = function(){
+				var num = 0;
+				for(var i = 0; i < this.length; i++){
+					num += this[i];
+				}
+				return num;
+			}
+
+
+			alert(arr1.sum());
+
+			alert(arr2.sum()); //arr2.sum is not a function
+
+			alert(arr1.sum == arr2.sum); //true
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				字符串概念：所有带单引号或者双引号的都叫做字符串。
+				"hello" 'hello'
+			*/
+
+			/*//1、声明字符串的方式，通过new运算符声明字符串
+			var str = new String(true);
+			// alert(str.length);
+			alert(typeof str); //object
+
+			//2、可以声明new运算符，声明字符串
+			var str = String(true);
+			alert(typeof str); //string
+
+			//3、通过字符串常量进行赋值
+			var str = 'hello';
+			// alert(str);
+			alert(typeof str); //string*/
+
+
+			/*
+				字符串中的字符访问
+				通过字符的下标去访问
+			*/
+
+			// var str = 'hello';
+			/*alert(str.charAt(1));
+			alert(str[1]);*/
+
+			/*str[1] = "x";
+			alert(str);*/
+			// str = 'hxllo';
+
+			/*
+				【注】字符串一旦被声明就没有办法被修改，字符串是只读的。如果你硬要修改，只能将这个变量重新赋值，将原字符串销毁，重新声明了一个新的字符串。
+
+				【注】字符串存储在内存中一个叫做只读数据段的地方。
+
+				1、字符串变量里面存储的是地址
+				2、字符串是只读的，不能被修改
+				【注】字符串既是基本数据类型又是复合数据类型。
+			*/
+
+			// var str = 'hello';
+
+
+			/*
+				字符串的属性
+				length
+				【注】输出当前字符串中字符的个数
+				"我爱北京天安门"; 中文计数的时候一个汉字相当于是一个字符
+
+
+
+				utf8 Unicode编码  万国码  三个字符表示一个汉字
+
+				gbk  两个字符表示一个汉字
+			*/
+			/*var str = "hello爱北京";
+			for(var i = 0; i < str.length; i++){
+				alert(str[i]);
+			}*/
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

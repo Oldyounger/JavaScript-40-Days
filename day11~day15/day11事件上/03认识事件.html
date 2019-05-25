@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			
+			/*
+				完整事件 = 事件触发了 + 出来事件的行为(函数)
+
+				形成完整的事件，事件约定好，当事件发生以后，应该怎么做。
+
+
+				事件本身和事件发生后，处理事件的行为，绑定在一次的方式，叫做【事件绑定】。
+				任何事件，都必须事先先进行事件绑定，我们才能够完成一个完整的事件。
+
+
+				事件绑定
+				1、内联模式
+				2、外联模式/脚本模式
+
+				总结：
+					元素节点.on + 事件类型 = 函数;
+			*/
+
+			function btnClick(){
+				alert("hello");
+			}
+
+
+			/*
+				为了保证我们程序的规范性，后续的所有的事件绑定都是外联模式。
+			*/
+			window.onload = function(){
+				var oBtn2 = document.getElementById("btn2");
+				oBtn2.onclick = function(){
+					alert("world");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<!-- 内联模式 - 事件绑定 -->
+		<button onclick = 'btnClick();'>按钮1</button>
+		<!-- 外联模式/脚本模式 -->
+		<button id = 'btn2'>按钮2</button>
+	</body>
+</html>

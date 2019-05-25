@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 50px; height: 50px; background-color: red; position: absolute;}
+			div{width: 5px; height: 5px; background-color: red; position: absolute;}
+		</style>
+		<script>
+			/*
+				绘制圆，分为三部分：
+				1、确定圆心的位置
+				2、确定半径的宽度
+				3、顺时针旋转
+
+				Math.PI 180弧度
+				1弧度 = Math.PI / 180;
+			*/
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+
+				circle(oDiv, {
+					X: 300,
+					Y: 300,
+					r: 100
+				})
+
+
+
+			}
+			function circle(obj, {X, Y, r}){
+				var i = 0; 
+
+				setInterval(function(){
+					i++;
+					var radian = i * Math.PI / 180;
+					//计算a和b的宽
+					var a = Math.sin(radian) * r;
+					var b = Math.cos(radian) * r;
+
+					obj.style.left = X + a + 'px';
+					obj.style.top = Y - b + 'px';
+
+
+					//不停的创建节点，添加到页面上，显示轨迹
+					var node = document.createElement("div");
+					node.style.left = obj.offsetLeft + 'px';
+					node.style.top = obj.offsetTop + 'px';
+					document.body.appendChild(node);
+				}, 30);
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+	</body>
+</html>

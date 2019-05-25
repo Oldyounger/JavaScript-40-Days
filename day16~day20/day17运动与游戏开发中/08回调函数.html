@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			//小明
+			function good2(){
+				alert("买了一份麻辣香锅，去吃香锅了");
+			}
+
+
+
+			//小花
+			/*function good1(){
+				alert("小花去吃了蛋糕和奶茶");
+			}*/
+			/*var good1 = function(){
+				alert("小花去吃了蛋糕和奶茶");
+			}*/
+
+			function eatFood(funcName){
+				alert("时间先到12.15");
+				//吃饭
+				/*
+					函数名 == 变量名
+					具体执行什么函数不确定，将这部分代码当做参数传入。
+				*/
+				funcName();
+				alert("吃完饭");
+			}
+
+
+			eatFood(function(){
+				alert("小花去吃了蛋糕和奶茶");
+			});
+
+			eatFood(good2);
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

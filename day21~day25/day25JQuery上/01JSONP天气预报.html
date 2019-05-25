@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<script>
+			/*
+				1、先去声明好一个函数，这个函数必须带一个参数，参数就是下载到的数据
+				2、当我们需要下载数据的时候，动态的创建script标签，并且把src设置成，我们要下载的数据
+				3、我们可以用参数，去做数据解析，并且将数据添加到页面上
+			*/
+
+			function download(data){
+				// alert(data);
+				var oCityPM = document.getElementById("citypm");
+				var oT1 = document.getElementById("t1");
+
+				//清空数据
+				oT1.innerHTML = `<tr>
+				 	<th>日期</th>
+				 	<th>天气</th>
+				 	<th>风向</th>
+				 	<th>气温</th>
+				 </tr>`;
+
+				oCityPM.innerHTML = `城市：${data.city}, pm25：${data.pm25}`;
+
+				var arr = data.weather;
+
+				//通过循环动态的创建标签插入到表格中
+
+				for(var i = 0; i < arr.length; i++){
+					var oTr = document.createElement("tr");
+
+					var obj = arr[i];
+					for(var attr in obj){
+						if(!(attr == "icon1" || attr == "icon2")){
+							var oTd = document.createElement("td");
+							oTd.innerHTML = obj[attr];
+							oTr.appendChild(oTd);
+						}
+					}
+					oT1.appendChild(oTr);
+				}
+			}
+		</script>
+		<script>
+			window.onload = function(){
+				var oCity = document.getElementById("city");
+				var oSearch = document.getElementById("search");
+				
+				
+
+
+				oSearch.onclick = function(){
+					//点击的按钮的时候，动态加载script标签
+					var oScript = document.createElement("script");
+					oScript.src = `https://api.asilu.com/weather/?city=${oCity.value}&callback=download`;
+					document.body.appendChild(oScript);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class = 'container'>
+			<br><br>
+			<div class = 'form-group'>
+				<label for="city" id = 'citypm'>城市：  pm25：</label>
+				<input type="text" placeholder="城市"  class = 'form-control' name = 'city' id = 'city'>
+			</div>
+			<input type="text" class = 'btn btn-primary' value = '查询' id = 'search'>
+			<br><br>
+			<!-- 在表格里面呈现我们加载完成的数据 -->
+			<table class = 'table table-hover' id = 't1' border = 1>
+				 <!-- 设置表头 -->
+				 <tr>
+				 	<th>日期</th>
+				 	<th>天气</th>
+				 	<th>风向</th>
+				 	<th>气温</th>
+				 </tr>
+			</table>
+		</div>
+	</body>
+</html>

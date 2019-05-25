@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			*{margin: 0px; padding: 0px}
+			#div1{width: 680px; height: 170px; border: 1px solid black; margin: 100px auto; position: relative;  overflow: hidden; }
+			#ul1{position: absolute; left: 0px}
+			#ul1 li{list-style: none; width: 150px; height: 150px; margin: 10px; float: left;}
+			#ul1 li img{width: 100%; height: 100%}
+		</style>
+		<script>
+			window.onload = function(){
+				var oUl = document.getElementById("ul1");
+				var aLis = oUl.getElementsByTagName("li");
+
+				//在ul的后面，再去添加四张图片
+				oUl.innerHTML += oUl.innerHTML;
+				//oUl的宽应该变成原来的两倍
+				oUl.style.width = 170 * aLis.length + 'px';
+
+				var speed = 2;
+
+				setInterval(function(){
+					oUl.style.left = oUl.offsetLeft - speed + 'px';
+					if(oUl.offsetLeft <= -oUl.offsetWidth / 2){
+						oUl.style.left = 0;
+					}
+				}, 30);
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<ul id = 'ul1'>
+				<li>
+					<img src="img/1.jpg" alt="">
+				</li>
+				<li>
+					<img src="img/2.jpg" alt="">
+				</li>
+				<li>
+					<img src="img/3.jpg" alt="">
+				</li>
+				<li>
+					<img src="img/4.jpg" alt="">
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset = "utf-8" />
+		<style type="text/css">
+			.a{
+				background-color: red
+			}
+			.b{
+				background-color: yellow
+			}
+		</style>
+		<script type="text/javascript">
+		window.onload = function(){
+			var btn = document.getElementsByTagName("button")[0];
+			btn.onclick = function(){
+				var inpts = document.getElementsByTagName("input");
+				var rows = inpts[0].value;
+				var cols = inpts[1].value;
+
+				//只是一个对象
+				var _table = document.createElement("table");
+				_table.border = "1";
+				//把_table对象追加到body里面,页面才能显示该元素
+				document.body.appendChild(_table);
+				for(var i = 0; i < rows; i++){
+					var _tr = document.createElement('tr');
+					if(i % 2 == 0){
+						_tr.className = "a";
+					}else{
+						_tr.className = "b";
+					}
+					_table.appendChild(_tr);
+					for(var k = 0; k < cols; k ++){
+						var _td = document.createElement("td");
+						_td.innerHTML = "XXX";
+						_tr.appendChild(_td);
+					}
+					var lastTd = document.createElement("td");
+					var btn = document.createElement("button");
+					btn.onclick = function(){
+						//按钮的点击事件
+						//删除按钮所在的这一行
+						var row = this.parentNode.parentNode;
+						row.parentNode.removeChild(row);
+					}
+					btn.innerHTML = "删除";
+					lastTd.appendChild(btn);
+					_tr.appendChild(lastTd);
+				}
+			}
+		}
+		</script>
+	</head>
+	<body>
+		行:<input type = "text" /> 列:<input type = "text" />
+		<button>生成</button>
+		<table border = "1">
+			<tr>
+				<td>你好</td>
+				<td>祝你幸福</td>
+				<td>再见</td>
+			</tr>
+		</table>
+	</body>
+</html>

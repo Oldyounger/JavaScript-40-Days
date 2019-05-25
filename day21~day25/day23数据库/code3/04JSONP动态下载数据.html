@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			function func(data){
+				alert("下载到的数据是：" + data);
+			}
+
+		</script>
+		<script>
+			/*
+				JSONP具体操作：
+				1、封装一个函数，这个函数有一个参数，参数就是我们下载到的数据
+				2、当需要下载数据的时候动态的创建script标签，添加到页面上
+				3、当script添加页面上以后，就调用第一步声明好的函数，我们在这个函数里，对下载到的数据进行处理
+			*/
+
+			window.onload = function(){
+				var oBtn = document.getElementById("btn1");
+				oBtn.onclick = function(){
+					var oScript = document.createElement("script");
+					oScript.src = "1.txt";
+					document.body.appendChild(oScript);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>下载</button>
+	</body>
+</html>

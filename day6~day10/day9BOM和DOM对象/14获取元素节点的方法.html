@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 100px; height: 100px; background-color: red}
+			div{background-color: orange}
+			.box{background-color: yellow}
+		</style>
+		<script>
+			/*
+				document.querySelector()
+				返回值：符合条件的第一个节点
+
+				document.querySelectorAll()
+				返回值：数组  装有所有符合条件的元素
+
+				参数： 字符串
+					   传入模拟CSS选择器结构，选择网页上的元素的。
+			*/
+
+			window.onload = function(){
+				// var node = document.querySelector("#div1");
+				// var node = document.querySelector("li");
+				// var node = document.querySelector(".box");
+				// var node = document.querySelector("[title=hello]");
+
+				// node.style.backgroundColor = 'green';
+
+				// var nodes = document.querySelectorAll("#div1");
+				// var nodes = document.querySelectorAll("li");
+				// var nodes = document.querySelectorAll(".box");
+				// var nodes = document.querySelectorAll("[title=hello]");
+
+				// var nodes = document.querySelectorAll("ul li");
+				// var nodes = document.querySelectorAll("ul .box");
+				var nodes = document.querySelectorAll("p,div");
+				alert(nodes.length);
+				for(var i = 0; i < nodes.length; i++){
+					nodes[i].style.backgroundColor = 'green';
+				}
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>div</div>
+		<p title = 'hello'>p</p>
+		<div title = 'hello'>div2</div>
+		<ul>
+			<li>11111</li>
+			<li class = 'box'>22222</li>
+			<li class = 'box'>33333</li>
+		</ul>
+		<ol>
+			<li>44444</li>
+			<li class = 'box'>55555</li>
+		</ol>
+	</body>
+</html>

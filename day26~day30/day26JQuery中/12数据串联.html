@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				serialize()   a=1&b=2&c=3(queryString格式) ?a=1&b=2&c=3(search格式)
+							  {a:1,b:2,c:3} (query格式)
+
+				serializeArray()  变成对象的格式
+				必须用在表单里
+			*/
+
+			$(function(){
+				alert($("form").serialize());
+				console.log($("form").serializeArray())
+			})
+		</script>
+	</head>
+	<body>
+		<form action="#">
+			<input type="text" name = 'a' value = "1">
+			<input type="text" name = 'b' value = "2">
+			<input type="text" name = 'c' value = "3">
+		</form>
+	</body>
+</html>

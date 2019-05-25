@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				Array.from
+			*/
+			window.onload = function(){
+				var aDivs = document.getElementsByTagName('div');
+				// aDivs.push("hello");
+
+				aDivs = Array.from(aDivs);
+
+				/*
+					【注】返回的是伪数组。
+					想办法将伪数组 => 数组
+
+				*/
+				aDivs.push("hello");
+				// alert(aDivs);
+			}
+
+
+			/*
+				find跟过filter差不多，不过在找到符合条件的元素后，返回元素并停止遍历
+
+				findIndex() 符合条件元素的下标
+			*/
+			var arr = [10, 20, 30, 40, 50];
+			/*var res = arr.find(function(item, index){
+				// alert(item + ', ' + index)
+				return item > 30;
+			})
+			alert(res);*/
+
+			var res = arr.findIndex(function(item, index){
+				// alert(item + ', ' + index)
+				return item > 30;
+			})
+			// alert(res);
+
+
+
+			var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+			arr.copyWithin(2, 6, 9);
+			/*
+				第一个参数：开始的下标
+				第二第三个参数：获取元素的范围
+			*/
+			alert(arr); //1,2,7,8,5,6,7,8,9
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>

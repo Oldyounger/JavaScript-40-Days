@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			div{width: 200px; height: 200px; background-color: red; position: absolute; left: 200px; top: 100px}
+		</style>
+		<script src = '../jquery-1.10.1.min.js'></script>
+		<script>
+			$(function(){
+
+				var offsetX = 0;
+				var offsetY = 0;
+				$("div").mousedown(function(ev){
+					offsetX = ev.clientX - $(this).offset().left;
+					offsetY = ev.clientY - $(this).offset().top;
+
+					var _this = this;
+					//添加mousemove
+					$(document).mousemove(function(ev){
+						$(_this).css({
+							left: ev.clientX - offsetX,
+							top: ev.clientY - offsetY
+						})
+					})
+				})
+				$(document).mouseup(function(){
+					$(document).off("mousemove");
+				})
+			})
+			
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset = "utf-8" />
+		<style type="text/css">
+		button{width: 100px; height: 50px; background: gray; font-size: 30px; line-height: 50px}
+		input{width: 300px; height: 50px; font-size: 30px; line-height: 50px}
+		</style>
+		<script type="text/javascript">
+			//定义一个全局数组，记录输入的内容
+			var arr = [];
+
+			//三个函数封装好
+			function btnClick(vArg){
+				var oInput = document.getElementById("input_id");
+				arr.push(vArg);
+				oInput.value = arr.join("");
+
+			}
+
+
+			//清除
+			function clearBtn(){
+				var oInput = document.getElementById("input_id");
+				oInput.value = '';
+				arr = [];
+			}
+
+			//计算，并且得出结果，显示在页面上 //1,0,+,2,0
+			function equalFun(){
+				var oInput = document.getElementById("input_id");
+				//1、找出运算符的位置
+				for(var i = 0; i < arr.length; i++){
+					if(!(arr[i] >= 0 && arr[i] <= 9)){
+						var index = i;
+						break;
+					}
+				}
+				//2、取出两个数
+				var num1Arr = arr.slice(0, index);
+				var num2Arr = arr.slice(index + 1);
+				var num1 = Number(num1Arr.join(""));
+				var num2 = Number(num2Arr.join(""));
+
+				//3、计算结果，显示在页面上
+				var res = operator(num1, arr[index], num2);
+				oInput.value = res;
+				//4、计算完成以后，数组清空
+				arr = [];
+			}
+					//封装函数
+			function operator(num1, str, num2){
+				// + - * / %
+				switch(str){
+					case "+":
+						return num1 + num2; //函数运行遇到return就终止了
+						//break; //为了防止事件穿透
+					case "-":
+						return num1 - num2;
+					case "*":
+						return num1 * num2;
+					case "/":
+						return num1 / num2;
+					case "%":
+						return num1 % num2;
+					default:
+						alert("error");
+						break;
+				}
+			}
+
+		</script>
+	</head>
+	<body>
+		<!-- 
+		外层是双引号,里面必须用单引号
+		外层是单引号,里面必须是双引号
+		 -->
+		<input id = "input_id" />
+		<button onclick = "clearBtn();">C</button>
+		<br />
+		<button onclick = "btnClick(7);">7</button>
+		<button onclick = "btnClick(8);">8</button>
+		<button onclick = "btnClick(9);">9</button>
+		<button onclick = "btnClick('+');">+</button><br/>
+		<button onclick = "btnClick(4);">4</button>
+		<button onclick = "btnClick(5);">5</button>
+		<button onclick = "btnClick(6);">6</button>
+		<button onclick = "btnClick('-');">-</button><br/>
+		<button onclick = "btnClick(1);">1</button>
+		<button onclick = "btnClick(2);">2</button>
+		<button onclick = "btnClick(3);">3</button>
+		<button onclick = "btnClick('*');">*</button><br/>
+		<button onclick = "btnClick(0);">0</button>
+		<button onclick = "equalFun();">=</button>
+		<button onclick = "btnClick('%');">%</button>
+		<button onclick = "btnClick('/');">/</button><br/>
+	</body>
+</html>

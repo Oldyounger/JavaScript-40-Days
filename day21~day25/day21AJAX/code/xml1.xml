@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>  <!-- //根节点 <></>中间的部分叫做节点值 -->
+    <systemConfig>  <!-- //是根节点的子节点 -->
+      <CityName>北京</CityName>
+      <CityCode>201</CityCode>
+      <ParentCityCode>0</ParentCityCode>
+      <areaCode>010</areaCode>
+      <AgreementUrl></AgreementUrl> <!--  <AgreementUrl/> -->
+      <IntentionLevel>                       
+        <Item key="1" value="A"/> //属性节点
+        <Item key="2" value="B"></Item>
+        <Item key="3" value="C"></Item>
+      </IntentionLevel>
+      <ComeChannel>                           
+        <Item key="1" value="报纸"></Item>
+        <Item key="2" value="杂志"></Item>
+      </ComeChannel>
+      <BuyCarBudget>                       
+        <Item key="1" value="40-50万"></Item>
+        <Item key="2" value="50-60万"></Item>
+      </BuyCarBudget>
+     <IntentionColor>
+         <Item key="1" value="红"></Item>
+         <Item key="2" value="黄"></Item>
+     </IntentionColor>
+    </systemConfig>
+</root>

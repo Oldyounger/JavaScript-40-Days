@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				面向对象
+				特点：继承 封装 多态
+
+				封装构造函数  混合法
+			*/
+			function Person(name, sex){
+				//添加属性
+				this.name = name;
+				this.sex = sex;
+			}
+			//通过原型添加函数
+			Person.prototype.showName = function(){
+				alert(`我的名字叫：${this.name}`);
+			}
+			Person.prototype.showSex = function(){
+				alert(`我是${this.sex}的`);
+			}
+
+			var p1 = new Person("blue", "男");
+			p1.showName();
+			p1.showSex();
+
+
+
+			/*
+				继承于Person 生成一个 Worker
+				1、继承属性
+					构造函数的伪装
+				2、继承方法
+					<1>原型链
+					<2>调用构造函数
+					<3>Object.create
+			*/
+
+			function Worker(name, sex, job){
+				//1、继承父一级的属性
+				Person.call(this, name, sex);
+				this.job = job;
+			}
+			/*for(var funcName in Person.prototype){
+				Worker.prototype[funcName] = Person.prototype[funcName];
+			}*/
+			// Worker.prototype = new Person();
+			Worker.prototype = Object.create(Person.prototype);
+
+			Worker.prototype.showJob = function(){
+				alert(`我是干${this.job}的`);
+			}
+
+			var w1 = new Worker("小明", "男", "程序员");
+			w1.showName();
+			w1.showSex();
+			w1.showJob();
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = "module1.js"></script>
+		<script src = "module2.js"></script>
+		<script>
+			var module2 = (function(mod){
+				mod.m3 = function(){
+					alert("这是m3方法");
+				}
+				return mod;
+			})(module1 || {});
+			
+			var module1 = (function(mod){
+				var _count = 5;
+
+				function mm1(){
+					alert("mm1 " + (_count + 5));
+				}
+				function mm2(){
+					alert("mm2 " + (_count + 15));
+				}
+
+				mod.m1 = mm1;
+				mod.m2 = mm2;
+				return mod;
+			})(module2 || {});
+
+			
+
+			
+
+			var mod = module1 || module2;
+			mod.m1()
+			mod.m2();
+			mod.m3()
+
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

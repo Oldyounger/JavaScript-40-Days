@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			/*
+				设置cookie
+				setCookie()
+
+
+				获取cookie，通过传入name获取value
+				getCookie(name)
+
+
+				删除cookie
+				removeCookie(name)
+			*/
+			function removeCookie(name){
+				document.cookie = encodeURIComponent(name) + "=;expires=" + new Date(0);
+			}
+			//expires 传入数字 代表天数
+			function setCookie(name, value, expires, path, domain, secure){
+				var cookieStr = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+				if(expires){
+					cookieStr += ";expires=" + numOfDate(expires);
+				}
+				if(path){
+					cookieStr += ";path=" + path;
+				}
+				if(domain){
+					cookieStr += ";domain=" + domain; 
+				}
+				if(secure){
+					cookieStr += ";secure";
+				}
+				document.cookie = cookieStr;
+
+			}
+			function numOfDate(n){
+				//传入一个n
+				var d = new Date();
+				var date = d.getDate();
+				d.setDate(n + date);
+				return d;
+			}
+			//变种人=X教授; 赛亚人=孙悟空; DC英雄=超人 
+			function getCookie(name){
+				var cookieStr = decodeURIComponent(document.cookie);
+				//1、健在字符串中出现的位置
+				var start = cookieStr.indexOf(name);
+				if(start == -1){
+					return null;
+				}else{
+					//2、找到结束位置
+					var end = cookieStr.indexOf(";", start);
+					if(end == -1){
+						end = cookieStr.length;
+					}
+				}
+				//3、提取字符串
+				var subStr = cookieStr.substring(start, end);
+				//4、字符串分割
+				var arr = subStr.split("=");
+				return arr[1];
+			}
+
+			alert(document.cookie); //没有cookie是空字符串
+
+			
+			setCookie("变种人", "X教授", 7);
+			setCookie("赛亚人", "孙悟空", 30);
+			setCookie("DC英雄", "超人", 1000);
+
+			// alert(decodeURIComponent(document.cookie))
+
+			// alert(getCookie("变种人"));
+			alert(getCookie("赛亚人"));
+			// alert(getCookie("DC英雄"));
+
+
+
+
+			window.onload = function(){
+				var oBtn = document.getElementById("btn1");
+				oBtn.onclick = function(){
+					removeCookie("赛亚人");
+					alert(getCookie("赛亚人"));
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id = 'btn1'>删除cookie</button>
+	</body>
+</html>

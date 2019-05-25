@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+				var oInput = document.getElementById("input1");
+
+				/*
+					innerHTML  获取双标签间的内容
+						       设置的时候注意，如果标签间内容有标签，会自动解析
+				*/
+				// alert(oDiv.innerHTML); //div文本<em>em</em><strong>strong</strong>
+
+				//设置
+				// oDiv.innerHTML = "<h1>我是标题</h1>";
+
+
+				/*
+					innerText  获取双标签间的内容中纯文本（包括子节点中的文本也获取到）
+				*/
+				// alert(oDiv.innerText);
+
+				// oDiv.innerText = "<h1>我是标题</h1>";
+
+
+
+				/*
+					单标签
+				*/
+
+				/*alert(oInput.value);
+				oInput.value = '设置';*/
+
+				/*
+					tagName  输出当前元素节点的标签类型
+				*/
+				alert(oDiv.tagName);  //DIV
+				alert(oInput.tagName);//INPUT
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>div文本<em>em</em><strong>strong</strong></div>
+		<input type="text" id = 'input1' value = 'xxx'/>
+	</body>
+</html>

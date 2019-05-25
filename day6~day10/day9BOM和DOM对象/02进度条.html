@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#slide{width: 600px; height: 30px; border: 1px solid black; overflow: hidden;}
+			#fill{width: 0px; height: 30px; background-color: orange; line-height: 30px; position: relative;}
+			#socre{position: absolute; right: 0px}
+		</style>
+		<script>
+			/*
+				分享一个小知识
+				人眼 能识别最小的时间间隔是18帧  放映电影的时候 24帧
+			*/
+			var i = 0;
+
+			var timer = setInterval(function(){
+				var oFill = document.getElementById("fill");
+				var oSocre = document.getElementById("socre");
+				i += 2;
+				//设置行间样式
+				oFill.style.width = i + 'px';
+				oSocre.innerHTML = parseInt(i / 600 * 100) + "%";
+
+				if(i == 600){
+					clearInterval(timer);
+				}
+
+			}, 30);
+		</script>
+	</head>
+	<body>
+		<div id = 'slide'>
+			<div id = 'fill'>
+				<span id = "socre">0%</span>
+			</div>
+		</div>
+	</body>
+</html>

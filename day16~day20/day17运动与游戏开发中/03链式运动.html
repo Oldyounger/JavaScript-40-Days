@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 100px; height: 100px; background-color: red}
+		</style>
+		<script>
+			/*
+				1、先让宽变宽
+				2、宽的动画结束以后，让高变高
+			*/
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+				/*oDiv.onclick = function(){
+					startMove(oDiv, "width", 300, callback)
+				}*/
+
+				/*
+					这种吧函数当做参数处理的方式，叫做回调函数（重点）
+				*/
+				/*function callback(){
+					alert(this);
+					alert("运动结束了");
+					alert("xxx");
+				}*/
+
+
+				oDiv.onclick = function(){
+					startMove(this, "width", 300, function(){
+						startMove(this, "height", 300, function(){
+							startMove(this, "opacity", 30, function(){
+								alert("动画结束了");
+							})
+						})
+					})
+				}
+			}
+
+			function startMove(node, attr, iTarget, complete){ //complete = callback
+				clearInterval(node.timer);
+				node.timer = setInterval(function(){
+					//1、获取当前样式
+					var iCur = null;
+					if(attr == "opacity"){
+						iCur = parseInt(parseFloat(getStyle(node, attr)) * 100);
+					}else{
+						iCur = parseInt(getStyle(node, attr));
+					}
+
+					var speed = (iTarget - iCur) / 8;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+					if(iCur == iTarget){
+						clearInterval(node.timer);
+						/*
+							如果函数内部有不确定的值  声明成形参，传参
+							如果函数内部有不确定的一段代码 声明成形参， 吧函数名当做参数传入
+						*/
+						//强制改变这个函数的this是当前运动的物体
+						complete.call(node);
+
+					}else{
+						if(attr == "opacity"){
+							iCur += speed;
+							node.style.opacity = iCur / 100;
+							node.style.filter = "alpha(opacity=" + iCur + ")";
+						}else{
+							node.style[attr] = iCur + speed + 'px';
+						}
+					}
+
+
+				}, 30);
+			}
+			// 浏览器兼容写法
+			function getStyle(node, styleType){
+				return node.currentStyle ? node.currentStyle[styleType] : getComputedStyle(node)[styleType];
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+	</body>
+</html>

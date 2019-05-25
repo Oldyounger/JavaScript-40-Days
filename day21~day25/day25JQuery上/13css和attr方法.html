@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script>
+			/*
+				css函数
+
+				attr函数   操作行间的属性
+			*/
+			$(function(){
+				// $("div").css("height", 300);  //如果赋值，批量操作
+
+				// alert($("div").css("height"));   //默认返回下标为0的元素的值
+
+
+				/*
+					同时设置多个样式
+				*/
+				/*$("div").css({
+					width: "300px",
+					height: "300px",
+					backgroundColor: "red"
+				})*/
+
+
+				//获取行间样式
+				// alert($("div").attr("class"));
+				// $("div").attr("class", "xxx");
+
+				//设置多个样式
+				$("div").attr({
+					title: "yyyy",
+					class: "yyyyyy",
+					xxxx: "zzz"
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div title = 'hello' name = 'world' class = 'box'>div1</div>
+		<div>div2</div>
+		<div>div3</div>
+	</body>
+</html>
